@@ -2,8 +2,8 @@
     --primary: #4f46e5;
     --primary-dark: #4338ca;
     --success: #22c55e;
-    --danger: #ef4444;
     --warning: #f59e0b;
+    --danger: #ef4444;
     --info: #3b82f6;
     --dark: #1e293b;
     --light: #f8fafc;
@@ -21,8 +21,8 @@ body {
     background-color: var(--light);
 }
 
-/* User Status Bar */
-.user-status-bar {
+/* Status Bar */
+.status-bar {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     padding: 0.75rem 0;
@@ -39,7 +39,7 @@ body {
 /* Navigation */
 .navbar {
     background: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 1rem 0;
 }
 
@@ -49,20 +49,15 @@ body {
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     font-weight: 600;
-    margin-right: 0.5rem;
-}
-
-.navbar-nav .btn-primary {
-    padding: 0.5rem 1.5rem;
 }
 
 /* Hero Section */
-.hero-section {
+.hero {
     padding: 6rem 0;
     background: linear-gradient(135deg, var(--light), var(--gray-100));
 }
 
-.hero-section h1 {
+.hero h1 {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
@@ -71,7 +66,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.hero-section .lead {
+.hero .lead {
     font-size: 1.25rem;
     color: var(--gray-500);
     margin-bottom: 2rem;
@@ -97,12 +92,12 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .tool-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
 }
 
 .tool-icon {
@@ -118,18 +113,6 @@ body {
 .tool-icon i {
     font-size: 24px;
     color: white;
-}
-
-.tool-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.tool-card p {
-    color: var(--gray-500);
-    margin-bottom: 0;
-    font-size: 0.875rem;
 }
 
 /* Features Section */
@@ -163,12 +146,8 @@ body {
     margin: 0 auto 1.5rem;
 }
 
-.feature-icon i {
-    font-size: 24px;
-}
-
-/* Upload Area */
-.upload-area {
+/* Upload Zone */
+.upload-zone {
     border: 3px dashed var(--gray-300);
     border-radius: 1rem;
     padding: 3rem;
@@ -176,15 +155,30 @@ body {
     transition: all 0.3s ease;
 }
 
-.upload-area.active {
+.upload-zone.active {
     border-color: var(--primary);
     background: var(--gray-100);
 }
 
-.upload-area i {
+.upload-zone i {
     font-size: 48px;
     color: var(--primary);
     margin-bottom: 1.5rem;
+}
+
+/* Process Zone */
+.process-zone {
+    padding: 2rem;
+}
+
+.file-item {
+    background: var(--gray-100);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* Footer */
@@ -195,7 +189,7 @@ body {
 }
 
 .footer h5 {
-    font-size: 1.25rem;
+    color: white;
     margin-bottom: 1.5rem;
 }
 
@@ -220,24 +214,9 @@ body {
     text-align: center;
 }
 
-/* Modal */
-.modal-content {
-    border-radius: 1rem;
-    border: none;
-}
-
-.modal-header {
-    border-bottom: none;
-    padding: 1.5rem;
-}
-
-.modal-body {
-    padding: 0 1.5rem 1.5rem;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
-    .hero-section h1 {
+    .hero h1 {
         font-size: 2.5rem;
     }
     
