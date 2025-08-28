@@ -1,79 +1,370 @@
-/* Add these styles to your existing CSS */
-
-/* PDF Tools Styles */
-.pdf-file-item {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 10px;
+/* Modern Design Theme */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1, #4f46e5);
+    --secondary-gradient: linear-gradient(135deg, #f59e0b, #f97316);
+    --success-gradient: linear-gradient(135deg, #10b981, #059669);
+    --info-gradient: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    --warning-gradient: linear-gradient(135deg, #f59e0b, #f97316);
+    --danger-gradient: linear-gradient(135deg, #ef4444, #dc2626);
+    
+    --primary: #4f46e5;
+    --surface-light: #ffffff;
+    --surface-dark: #1e293b;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #f8fafc;
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    
+    --shadow-elevation-1: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-elevation-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.pdf-file-item:hover {
-    background: #e9ecef;
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.pdf-controls {
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f8fafc;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Header & Navigation */
+.app-header {
+    background: var(--surface-light);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-elevation-1);
+}
+
+.navbar {
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+/* User Status Bar */
+.user-status-bar {
+    background: var(--primary-gradient);
+    color: var(--text-light);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+}
+
+.status-container {
     display: flex;
-    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.pdf-controls .btn {
-    padding: 4px 8px;
+.user-info,
+.datetime-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.status-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+/* Tool Cards Grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.tool-card {
+    background: var(--surface-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-elevation-3);
+}
+
+.tool-header {
+    padding: 2rem;
+    background: var(--primary-gradient);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.tool-icon i {
+    font-size: 32px;
+}
+
+.tool-content {
+    padding: 2rem;
+}
+
+.tool-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.tool-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.tool-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Upload Area */
+.upload-zone {
+    background: var(--surface-light);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    border: 3px dashed #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.upload-zone:hover {
+    border-color: var(--primary);
+    background: #f8fafc;
+}
+
+.upload-zone.active {
+    border-color: var(--primary);
+    background: #f0f9ff;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
 }
 
 /* Processing States */
-.processing {
-    text-align: center;
-    padding: 40px;
+.processing-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem;
 }
 
-.processing .spinner-border {
-    width: 3rem;
-    height: 3rem;
+.progress-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary) var(--progress), #e2e8f0 var(--progress));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Tool-specific colors */
-.tool-icon.bg-primary {
-    background-color: #4f46e5;
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
-.tool-icon.bg-success {
-    background-color: #22c55e;
+.btn-primary {
+    background: var(--primary-gradient);
+    color: var(--text-light);
 }
 
-.tool-icon.bg-info {
-    background-color: #0ea5e9;
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
-/* Form controls */
+/* File Preview */
+.file-preview {
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+}
+
+/* Settings Panel */
+.settings-panel {
+    background: var(--surface-light);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.settings-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Form Controls */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
 .form-label {
+    display: block;
     font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 
-.preview-container {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
 }
 
-/* Conversion options */
-.conversion-options,
-.merge-options {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.form-control:focus {
+    border-color: var(--primary);
+    outline: none;
 }
 
-/* Upload prompt */
-.upload-prompt {
-    padding: 40px;
-    border: 3px dashed #e2e8f0;
-    border-radius: 8px;
+/* Results Section */
+.results-container {
+    background: var(--surface-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-top: 2rem;
 }
 
-.upload-prompt:hover {
-    border-color: var(--primary-color);
-    background-color: #f8fafc;
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .status-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .upload-zone {
+        padding: 2rem;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --surface-light: #1e1e1e;
+        --text-primary: #ffffff;
+        --text-secondary: #a3a3a3;
+    }
+    
+    body {
+        background: #121212;
+    }
+    
+    .file-preview {
+        background: #2d2d2d;
+    }
+    
+    .form-control {
+        background: #2d2d2d;
+        border-color: #404040;
+        color: #ffffff;
+    }
 }
