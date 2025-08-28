@@ -6,76 +6,74 @@
     <title>PDF Tools Pro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- User Status Bar -->
-    <div class="user-status-bar">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <div class="status-container">
-                <div class="user-info">
-                    <div class="status-icon">
-                        <i class="fas fa-user"></i>
+            <a class="navbar-brand" href="#">
+                <span class="brand-icon">PDF</span>
+                Tools Pro
+            </a>
+            <!-- Your existing navbar code -->
+        </div>
+    </nav>
+
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2 class="section-title text-center">Our PDF Tools</h2>
+            <div class="row g-4">
+                <!-- Image Resize Tool -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openTool('image-resize')">
+                        <div class="tool-icon bg-warning">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                        </div>
+                        <h3>Image Resize</h3>
+                        <p>Resize and optimize your images easily</p>
+                        <div class="meta-info">
+                            <small class="text-muted">Last updated: 2025-08-28 05:39:24</small>
+                        </div>
                     </div>
-                    <span>@samadsekh12</span>
                 </div>
-                <div class="datetime-info">
-                    <div class="status-icon">
-                        <i class="fas fa-clock"></i>
+
+                <!-- Image to PDF Tool -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openTool('image-to-pdf')">
+                        <div class="tool-icon bg-danger">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <h3>Image to PDF</h3>
+                        <p>Convert images to PDF format</p>
+                        <div class="meta-info">
+                            <small class="text-muted">Last updated: 2025-08-28 05:39:24</small>
+                        </div>
                     </div>
-                    <span>2025-08-28 05:33:55 UTC</span>
                 </div>
+
+                <!-- Your other tool cards -->
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Header -->
-    <header class="app-header">
-        <div class="container">
-            <nav class="navbar">
-                <a class="navbar-brand" href="#">PDF Tools Pro</a>
-                <div class="nav-actions">
-                    <button class="btn btn-primary">Get Started</button>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Tools Grid -->
-    <main class="container">
-        <div class="tools-grid">
-            <!-- PDF to Word -->
-            <div class="tool-card animate-slide-in" style="--delay: 0.1s">
-                <div class="tool-header">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-word"></i>
-                    </div>
-                </div>
-                <div class="tool-content">
-                    <h3 class="tool-title">PDF to Word</h3>
-                    <p class="tool-description">Convert PDF files to editable Word documents with high accuracy.</p>
-                    <div class="tool-meta">
-                        <i class="fas fa-clock"></i>
-                        <span>Updated: 2025-08-28</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add more tool cards with the same structure -->
-        </div>
-    </main>
-
-    <!-- Upload Modal -->
-    <div class="modal fade" id="uploadModal">
+    <!-- Tool Modal -->
+    <div id="tool-modal" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tool-modal-title">PDF Tool</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
                 <div class="modal-body">
-                    <div class="upload-zone">
-                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                        <h4>Drag & Drop Files Here</h4>
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h4>Drag & Drop your files here</h4>
                         <p>or</p>
-                        <button class="btn btn-primary">Choose Files</button>
+                        <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
+                            Choose File
+                        </button>
+                        <input type="file" id="file-input" hidden>
                     </div>
                 </div>
             </div>
