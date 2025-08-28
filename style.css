@@ -1,149 +1,79 @@
-:root {
-    --primary-color: #4f46e5;
-    --secondary-color: #818cf8;
-    --success-color: #22c55e;
-    --info-color: #0ea5e9;
-    --background-color: #f8fafc;
-    --text-color: #1e293b;
-}
+/* Add these styles to your existing CSS */
 
-body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-color);
-    background-color: var(--background-color);
-}
-
-/* Navbar Styles */
-.navbar {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.brand-icon {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 8px 12px;
+/* PDF Tools Styles */
+.pdf-file-item {
+    background: #f8f9fa;
     border-radius: 8px;
-    font-weight: bold;
-    margin-right: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
 }
 
-.navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
+.pdf-file-item:hover {
+    background: #e9ecef;
 }
 
-/* Hero Section */
-.hero {
-    padding: 100px 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero .lead {
-    font-size: 1.25rem;
-    color: #64748b;
-    margin-bottom: 2rem;
-}
-
-/* Tools Section */
-.tools-section {
-    padding: 80px 0;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
-}
-
-.tool-card {
-    background: white;
-    border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.tool-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+.pdf-controls {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
+    gap: 5px;
 }
 
-.tool-icon i {
-    color: white;
-    font-size: 24px;
+.pdf-controls .btn {
+    padding: 4px 8px;
 }
 
-.tool-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.tool-card p {
-    color: #64748b;
-    margin: 0;
-}
-
-/* Upload Area */
-.upload-area {
-    border: 3px dashed #e2e8f0;
-    border-radius: 16px;
-    padding: 3rem;
+/* Processing States */
+.processing {
     text-align: center;
-    transition: all 0.3s ease;
+    padding: 40px;
 }
 
-.upload-area:hover {
+.processing .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Tool-specific colors */
+.tool-icon.bg-primary {
+    background-color: #4f46e5;
+}
+
+.tool-icon.bg-success {
+    background-color: #22c55e;
+}
+
+.tool-icon.bg-info {
+    background-color: #0ea5e9;
+}
+
+/* Form controls */
+.form-label {
+    font-weight: 500;
+}
+
+.preview-container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Conversion options */
+.conversion-options,
+.merge-options {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Upload prompt */
+.upload-prompt {
+    padding: 40px;
+    border: 3px dashed #e2e8f0;
+    border-radius: 8px;
+}
+
+.upload-prompt:hover {
     border-color: var(--primary-color);
     background-color: #f8fafc;
-}
-
-.upload-area i {
-    font-size: 48px;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.upload-area h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-/* Modal Styles */
-.modal-content {
-    border-radius: 16px;
-    border: none;
-}
-
-.modal-header {
-    border-bottom: none;
-    padding: 1.5rem;
-}
-
-.modal-body {
-    padding: 1.5rem;
 }
