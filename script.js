@@ -1,282 +1,341 @@
-// Global variables
+// Global Variables
 const currentUser = 'samadsekh12';
-const currentDateTime = '2025-08-28 05:27:27';
+const currentDateTime = '2025-08-28 05:35:11';
 
-// PDF to Word functionality
-function handlePDFToWord(file) {
-    const uploadArea = document.getElementById('upload-area');
-    
-    const options = `
-        <div class="pdf-word-options">
-            <div class="preview-container mb-4">
-                <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
-                <h5>${file.name}</h5>
-                <small class="text-muted">Size: ${(file.size / (1024 * 1024)).toFixed(2)} MB</small>
-            </div>
-            <div class="conversion-options">
-                <div class="form-group mb-3">
-                    <label class="form-label">Output Format</label>
-                    <select class="form-select" id="word-format">
-                        <option value="docx">Word Document (.docx)</option>
-                        <option value="doc">Word 97-2003 (.doc)</option>
-                    </select>
-                </div>
-                <div class="form-group mb-3">
-                    <label class="form-label">OCR Language</label>
-                    <select class="form-select" id="ocr-language">
-                        <option value="eng">English</option>
-                        <option value="fra">French</option>
-                        <option value="deu">German</option>
-                        <option value="spa">Spanish</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary w-100" onclick="convertPDFToWord('${file.name}')">
-                    <i class="fas fa-file-word me-2"></i>Convert to Word
-                </button>
-            </div>
+// Utility Functions
+const formatFileSize = (bytes) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+};
+
+const showNotification = (message, type = 'success') => {
+    const notification = `
+        <div class="notification notification-${type} animate-slide-in">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+            <div class="notification-progress"></div>
         </div>
     `;
-    
-    uploadArea.innerHTML = options;
-}
-
-function convertPDFToWord(filename) {
-    showProcessingState('Converting PDF to Word...');
-    
-    // Simulate processing time
+    document.getElementById('notifications').innerHTML = notification;
     setTimeout(() => {
-        const outputFormat = document.getElementById('word-format').value;
-        const newFilename = filename.replace('.pdf', `.${outputFormat}`);
-        
-        showSuccess(`Converted successfully! Download will start automatically.`);
-        
-        // In a real implementation, you would process the PDF here
-        console.log(`Converting ${filename} to ${outputFormat}`);
-    }, 2000);
-}
+        document.getElementById('notifications').innerHTML = '';
+    }, 3000);
+};
 
-// PDF to Image functionality
-function handlePDFToImage(file) {
-    const uploadArea = document.getElementById('upload-area');
+// Image Resize Functionality
+const handleImageResize = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
     
-    const options = `
-        <div class="pdf-image-options">
-            <div class="preview-container mb-4">
-                <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
-                <h5>${file.name}</h5>
-                <small class="text-muted">Size: ${(file.size / (1024 * 1024)).toFixed(2)} MB</small>
-            </div>
-            <div class="conversion-options">
-                <div class="form-group mb-3">
-                    <label class="form-label">Image Format</label>
-                    <select class="form-select" id="image-format">
-                        <option value="jpg">JPEG Image (.jpg)</option>
-                        <option value="png">PNG Image (.png)</option>
-                    </select>
-                </div>
-                <div class="form-group mb-3">
-                    <label class="form-label">Resolution (DPI)</label>
-                    <select class="form-select" id="image-dpi">
-                        <option value="72">72 DPI (Screen)</option>
-                        <option value="150">150 DPI (Standard)</option>
-                        <option value="300">300 DPI (High Quality)</option>
-                    </select>
-                </div>
-                <div class="form-check mb-3">
-                    <input type="checkbox" class="form-check-input" id="extract-all" checked>
-                    <label class="form-check-label">Convert all pages</label>
-                </div>
-                <button class="btn btn-primary w-100" onclick="convertPDFToImage('${file.name}')">
-                    <i class="fas fa-images me-2"></i>Convert to Images
-                </button>
-            </div>
-        </div>
-    `;
-    
-    uploadArea.innerHTML = options;
-}
-
-function convertPDFToImage(filename) {
-    showProcessingState('Converting PDF to Images...');
-    
-    // Simulate processing time
-    setTimeout(() => {
-        const imageFormat = document.getElementById('image-format').value;
-        const dpi = document.getElementById('image-dpi').value;
-        const extractAll = document.getElementById('extract-all').checked;
+    reader.onload = (e) => {
+        const img = new Image();
+        img.src = e.target.result;
         
-        showSuccess(`Converted successfully! Images will be downloaded as a ZIP file.`);
-        
-        // In a real implementation, you would process the PDF here
-        console.log(`Converting ${filename} to ${imageFormat} at ${dpi} DPI`);
-    }, 2000);
-}
-
-// Merge PDF functionality
-function handleMergePDF(files) {
-    const uploadArea = document.getElementById('upload-area');
-    
-    const filesList = Array.from(files)
-        .map((file, index) => `
-            <div class="pdf-file-item" id="pdf-${index}">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-file-pdf text-danger me-3"></i>
-                    <div class="flex-grow-1">
-                        <h6 class="mb-0">${file.name}</h6>
-                        <small class="text-muted">${(file.size / (1024 * 1024)).toFixed(2)} MB</small>
+        img.onload = function() {
+            const uploadArea = document.getElementById('upload-area');
+            uploadArea.innerHTML = `
+                <div class="tool-container animate-slide-in">
+                    <div class="preview-section">
+                        <div class="image-preview">
+                            <img src="${e.target.result}" id="preview-image" alt="Preview">
+                        </div>
+                        <div class="image-info">
+                            <div class="info-item">
+                                <span class="label">Original Size:</span>
+                                <span class="value">${this.width} × ${this.height}px</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">File Size:</span>
+                                <span class="value">${formatFileSize(file.size)}</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pdf-controls">
-                        <button class="btn btn-sm btn-light" onclick="movePDF(${index}, 'up')">
-                            <i class="fas fa-arrow-up"></i>
-                        </button>
-                        <button class="btn btn-sm btn-light" onclick="movePDF(${index}, 'down')">
-                            <i class="fas fa-arrow-down"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger" onclick="removePDF(${index})">
-                            <i class="fas fa-times"></i>
+                    <div class="settings-panel">
+                        <h3 class="panel-title">Resize Options</h3>
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label class="form-label">Width (px)</label>
+                                <input type="number" class="form-control" id="width-input" 
+                                    value="${this.width}" onchange="updateDimensions('width')">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Height (px)</label>
+                                <input type="number" class="form-control" id="height-input" 
+                                    value="${this.height}" onchange="updateDimensions('height')">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-check">
+                                <input type="checkbox" class="form-check-input" id="aspect-ratio" checked>
+                                <span class="form-check-label">Maintain aspect ratio</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Quality</label>
+                            <select class="form-select" id="quality-input">
+                                <option value="1">High Quality</option>
+                                <option value="0.8">Medium Quality</option>
+                                <option value="0.6">Low Quality</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Output Format</label>
+                            <select class="form-select" id="format-input">
+                                <option value="image/jpeg">JPEG</option>
+                                <option value="image/png">PNG</option>
+                                <option value="image/webp">WebP</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="resizeImage()">
+                            <i class="fas fa-compress-arrows-alt me-2"></i>Resize Image
                         </button>
                     </div>
                 </div>
-            </div>
-        `).join('');
-    
-    const options = `
-        <div class="merge-pdf-options">
-            <h5 class="mb-3">Selected PDF Files</h5>
-            <div class="pdf-files-list mb-4">
-                ${filesList}
-            </div>
-            <div class="merge-options">
-                <div class="form-group mb-3">
-                    <label class="form-label">Output Filename</label>
-                    <input type="text" class="form-control" id="output-filename" 
-                        value="merged-pdf-${Date.now()}.pdf">
-                </div>
-                <button class="btn btn-primary w-100" onclick="mergePDFs()">
-                    <i class="fas fa-object-group me-2"></i>Merge PDFs
-                </button>
-            </div>
-        </div>
-    `;
-    
-    uploadArea.innerHTML = options;
-    window.pdfFiles = Array.from(files);
-}
+            `;
+        };
+    };
+};
 
-function movePDF(index, direction) {
-    if (direction === 'up' && index > 0) {
-        [window.pdfFiles[index], window.pdfFiles[index - 1]] = 
-        [window.pdfFiles[index - 1], window.pdfFiles[index]];
-    } else if (direction === 'down' && index < window.pdfFiles.length - 1) {
-        [window.pdfFiles[index], window.pdfFiles[index + 1]] = 
-        [window.pdfFiles[index + 1], window.pdfFiles[index]];
-    }
-    handleMergePDF(window.pdfFiles);
-}
-
-function removePDF(index) {
-    window.pdfFiles.splice(index, 1);
-    if (window.pdfFiles.length === 0) {
-        resetUploadArea();
+const updateDimensions = (changedDimension) => {
+    if (!document.getElementById('aspect-ratio').checked) return;
+    
+    const img = document.querySelector('#preview-image');
+    const originalRatio = img.naturalWidth / img.naturalHeight;
+    const widthInput = document.getElementById('width-input');
+    const heightInput = document.getElementById('height-input');
+    
+    if (changedDimension === 'width') {
+        const newWidth = parseInt(widthInput.value);
+        heightInput.value = Math.round(newWidth / originalRatio);
     } else {
-        handleMergePDF(window.pdfFiles);
+        const newHeight = parseInt(heightInput.value);
+        widthInput.value = Math.round(newHeight * originalRatio);
     }
-}
+};
 
-function mergePDFs() {
-    showProcessingState('Merging PDFs...');
+const resizeImage = () => {
+    const img = document.querySelector('#preview-image');
+    const width = parseInt(document.getElementById('width-input').value);
+    const height = parseInt(document.getElementById('height-input').value);
+    const quality = parseFloat(document.getElementById('quality-input').value);
+    const format = document.getElementById('format-input').value;
     
-    // Simulate processing time
-    setTimeout(() => {
-        const outputFilename = document.getElementById('output-filename').value;
-        showSuccess(`PDFs merged successfully! Download will start automatically.`);
+    // Show processing state
+    const btn = document.querySelector('.btn-primary');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+    
+    // Create canvas and resize
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = width;
+    canvas.height = height;
+    
+    // Enable better quality scaling
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    
+    // Draw and export
+    ctx.drawImage(img, 0, 0, width, height);
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `resized-image-${Date.now()}.${format.split('/')[1]}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
         
-        // In a real implementation, you would merge the PDFs here
-        console.log(`Merging ${window.pdfFiles.length} PDFs into ${outputFilename}`);
-    }, 2000);
-}
+        // Reset button and show success
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-compress-arrows-alt me-2"></i>Resize Image';
+        showNotification('Image resized successfully!');
+    }, format, quality);
+};
 
-// Update the existing openTool function
-function openTool(toolId) {
-    const modal = new bootstrap.Modal(document.getElementById('tool-modal'));
-    const modalTitle = document.getElementById('tool-modal-title');
+// Image to PDF Functionality
+const handleImageToPDF = (files) => {
+    const uploadArea = document.getElementById('upload-area');
+    uploadArea.innerHTML = `
+        <div class="tool-container animate-slide-in">
+            <div class="preview-section">
+                <div class="selected-images" id="selected-images">
+                    <h4 class="section-title">Selected Images (${files.length})</h4>
+                    <div class="image-grid" id="image-grid"></div>
+                </div>
+            </div>
+            <div class="settings-panel">
+                <h3 class="panel-title">PDF Options</h3>
+                <div class="form-group">
+                    <label class="form-label">Page Size</label>
+                    <select class="form-select" id="page-size">
+                        <option value="a4">A4</option>
+                        <option value="letter">Letter</option>
+                        <option value="legal">Legal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Orientation</label>
+                    <select class="form-select" id="orientation">
+                        <option value="portrait">Portrait</option>
+                        <option value="landscape">Landscape</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Image Quality</label>
+                    <select class="form-select" id="pdf-quality">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary w-100" id="generate-pdf-btn">
+                    <i class="fas fa-file-pdf me-2"></i>Generate PDF
+                </button>
+            </div>
+        </div>
+    `;
+    
+    const imageGrid = document.getElementById('image-grid');
+    window.pdfImages = [];
+    
+    Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        
+        reader.onload = (e) => {
+            window.pdfImages.push(e.target.result);
+            
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'image-item animate-slide-in';
+            imgContainer.style = `--delay: ${index * 0.1}s`;
+            imgContainer.innerHTML = `
+                <img src="${e.target.result}" alt="Selected image ${index + 1}">
+                <div class="image-overlay">
+                    <span class="image-number">${index + 1}</span>
+                </div>
+            `;
+            imageGrid.appendChild(imgContainer);
+            
+            if (window.pdfImages.length === files.length) {
+                document.getElementById('generate-pdf-btn').onclick = generatePDF;
+            }
+        };
+    });
+};
+
+const generatePDF = () => {
+    const { jsPDF } = window.jspdf;
+    const orientation = document.getElementById('orientation').value;
+    const pageSize = document.getElementById('page-size').value;
+    const quality = document.getElementById('pdf-quality').value;
+    
+    // Show processing state
+    const btn = document.getElementById('generate-pdf-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generating PDF...';
+    
+    // Create PDF
+    const doc = new jsPDF({
+        orientation: orientation,
+        unit: 'mm',
+        format: pageSize
+    });
+    
+    let processedImages = 0;
+    window.pdfImages.forEach((imgData, index) => {
+        const img = new Image();
+        img.src = imgData;
+        
+        img.onload = () => {
+            if (index > 0) {
+                doc.addPage();
+            }
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            
+            // Calculate dimensions
+            const imgRatio = img.width / img.height;
+            const pageRatio = pageWidth / pageHeight;
+            
+            let finalWidth, finalHeight;
+            if (imgRatio > pageRatio) {
+                finalWidth = pageWidth;
+                finalHeight = pageWidth / imgRatio;
+            } else {
+                finalHeight = pageHeight;
+                finalWidth = pageHeight * imgRatio;
+            }
+            
+            // Center image
+            const x = (pageWidth - finalWidth) / 2;
+            const y = (pageHeight - finalHeight) / 2;
+            
+            // Add image with quality setting
+            doc.addImage(imgData, 'JPEG', x, y, finalWidth, finalHeight, null, 
+                quality === 'high' ? 'FAST' : 'MEDIUM');
+            
+            processedImages++;
+            
+            if (processedImages === window.pdfImages.length) {
+                const filename = `converted-images-${Date.now()}.pdf`;
+                doc.save(filename);
+                
+                // Reset button and show success
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-file-pdf me-2"></i>Generate PDF';
+                showNotification('PDF generated successfully!');
+            }
+        };
+    });
+};
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize tool handlers
+    const uploadArea = document.getElementById('upload-area');
     const fileInput = document.getElementById('file-input');
     
-    switch(toolId) {
-        case 'pdf-to-word':
-            modalTitle.textContent = 'Convert PDF to Word';
-            fileInput.accept = '.pdf';
-            fileInput.multiple = false;
-            break;
-        case 'pdf-to-image':
-            modalTitle.textContent = 'Convert PDF to Image';
-            fileInput.accept = '.pdf';
-            fileInput.multiple = false;
-            break;
-        case 'merge-pdf':
-            modalTitle.textContent = 'Merge PDF Files';
-            fileInput.accept = '.pdf';
-            fileInput.multiple = true;
-            break;
-        // ... your existing cases for image tools ...
-    }
+    // Drag and drop handlers
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('active');
+    });
     
-    resetUploadArea();
-    modal.show();
-}
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('active');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('active');
+        handleFiles(e.dataTransfer.files);
+    });
+    
+    // File input handler
+    fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+    });
+});
 
-// Update the existing handleFiles function
-function handleFiles(files) {
+// File handling based on current tool
+const handleFiles = (files) => {
     const currentTool = document.getElementById('tool-modal-title').textContent;
     
     switch(currentTool) {
-        case 'Convert PDF to Word':
-            handlePDFToWord(files[0]);
+        case 'Resize Image':
+            handleImageResize(files[0]);
             break;
-        case 'Convert PDF to Image':
-            handlePDFToImage(files[0]);
+        case 'Convert Images to PDF':
+            handleImageToPDF(files);
             break;
-        case 'Merge PDF Files':
-            handleMergePDF(files);
-            break;
-        // ... your existing cases for image tools ...
+        default:
+            console.log('Unknown tool');
     }
-}
-
-// Utility functions
-function resetUploadArea() {
-    const uploadArea = document.getElementById('upload-area');
-    uploadArea.innerHTML = `
-        <div class="upload-prompt text-center">
-            <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
-            <h4>Drag & Drop your files here</h4>
-            <p class="text-muted">or</p>
-            <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
-                Choose File
-            </button>
-            <input type="file" id="file-input" hidden>
-        </div>
-    `;
-}
-
-function showProcessingState(message) {
-    const uploadArea = document.getElementById('upload-area');
-    uploadArea.innerHTML = `
-        <div class="processing text-center">
-            <div class="spinner-border text-primary mb-3"></div>
-            <h4>${message}</h4>
-            <p class="text-muted">This may take a few moments...</p>
-        </div>
-    `;
-}
-
-function showSuccess(message) {
-    const alert = `
-        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    `;
-    
-    document.getElementById('upload-area').insertAdjacentHTML('beforeend', alert);
-}
+};
