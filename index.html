@@ -1,340 +1,105 @@
+<!-- WBSSC Group D Practice Test HTML -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Pro Tools - All-in-One PDF Solution</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <title>WBSSC Group D Practice Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #333; }
+        .question { margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .correct { background-color: #c8e6c9; }
+        .incorrect { background-color: #ffcdd2; }
+        .result { font-weight: bold; margin-top: 20px; font-size: 18px; }
+        button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="brand-icon">PDF</span> Pro Tools
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tools">All Tools</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="#get-started">Get Started</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <h1>WBSSC Group D Practice Test</h1>
+    <form id="quizForm">
+        <!-- প্রশ্নগুলো এখানে JavaScript দিয়ে যুক্ত হবে -->
+    </form>
+    <button onclick="submitQuiz()">Submit</button>
+    <div class="result" id="result"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1>All-in-One PDF Solution</h1>
-                    <p class="lead">Every tool you need to work with PDFs in one place.</p>
-                    <a href="#tools" class="btn btn-lg btn-primary">Explore Tools</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="assets/hero.svg" alt="PDF Tools" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        const questions = [
+            // Format: [প্রশ্ন, [অপশন], সঠিক অপশনের index]
+            ["ভারতীয় সংবিধানের প্রথম আর্টিকেল কোনটি?", ["রাষ্ট্রীয় ধর্মনির্ধারণ", "সংগঠনের একটি ইউনিট", "কেন্দ্র ও রাজ্যের বিভাজন", "নাগরিকত্ব"], 3],
+            ["ভারতের জাতীয় পশু কী?", ["বাঘ", "হাতি", "গণ্ডর্ব", "ময়ূর"], 0],
+            ["ভারীয় রুমানি জাহাজ চালকের নাম কী?", ["শুভেন্দু অধিকারী", "নীরব মোদী", "চন্দ্রশেখর পটেল", "আবুল ফজল"], 2],
+            ["পশ্চিমবঙ্গের প্রথম শাসক কে ছিলেন?", ["কালিঙ্গ রাজা", "রানী লক্ষ্মীবাই", "রাখাল দেব", "সিরাজউদ্দৌলা"], 2],
+            ["ভানগরম ওয়ার্ল্ড হেরিটেজ শহর করা হয়েছে যে দেশের অংশ হিসেবে?", ["ভারত", "চীন", "মিশর", "ইতালি"], 1],
+            ["পৃথিবীর বৃহত্তম ম্যানগ্রোভ বন কোথায় অবস্থিত?", ["Sundarbans", "Everglades", "Amazon Delta", "Great Barrier Reef"], 0],
+            ["“সবাই মিলে বাংলাদেশ” এই খেতাব দেওয়া হয় কার?", ["বঙ্গবন্ধু শেখ মুজিবুর রহমান", "শেখ হাসিনা", "মুহাম্মদ ইউনূস", "নজরুল ইসলাম"], 0],
+            ["ভারতের সর্বোচ্চ আদালতের নাম কী?", ["হাইকোর্ট", "সেশন কোর্ট", "সুপ্রিম কোর্ট", "ডিসট্রিক্ট কোর্ট"], 2],
+            ["পশ্চিমবঙ্গের রাজ্য ফুল কী?", ["পদ্ম", "গাঁদা", "শাপলা", "জলরাজ"], 1],
+            ["“স্বাধীনতা দিবস” কোন দিন পালন করা হয়?", ["১৫ অগাস্ট", "২৬ জানুয়ারি", "২৯ মে", "১ মে"], 0],
+            ["ভারতের জাতীয় সংগীত কোনটি?", ["জন গণ মান", "বাগলি", "ভগবান শেখর", "রজনীগন্ধা"], 0],
+            ["দিল্লি মেট্রোর প্রথম লাইন কোন সালে চালু হয়েছিল?", ["২০০২", "২০০১", "২০০০", "২০০৩"], 0],
+            ["মহাত্মা গান্ধীকে “দেশপিতা” খেতাব দেওয়া হয় কার দ্বারা?", ["জাতিসংঘ", "ভারতের সরকার", "জাতীয় কংগ্রেস", "ব্রিটিশ সিংহাসন"], 2],
+            ["বিশ্বের সবচেয়ে লম্বা নদী কোনটি?", ["নীল", "আমাজন", "মিসিসিপি", "ইয়াংৎসে"], 0],
+            ["বায়ুসংক্রান্ত পরিবেশে ওজোন স্তর কোথায় অবস্থিত?", ["মেসোস্ফিয়ার", "স্ট্র্যাটোস্ফিয়ার", "ট্রপোস্ফিয়ার", "থার্মোস্ফিয়ার"], 1],
+            // ... বাকিগুলো চাইলে আমি যুক্ত করে দিতে পারি
+        ];
 
-    <!-- Tools Section -->
-    <section id="tools" class="tools-section">
-        <div class="container">
-            <h2 class="section-title">PDF Tools</h2>
-            
-            <!-- Convert Tools -->
-            <div class="tools-category mb-5">
-                <h3 class="category-title">Convert PDF</h3>
-                <div class="row g-4">
-                    <!-- PDF to Word -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="pdf-to-word">
-                            <div class="tool-icon bg-primary">
-                                <i class="fas fa-file-word"></i>
-                            </div>
-                            <h4>PDF to Word</h4>
-                            <p>Convert PDFs to editable .docx</p>
-                        </div>
-                    </div>
+        const form = document.getElementById("quizForm");
 
-                    <!-- PDF to PowerPoint -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="pdf-to-ppt">
-                            <div class="tool-icon bg-danger">
-                                <i class="fas fa-file-powerpoint"></i>
-                            </div>
-                            <h4>PDF to PowerPoint</h4>
-                            <p>Convert PDFs to .pptx slides</p>
-                        </div>
-                    </div>
+        questions.forEach((q, index) => {
+            const div = document.createElement("div");
+            div.className = "question";
+            div.id = "q" + index;
 
-                    <!-- PDF to Excel -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="pdf-to-excel">
-                            <div class="tool-icon bg-success">
-                                <i class="fas fa-file-excel"></i>
-                            </div>
-                            <h4>PDF to Excel</h4>
-                            <p>Extract tables to .xlsx</p>
-                        </div>
-                    </div>
+            const p = document.createElement("p");
+            p.textContent = `${index + 1}. ${q[0]}`;
+            div.appendChild(p);
 
-                    <!-- PDF to JPG -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="pdf-to-jpg">
-                            <div class="tool-icon bg-info">
-                                <i class="fas fa-file-image"></i>
-                            </div>
-                            <h4>PDF to JPG</h4>
-                            <p>Convert pages to images</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            q[1].forEach((option, i) => {
+                const label = document.createElement("label");
+                const input = document.createElement("input");
+                input.type = "radio";
+                input.name = "q" + index;
+                input.value = i;
+                label.appendChild(input);
+                label.append(" " + option);
+                div.appendChild(label);
+                div.appendChild(document.createElement("br"));
+            });
 
-            <!-- Create PDF Tools -->
-            <div class="tools-category mb-5">
-                <h3 class="category-title">Create PDF</h3>
-                <div class="row g-4">
-                    <!-- Word to PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="word-to-pdf">
-                            <div class="tool-icon bg-primary">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <h4>Word to PDF</h4>
-                            <p>Convert .doc/.docx to PDF</p>
-                        </div>
-                    </div>
+            const hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.id = "a" + index;
+            hidden.value = q[2];
+            div.appendChild(hidden);
 
-                    <!-- PowerPoint to PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="ppt-to-pdf">
-                            <div class="tool-icon bg-danger">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <h4>PowerPoint to PDF</h4>
-                            <p>Convert .ppt/.pptx to PDF</p>
-                        </div>
-                    </div>
+            form.appendChild(div);
+        });
 
-                    <!-- Excel to PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="excel-to-pdf">
-                            <div class="tool-icon bg-success">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <h4>Excel to PDF</h4>
-                            <p>Convert .xls/.xlsx to PDF</p>
-                        </div>
-                    </div>
+        function submitQuiz() {
+            let correct = 0;
+            let incorrect = 0;
 
-                    <!-- JPG to PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="jpg-to-pdf">
-                            <div class="tool-icon bg-info">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <h4>JPG to PDF</h4>
-                            <p>Convert images to PDF</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            questions.forEach((q, i) => {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = document.getElementById("a" + i).value;
+                const questionDiv = document.getElementById("q" + i);
 
-            <!-- Organize Tools -->
-            <div class="tools-category mb-5">
-                <h3 class="category-title">Organize PDF</h3>
-                <div class="row g-4">
-                    <!-- Merge PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="merge-pdf">
-                            <div class="tool-icon bg-warning">
-                                <i class="fas fa-object-group"></i>
-                            </div>
-                            <h4>Merge PDF</h4>
-                            <p>Combine multiple PDFs</p>
-                        </div>
-                    </div>
+                if (selected) {
+                    if (selected.value === correctAnswer) {
+                        questionDiv.classList.add("correct");
+                        correct++;
+                    } else {
+                        questionDiv.classList.add("incorrect");
+                        incorrect++;
+                    }
+                } else {
+                    questionDiv.classList.add("incorrect");
+                    incorrect++;
+                }
+            });
 
-                    <!-- Split PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="split-pdf">
-                            <div class="tool-icon bg-danger">
-                                <i class="fas fa-cut"></i>
-                            </div>
-                            <h4>Split PDF</h4>
-                            <p>Extract or split pages</p>
-                        </div>
-                    </div>
-
-                    <!-- Compress PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="compress-pdf">
-                            <div class="tool-icon bg-success">
-                                <i class="fas fa-compress-arrows-alt"></i>
-                            </div>
-                            <h4>Compress PDF</h4>
-                            <p>Reduce file size</p>
-                        </div>
-                    </div>
-
-                    <!-- Rotate PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="rotate-pdf">
-                            <div class="tool-icon bg-info">
-                                <i class="fas fa-redo"></i>
-                            </div>
-                            <h4>Rotate PDF</h4>
-                            <p>Fix page orientation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Protect Tools -->
-            <div class="tools-category mb-5">
-                <h3 class="category-title">Protect & Sign</h3>
-                <div class="row g-4">
-                    <!-- Sign PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="sign-pdf">
-                            <div class="tool-icon bg-primary">
-                                <i class="fas fa-signature"></i>
-                            </div>
-                            <h4>Sign PDF</h4>
-                            <p>Add digital signatures</p>
-                        </div>
-                    </div>
-
-                    <!-- Protect PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="protect-pdf">
-                            <div class="tool-icon bg-danger">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <h4>Protect PDF</h4>
-                            <p>Add password protection</p>
-                        </div>
-                    </div>
-
-                    <!-- Unlock PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="unlock-pdf">
-                            <div class="tool-icon bg-success">
-                                <i class="fas fa-unlock"></i>
-                            </div>
-                            <h4>Unlock PDF</h4>
-                            <p>Remove PDF password</p>
-                        </div>
-                    </div>
-
-                    <!-- Watermark -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="watermark-pdf">
-                            <div class="tool-icon bg-info">
-                                <i class="fas fa-stamp"></i>
-                            </div>
-                            <h4>Watermark</h4>
-                            <p>Add text or image watermark</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Edit Tools -->
-            <div class="tools-category">
-                <h3 class="category-title">Edit & More</h3>
-                <div class="row g-4">
-                    <!-- Edit PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="edit-pdf">
-                            <div class="tool-icon bg-primary">
-                                <i class="fas fa-edit"></i>
-                            </div>
-                            <h4>Edit PDF</h4>
-                            <p>Add text and annotations</p>
-                        </div>
-                    </div>
-
-                    <!-- HTML to PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="html-to-pdf">
-                            <div class="tool-icon bg-warning">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h4>HTML to PDF</h4>
-                            <p>Convert web page to PDF</p>
-                        </div>
-                    </div>
-
-                    <!-- Organize PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="organize-pdf">
-                            <div class="tool-icon bg-success">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <h4>Organize PDF</h4>
-                            <p>Reorder or remove pages</p>
-                        </div>
-                    </div>
-
-                    <!-- Repair PDF -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="tool-card" data-tool="repair-pdf">
-                            <div class="tool-icon bg-danger">
-                                <i class="fas fa-wrench"></i>
-                            </div>
-                            <h4>Repair PDF</h4>
-                            <p>Fix corrupted PDFs</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tool Modal -->
-    <div class="modal fade" id="toolModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title">Process PDF</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="upload-zone" class="upload-zone">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <h4>Drag & Drop Files Here</h4>
-                        <p>or</p>
-                        <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
-                            Choose Files
-                        </button>
-                        <input type="file" id="file-input" hidden multiple>
-                        <div class="mt-3">
-                            <small class="text-muted">Maximum file size: 100MB</small>
-                        </div>
-                    </div>
-                    <div id="process-zone" class="process-zone" style="display: none">
-                        <!-- Processing content will be injected here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+            document.getElementById("result").innerText = `সঠিক: ${correct}, ভুল: ${incorrect}`;
+        }
+    </script>
 </body>
 </html>
