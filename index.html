@@ -3,333 +3,1315 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>সাময়িক ঘটনা কুইজ — 15 প্রশ্ন</title>
+  <title>WBSSC Group D — Current Affairs MCQ (100 প্রশ্ন)</title>
   <style>
-    :root{
-      --bg:#f7f9fc;
-      --card:#ffffff;
-      --text:#0b2545;
-      --muted:#6b7280;
-      --green:#16a34a;
-      --red:#dc2626;
-      --accent:#2563eb;
-      --border:#e6eef8;
-    }
-    *{box-sizing:border-box}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans","Helvetica Neue",Arial;
-      background:var(--bg);
-      color:var(--text);
-      margin:0;
-      padding:32px;
-      display:flex;
-      justify-content:center;
-    }
-    .wrap{
-      width:100%;
-      max-width:900px;
-    }
-    header{
-      margin-bottom:18px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    header h1{
-      font-size:20px;
-      margin:0;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:18px;
-      box-shadow:0 6px 20px rgba(12,36,64,0.06);
-    }
-    .question{
-      padding:14px;
-      border-radius:8px;
-      margin-bottom:10px;
-      border:1px solid transparent;
-    }
-    .q-title{
-      font-weight:600;
-      margin-bottom:8px;
-    }
-    .options{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .option{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      padding:10px;
-      border-radius:8px;
-      cursor:pointer;
-      border:1px solid transparent;
-      transition:all .14s ease;
-      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,255,0.6));
-    }
-    .option:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(12,36,64,0.04) }
-    .option input{ accent-color:var(--accent); transform:scale(1.05) }
-    .controls{
-      display:flex;
-      gap:12px;
-      margin-top:14px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    button{
-      background:var(--accent);
-      color:#fff;
-      border:0;
-      padding:10px 14px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:600;
-    }
-    button.secondary{
-      background:#fff;
-      color:var(--accent);
-      border:1px solid var(--border);
-    }
-    .result{
-      margin-top:14px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .correct{ background:linear-gradient(90deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border:1px solid rgba(16,185,129,0.14); color:var(--green); padding:8px 10px; border-radius:8px; font-weight:700; }
-    .wrong{ background:linear-gradient(90deg, rgba(239,68,68,0.06), rgba(239,68,68,0.03)); border:1px solid rgba(239,68,68,0.10); color:var(--red); padding:8px 10px; border-radius:8px; font-weight:700; }
-    .answer{
-      margin-top:8px;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .answer strong{ color:var(--text); }
-    .option.correct{ border-color: rgba(16,185,129,0.2); background: rgba(16,185,129,0.06); }
-    .option.incorrect{ border-color: rgba(239,68,68,0.12); background: rgba(239,68,68,0.04); opacity:0.95; }
-    .summary{
-      margin-top:12px;
-      padding:12px;
-      border-radius:8px;
-      background:linear-gradient(90deg, rgba(37,99,235,0.06), rgba(37,99,235,0.02));
-      border:1px solid rgba(37,99,235,0.06);
-    }
-    .small{ font-size:13px; color:var(--muted) }
-    @media (max-width:640px){
-      body{ padding:16px }
-      .wrap{ max-width:100% }
-    }
+    body{font-family: "Noto Sans Bengali", "Segoe UI", Arial, sans-serif; line-height:1.5; margin:0; padding:20px; background:#f7f7f8; color:#111}
+    .container{max-width:980px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+    h1{font-size:20px;margin:0 0 12px}
+    p.lead{margin:0 0 18px;color:#444}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    button{background:#0066cc;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+    button.secondary{background:#e6e9ee;color:#111}
+    .meta{font-size:13px;color:#666;margin-bottom:18px}
+    .q{border-top:1px solid #eee;padding:14px 0}
+    .q .title{font-weight:600;margin-bottom:8px}
+    .opts{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+    label.opt{display:flex;align-items:center;gap:8px;background:#fbfbfc;padding:8px;border-radius:6px;border:1px solid #f0f0f0;cursor:pointer}
+    input[type="radio"]{transform:scale(1.05)}
+    .answer{display:none;color:#0b6623;font-weight:700;margin-top:6px}
+    .answer.visible{display:block}
+    .difficulty{font-size:12px;color:#fff;padding:4px 8px;border-radius:6px}
+    .diff-normal{background:#4caf50}
+    .diff-medium{background:#ff9800}
+    .diff-hard{background:#d32f2f}
+    footer{margin-top:18px;font-size:13px;color:#555}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .highlight{background:#fff6d6;padding:8px;border-radius:6px;border:1px solid #ffe6a7}
+    .show-all-answers{background:#111;color:#fff}
+    @media (max-width:640px){body{padding:12px}.container{padding:14px}}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>সাময়িক ঘটনা কুইজ — ১৫ প্রশ্ন</h1>
-      <div class="small">প্রতিটি প্রশ্নে A/B/C/D বেছে নিন, তারপর Submit চাপুন</div>
-    </header>
+  <div class="container">
+    <h1>WBSSC Group D — Current Affairs MCQ (100 প্রশ্ন)</h1>
+    <p class="lead">এই HTML পেজে ১০০টি সাম্প্রতিক ঘটনা ভিত্তিক MCQ দেওয়া আছে (বাংলা)। প্রশ্নগুলো তিন ধাপে ভাগ করা: সহজ ২০, মাঝারি ৩০, কঠিন ৫০। প্রতিটি প্রশ্নে ৪টি বিকল্প এবং সঠিক উত্তর লুকানো আছে — "Show Answer" বাটনে ক্লিক করলে দেখানো হবে।</p>
 
-    <div class="card" id="quiz">
-      <!-- Questions rendered by JS -->
+    <div class="controls">
+      <div class="nav">
+        <button onclick="scrollToSection('normal')">সহজ ২০</button>
+        <button onclick="scrollToSection('medium')">মাঝারি ৩০</button>
+        <button onclick="scrollToSection('hard')">কঠিন ৫০</button>
+      </div>
+      <button class="secondary" onclick="toggleAnswers()">Show/Hide All Answers</button>
+      <button class="secondary" onclick="clearSelections()">Reset Selections</button>
     </div>
 
-    <div style="height:18px"></div>
-    <div style="text-align:center" class="small">আপনি সব প্রশ্ন উত্তর করলে Submit খুলবে; Reset করে আবার শুরু করা যাবে</div>
+    <div class="meta">
+      <span class="highlight">নোট:</span> প্রতিটি প্রশ্নের সঠিক উত্তর পেতে "Show Answer" ক্লিক করুন। আপনি চাইলে পেজটি ব্রাউজারে খুলে অনুশীলন হিসেবে ব্যবহার করতে পারেন।
+    </div>
+
+    <!-- Normal (20) -->
+    <section id="normal">
+      <h2>সহজ (Normal) — ২০টি</h2>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 1. 2025 সালে ভারতের কেন্দ্রীয় বাজেট ঘোষণা সাধারণত কোন মাসে করা হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q1" value="a"> a. জানুয়ারি</label>
+          <label class="opt"><input type="radio" name="q1" value="b"> b. ফেব্রুয়ারি</label>
+          <label class="opt"><input type="radio" name="q1" value="c"> c. মার্চ</label>
+          <label class="opt"><input type="radio" name="q1" value="d"> d. এপ্রিল</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. ফেব্রুয়ারি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 2. পশ্চিমবঙ্গের রাজধানী কোনটি?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q2" value="a"> a. কলকাতা</label>
+          <label class="opt"><input type="radio" name="q2" value="b"> b. ফুলবাড়িয়া</label>
+          <label class="opt"><input type="radio" name="q2" value="c"> c. দার্জিলিং</label>
+          <label class="opt"><input type="radio" name="q2" value="d"> d. হাওড়া</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. কলকাতা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 3. COP সম্মেলন সাধারণত কোন বিষয়ে সম্পর্কিত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q3" value="a"> a. স্বাস্থ্যনীতি</label>
+          <label class="opt"><input type="radio" name="q3" value="b"> b. জলবায়ু পরিবর্তন</label>
+          <label class="opt"><input type="radio" name="q3" value="c"> c. প্রযুক্তি উৎসব</label>
+          <label class="opt"><input type="radio" name="q3" value="d"> d. অর্থনীতির নীতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. জলবায়ু পরিবর্তন</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 4. Nobel শান্তি পুরস্কার সাধারণত কারা প্রদান করে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q4" value="a"> a. সুইডিশ একাডেমি</label>
+          <label class="opt"><input type="radio" name="q4" value="b"> b. নরওয়ের নোবেল কমিটি</label>
+          <label class="opt"><input type="radio" name="q4" value="c"> c. আন্তর্জাতিক আদালত</label>
+          <label class="opt"><input type="radio" name="q4" value="d"> d. ইউনেস্কো</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. নরওয়ের নোবেল কমিটি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 5. ভারতের বর্তমান প্রধানমন্ত্রী (2025 অনুযায়ী) কে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q5" value="a"> a. অরবিন্দ কেজরিভাল</label>
+          <label class="opt"><input type="radio" name="q5" value="b"> b. নরেন্দ্র মোদি</label>
+          <label class="opt"><input type="radio" name="q5" value="c"> c. রাহুল গান্ধী</label>
+          <label class="opt"><input type="radio" name="q5" value="d"> d. মমতা ব্যানার্জি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. নরেন্দ্র মোদি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 6. ভারতের সংসদ কী নামে পরিচিত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q6" value="a"> a. বিধানসভা</label>
+          <label class="opt"><input type="radio" name="q6" value="b"> b. সংসদ (Parliament)</label>
+          <label class="opt"><input type="radio" name="q6" value="c"> c. মহাসভা</label>
+          <label class="opt"><input type="radio" name="q6" value="d"> d. রাষ্ট্রীয় পরিষদ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. সংসদ (Parliament)</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 7. West Bengal‑এর মুখ্যমন্ত্রী কোন দলের নেত্রী (সাধারণ রেফারেন্স 2025)?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q7" value="a"> a. TMC</label>
+          <label class="opt"><input type="radio" name="q7" value="b"> b. BJP</label>
+          <label class="opt"><input type="radio" name="q7" value="c"> c. CPI(M)</label>
+          <label class="opt"><input type="radio" name="q7" value="d"> d. Congress</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. TMC</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 8. আন্তর্জাতিক মহাকাশ স্টেশন (ISS) সম্পর্কিত কাজ কোন খাতে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q8" value="a"> a. কৃষি</label>
+          <label class="opt"><input type="radio" name="q8" value="b"> b. মহাকাশ ও বিজ্ঞান</label>
+          <label class="opt"><input type="radio" name="q8" value="c"> c. অর্থনীতি</label>
+          <label class="opt"><input type="radio" name="q8" value="d"> d. পরিবহন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. মহাকাশ ও বিজ্ঞান</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 9. RBI মানে কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q9" value="a"> a. Regional Bank of India</label>
+          <label class="opt"><input type="radio" name="q9" value="b"> b. Reserve Bank of India</label>
+          <label class="opt"><input type="radio" name="q9" value="c"> c. Rural Bank of India</label>
+          <label class="opt"><input type="radio" name="q9" value="d"> d. Regulatory Bank of India</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. Reserve Bank of India</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="d">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 10. একটি দেশের মুদ্রা মান বৃদ্ধিকে কী বলা হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q10" value="a"> a. অবমূল্যায়ন</label>
+          <label class="opt"><input type="radio" name="q10" value="b"> b. রিক্যাপিটালাইজেশন</label>
+          <label class="opt"><input type="radio" name="q10" value="c"> c. গ্রহণযোগ্যতা</label>
+          <label class="opt"><input type="radio" name="q10" value="d"> d. মুদ্রা শক্তিশালী হওয়া (Appreciation)</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: d. মুদ্রা শক্তিশালী হওয়া (Appreciation)</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="c">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 11. বিশ্বকাপ ক্রিকেট সাধারণত কত বছরে একবার অনুষ্ঠিত হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q11" value="a"> a. 2 বছর</label>
+          <label class="opt"><input type="radio" name="q11" value="b"> b. 3 বছর</label>
+          <label class="opt"><input type="radio" name="q11" value="c"> c. 4 বছর</label>
+          <label class="opt"><input type="radio" name="q11" value="d"> d. 5 বছর</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: c. 4 বছর</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="d">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 12. ভারতের সংবিধান প্রণয়ন করা হয়েছিল কোন বছর?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q12" value="a"> a. 1947</label>
+          <label class="opt"><input type="radio" name="q12" value="b"> b. 1950</label>
+          <label class="opt"><input type="radio" name="q12" value="c"> c. 1952</label>
+          <label class="opt"><input type="radio" name="q12" value="d"> d. 1949</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: d. 1949</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 13. গ্রিন হাউস গ্যাসে প্রধান গ্যাস কোনটি?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q13" value="a"> a. অক্সিজেন</label>
+          <label class="opt"><input type="radio" name="q13" value="b"> b. কার্বন ডাই অক্সাইড</label>
+          <label class="opt"><input type="radio" name="q13" value="c"> c. নাইট্রোজেন</label>
+          <label class="opt"><input type="radio" name="q13" value="d"> d. হেলিয়াম</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. কার্বন ডাই অক্সাইড</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 14. শেয়ার বাজারে মূল্য হঠাৎ ওঠানামাকে কী বলা হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q14" value="a"> a. ইনফ্লেশন</label>
+          <label class="opt"><input type="radio" name="q14" value="b"> b. ভোলাটিলিটি</label>
+          <label class="opt"><input type="radio" name="q14" value="c"> c. রিকেশন</label>
+          <label class="opt"><input type="radio" name="q14" value="d"> d. সিক্যুরিটি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. ভোলাটিলিটি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 15. UNESCO‑র বিশ্ব ঐতিহ্য তালিকা সাধারণত কোন বিষয়ে পড়া হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q15" value="a"> a. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q15" value="b"> b. সংস্কৃতি ও ইতিহাস</label>
+          <label class="opt"><input type="radio" name="q15" value="c"> c. বিজ্ঞান</label>
+          <label class="opt"><input type="radio" name="q15" value="d"> d. অর্থনীতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. সংস্কৃতি ও ইতিহাস</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 16. ভারতীয় অর্থনীতির বার্ষিক সারসংক্ষেপের প্রধান দস্তাবেজ কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q16" value="a"> a. বাজেট</label>
+          <label class="opt"><input type="radio" name="q16" value="b"> b. নীতি পত্র</label>
+          <label class="opt"><input type="radio" name="q16" value="c"> c. মুদ্রানীতি</label>
+          <label class="opt"><input type="radio" name="q16" value="d"> d. জাতীয় পরিকল্পনা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বাজেট</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 17. West Bengal‑এ 'মতুয়া' সম্প্রদায়ের প্রসঙ্গ সাধারণত কোন বিভাগে আসে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q17" value="a"> a. বিজ্ঞান</label>
+          <label class="opt"><input type="radio" name="q17" value="b"> b. রাজনীতি ও সমাজ</label>
+          <label class="opt"><input type="radio" name="q17" value="c"> c. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q17" value="d"> d. অর্থনীতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. রাজনীতি ও সমাজ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 18. WHO‑র মূল কার্যাবলি কি?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q18" value="a"> a. পরিবেশ নীতি</label>
+          <label class="opt"><input type="radio" name="q18" value="b"> b. স্বাস্থ্য ও চিকিৎসা</label>
+          <label class="opt"><input type="radio" name="q18" value="c"> c. শিক্ষা</label>
+          <label class="opt"><input type="radio" name="q18" value="d"> d. প্রযুক্তি উন্নয়ন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. স্বাস্থ্য ও চিকিৎসা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 19. Chandrayaan মিশন মূলত কী লক্ষ্য করে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q19" value="a"> a. মঙ্গল</label>
+          <label class="opt"><input type="radio" name="q19" value="b"> b. চাঁদ</label>
+          <label class="opt"><input type="radio" name="q19" value="c"> c. বুধ</label>
+          <label class="opt"><input type="radio" name="q19" value="d"> d. বৃহস্পতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. চাঁদ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-normal">Normal</span> 20. বাংলাদেশ‑ভারত সীমান্ত সংক্রান্ত বড় ইভেন্ট কোন বিভাগের অন্তর্ভুক্ত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q20" value="a"> a. আন্তর্জাতিক সংবাদ</label>
+          <label class="opt"><input type="radio" name="q20" value="b"> b. খেলাধুলা</label>
+          <label class="opt"><input type="radio" name="q20" value="c"> c. প্রযুক্তি</label>
+          <label class="opt"><input type="radio" name="q20" value="d"> d. অর্থনীতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. আন্তর্জাতিক সংবাদ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+    </section>
+
+    <!-- Medium (30) -->
+    <section id="medium" style="margin-top:22px">
+      <h2>মাঝারি (Medium) — ৩০টি</h2>
+
+      <div class="q" data-answer="c">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 21. 2024–25 কেন্দ্রীয় বাজেটে কৃষি খাতে গ্রহণযোগ্য একটি বড় উদ্যোগের উদাহরণ কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q21" value="a"> a. Kisan Samman Yojana</label>
+          <label class="opt"><input type="radio" name="q21" value="b"> b. Pradhan Mantri Fasal Bima Yojana</label>
+          <label class="opt"><input type="radio" name="q21" value="c"> c. PM KISAN (নিয়মিত অনুদান)</label>
+          <label class="opt"><input type="radio" name="q21" value="d"> d. None of the above</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: c. PM KISAN (নিয়মিত অনুদান)</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 22. West Bengal‑এ ২০২৪–২৫ সময়ে কোন বড় অবকাঠামো প্রকল্প উদাহরণস্বরূপ ছিল?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q22" value="a"> a. নতুন আন্তর্জাতিক বিমানবন্দর (কোটাই)</label>
+          <label class="opt"><input type="radio" name="q22" value="b"> b. মেট্রো সম্প্রসারণ প্রকল্প</label>
+          <label class="opt"><input type="radio" name="q22" value="c"> c. হ্রদ পুনরুদ্ধার প্রকল্প</label>
+          <label class="opt"><input type="radio" name="q22" value="d"> d. সবগুলো না</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. মেট্রো সম্প্রসারণ প্রকল্প</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 23. G20 সম্মেলনের আয়োজন সাধারণত কে করে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q23" value="a"> a. প্রেসিডেন্সি থাকা দেশের সরকার</label>
+          <label class="opt"><input type="radio" name="q23" value="b"> b. সাধারণ জনগণ</label>
+          <label class="opt"><input type="radio" name="q23" value="c"> c. জাতিসংঘ</label>
+          <label class="opt"><input type="radio" name="q23" value="d"> d. বিশ্বব্যাংক</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. প্রেসিডেন্সি থাকা দেশের সরকার</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 24. RBI ২০২৪–২৫‑এ মুদ্রাস্ফীতি নিয়ন্ত্রণে কোন ধরনের পদক্ষেপ নেয় সাধারণত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q24" value="a"> a. সুদের হার বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q24" value="b"> b. ট্যাক্স বাড়ানো</label>
+          <label class="opt"><input type="radio" name="q24" value="c"> c. বিভাগীয় সংযোজন</label>
+          <label class="opt"><input type="radio" name="q24" value="d"> d. বিদেশি বিনিয়োগ নিষেধাজ্ঞা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. সুদের হার বৃদ্ধি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 25. 2024–25 সময়ে ভারত এবং কোন অঞ্চলের সঙ্গে বড় বাণিজ্য আলোচনা/চুক্তি ছিল (উদাহরণ)?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q25" value="a"> a. চীন</label>
+          <label class="opt"><input type="radio" name="q25" value="b"> b. ইউরোপীয় ইউনিয়ন</label>
+          <label class="opt"><input type="radio" name="q25" value="c"> c. জাতিসংঘ</label>
+          <label class="opt"><input type="radio" name="q25" value="d"> d. সৌদি আরব</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. ইউরোপীয় ইউনিয়ন</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 26. কোন ভারতীয় সংস্থা 2024‑এ মঙ্গল মিশনে প্রধান ভূমিকা রাখে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q26" value="a"> a. DRDO</label>
+          <label class="opt"><input type="radio" name="q26" value="b"> b. ISRO</label>
+          <label class="opt"><input type="radio" name="q26" value="c"> c. BHEL</label>
+          <label class="opt"><input type="radio" name="q26" value="d"> d. ONGC</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. ISRO</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 27. পশ্চিমবঙ্গ সরকার 2024–25 সময়ে কোন শিক্ষা প্রকল্প চালু করেছে (উদাহরণ)?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q27" value="a"> a. Sabki Shiksha</label>
+          <label class="opt"><input type="radio" name="q27" value="b"> b. Siksha Sathi</label>
+          <label class="opt"><input type="radio" name="q27" value="c"> c. Smart Schools Initiative</label>
+          <label class="opt"><input type="radio" name="q27" value="d"> d. None</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. Siksha Sathi</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 28. RBI‑র গর্ভনর (২০২৪ রেফারেন্স) কোন নাম পরিচিত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q28" value="a"> a. শক্তিকান্ত দাস</label>
+          <label class="opt"><input type="radio" name="q28" value="b"> b. শাক্তিকান্ত দাস (ভুল বানান সমেত)</label>
+          <label class="opt"><input type="radio" name="q28" value="c"> c. প্রতাপ রাজ</label>
+          <label class="opt"><input type="radio" name="q28" value="d"> d. নরেন্দ্র মোদি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. শক্তিকান্ত দাস</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 29. Paris Agreement‑এর প্রধান উদ্দেশ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q29" value="a"> a. বাণিজ্য বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q29" value="b"> b. জলবায়ু পরিবর্তন মোকাবিলা ও গ্রিনহাউস গ্যাস নিয়ন্ত্রণ</label>
+          <label class="opt"><input type="radio" name="q29" value="c"> c. প্রযুক্তি আদানপ্রদান</label>
+          <label class="opt"><input type="radio" name="q29" value="d"> d. সামরিক সহযোগিতা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. জলবায়ু পরিবর্তন মোকাবিলা ও গ্রিনহাউস গ্যাস নিয়ন্ত্রণ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 30. 2024–25 সময়ে ভারত কোন সোলার/স্পেস মিশনকে উদাহরণ হিসেবে দেখিয়েছে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q30" value="a"> a. Chandrayaan‑3</label>
+          <label class="opt"><input type="radio" name="q30" value="b"> b. Aditya‑L1</label>
+          <label class="opt"><input type="radio" name="q30" value="c"> c. Mangalyaan‑2</label>
+          <label class="opt"><input type="radio" name="q30" value="d"> d. None</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. Aditya‑L1</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <!-- More medium questions 31-60 -->
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 31. West Bengal‑এ রেলের নতুন রুট সম্প্রসারণ ঘোষণা কোন বিভাগের আওতায় পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q31" value="a"> a. রাজ্য অবকাঠামো প্রকল্প</label>
+          <label class="opt"><input type="radio" name="q31" value="b"> b. খেলাধুলা</label>
+          <label class="opt"><input type="radio" name="q31" value="c"> c. আর্থিক সংস্কার</label>
+          <label class="opt"><input type="radio" name="q31" value="d"> d. শিক্ষা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. রাজ্য অবকাঠামো প্রকল্প</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 32. COP28‑এ প্রেসিডেন্সি কোন দেশের ছিল (উদাহরণ)?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q32" value="a"> a. সংযুক্ত আরব আমিরাত</label>
+          <label class="opt"><input type="radio" name="q32" value="b"> b. ভারত</label>
+          <label class="opt"><input type="radio" name="q32" value="c"> c. রাশিয়া</label>
+          <label class="opt"><input type="radio" name="q32" value="d"> d. ব্রাজিল</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. সংযুক্ত আরব আমিরাত</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 33. 2024–25 সময়ে কেন্দ্রীয় মন্ত্রিসভার অনুমোদিত নতুন স্বাস্থ্য স্কিমের জাতীয় উদ্দেশ্য কী ধরনের?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q33" value="a"> a. Universal Health Coverage (বিস্তৃত স্বাস্থ্যকাভার)</label>
+          <label class="opt"><input type="radio" name="q33" value="b"> b. Only private insurance</label>
+          <label class="opt"><input type="radio" name="q33" value="c"> c. বিদেশি অনুদান নির্ভর</label>
+          <label class="opt"><input type="radio" name="q33" value="d"> d. None</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. Universal Health Coverage (বিস্তৃত স্বাস্থ্যকাভার)</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="d">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 34. আন্তর্জাতিক ক্রীড়া ইভেন্টে ভারত কোন খেলার মাধ্যমে সাম্প্রতিক সাফল্য পেয়েছে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q34" value="a"> a. ক্রিকেট</label>
+          <label class="opt"><input type="radio" name="q34" value="b"> b. শুটিং</label>
+          <label class="opt"><input type="radio" name="q34" value="c"> c. কুস্তি</label>
+          <label class="opt"><input type="radio" name="q34" value="d"> d. সবগুলোই</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: d. সবগুলোই</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 35. GST‑সংক্রান্ত বড় পরিবর্তন ঘোষণা করে কোন মন্ত্রক?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q35" value="a"> a. Ministry of Finance</label>
+          <label class="opt"><input type="radio" name="q35" value="b"> b. Ministry of Education</label>
+          <label class="opt"><input type="radio" name="q35" value="c"> c. Ministry of Health</label>
+          <label class="opt"><input type="radio" name="q35" value="d"> d. Ministry of Culture</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. Ministry of Finance</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 36. SEBI‑এর প্রধান কাজ কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q36" value="a"> a. বাজার নিয়ন্ত্রণ ও বিনিয়োগকারীর সুরক্ষা</label>
+          <label class="opt"><input type="radio" name="q36" value="b"> b. কৃষি নীতি পরিচালনা</label>
+          <label class="opt"><input type="radio" name="q36" value="c"> c. শিক্ষা প্রকল্প অনুমোদন</label>
+          <label class="opt"><input type="radio" name="q36" value="d"> d. স্বাস্থ্য নীতি নির্ধারণ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বাজার নিয়ন্ত্রণ ও বিনিয়োগকারীর সুরক্ষা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 37. ভারত ও বাংলাদেশ যৌথ প্রকল্পের সংবাদ কোন শ্রেণীতে পড়বে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q37" value="a"> a. রাজ্য সংবাদ</label>
+          <label class="opt"><input type="radio" name="q37" value="b"> b. আন্তর্জাতিক সংবাদ</label>
+          <label class="opt"><input type="radio" name="q37" value="c"> c. ক্রীড়া সংবাদ</label>
+          <label class="opt"><input type="radio" name="q37" value="d"> d. প্রযুক্তি সংবাদ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. আন্তর্জাতিক সংবাদ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 38. 2024 সালে ভারতের প্রতিনিধিদল সাধারণত কোন স্তরের সম্মেলনে নেতৃত্ব দেয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q38" value="a"> a. রাষ্ট্রপ্রধান স্তর</label>
+          <label class="opt"><input type="radio" name="q38" value="b"> b. জেলা‑স্তর</label>
+          <label class="opt"><input type="radio" name="q38" value="c"> c. স্কুল স্তর</label>
+          <label class="opt"><input type="radio" name="q38" value="d"> d. গ্রাম স্তর</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. রাষ্ট্রপ্রধান স্তর</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 39. Adani বা Reliance‑জাতীয় বড় বিনিয়োগ খবর কোন বিভাগে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q39" value="a"> a. বাণিজ্য ও অর্থনীতি</label>
+          <label class="opt"><input type="radio" name="q39" value="b"> b. শিক্ষা</label>
+          <label class="opt"><input type="radio" name="q39" value="c"> c. স্বাস্থ্য</label>
+          <label class="opt"><input type="radio" name="q39" value="d"> d. পরিবেশ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বাণিজ্য ও অর্থনীতি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 40. কেন্দ্রীয় মন্ত্রিসভার একটি সিদ্ধান্ত রাজ্য সরকারের ওপর কীভাবে প্রভাব ফেলতে পারে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q40" value="a"> a. নতুন অর্থনৈতিক নীতি প্রয়োগ করে</label>
+          <label class="opt"><input type="radio" name="q40" value="b"> b. কেবল আন্তর্জাতিক ক্রীড়া সিদ্ধান্ত করে</label>
+          <label class="opt"><input type="radio" name="q40" value="c"> c. স্থানীয় স্কুল মেনু পরিবর্তন করে</label>
+          <label class="opt"><input type="radio" name="q40" value="d"> d. ব্যক্তিগত চাকরির চুক্তি করে</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. নতুন অর্থনৈতিক নীতি প্রয়োগ করে</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 41. পশ্চিমবঙ্গের বড় কৃষি প্রকল্প কোন বিভাগে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q41" value="a"> a. রাজ্য কৃষি ও অর্থনীতি</label>
+          <label class="opt"><input type="radio" name="q41" value="b"> b. আন্তর্জাতিক সম্পর্ক</label>
+          <label class="opt"><input type="radio" name="q41" value="c"> c. মহাকাশ</label>
+          <label class="opt"><input type="radio" name="q41" value="d"> d. শিক্ষা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. রাজ্য কৃষি ও অর্থনীতি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 42. বিজ্ঞান বিভাগের Nobel পুরস্কার কী জন্য দেওয়া হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q42" value="a"> a. সাহিত্য রচনার জন্য</label>
+          <label class="opt"><input type="radio" name="q42" value="b"> b. বৈজ্ঞানিক আবিষ্কার ও অবদানের জন্য</label>
+          <label class="opt"><input type="radio" name="q42" value="c"> c. সিনেমার জন্য</label>
+          <label class="opt"><input type="radio" name="q42" value="d"> d. ব্যবসার জন্য</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. বৈজ্ঞানিক আবিষ্কার ও অবদানের জন্য</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 43. ভারতে নাগরিকত্ব সংক্রান্ত নতুন আইন হলে তা কোন ধরণের সংবাদ?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q43" value="a"> a. জাতীয় সংবাদ</label>
+          <label class="opt"><input type="radio" name="q43" value="b"> b. ক্রীড়া সংবাদ</label>
+          <label class="opt"><input type="radio" name="q43" value="c"> c. প্রযুক্তি খবর</label>
+          <label class="opt"><input type="radio" name="q43" value="d"> d. পরিবেশ সংবাদ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. জাতীয় সংবাদ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 44. WHO‑র জরুরি ঘোষণা সাধারণত কী নির্দেশ করে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q44" value="a"> a. বৈশ্বিক স্বাস্থ্য জরুরি অবস্থা</label>
+          <label class="opt"><input type="radio" name="q44" value="b"> b. শুধুমাত্র অর্থনীতি বিষয়ে</label>
+          <label class="opt"><input type="radio" name="q44" value="c"> c. কেবল পরিবেশ বিষয়ক</label>
+          <label class="opt"><input type="radio" name="q44" value="d"> d. স্থানীয় খেলাধুলা সংক্রান্ত</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বৈশ্বিক স্বাস্থ্য জরুরি অবস্থা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="b">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 45. পশ্চিমবঙ্গে চালু হওয়া নতুন পরিবহন স্কিম কাদের জন্য উপকারী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q45" value="a"> a. কেবল বিদেশি ব্যবসায়ী</label>
+          <label class="opt"><input type="radio" name="q45" value="b"> b. সাধারণ গণপরিবহন ব্যবহারকারীদের</label>
+          <label class="opt"><input type="radio" name="q45" value="c"> c. শুধুমাত্র স্কুল‑শিক্ষকদের</label>
+          <label class="opt"><input type="radio" name="q45" value="d"> d. শুধু সরকারি কর্মকর্তাদের</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: b. সাধারণ গণপরিবহন ব্যবহারকারীদের</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 46. 2024–25 সময়কালে ভারত কোন প্রযুক্তিগত ক্ষেত্রে সাফল্য দেখিয়েছে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q46" value="a"> a. AI ও স্পেস টেকনোলজি</label>
+          <label class="opt"><input type="radio" name="q46" value="b"> b. শুধুমাত্র কৃষি</label>
+          <label class="opt"><input type="radio" name="q46" value="c"> c. শুধু খেলাধুলা</label>
+          <label class="opt"><input type="radio" name="q46" value="d"> d. সমাজসেবা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. AI ও স্পেস টেকনোলজি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 47. বড় কোম্পানির CSR প্রকল্প সাধারণত কী উদ্দেশ্যে হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q47" value="a"> a. কর্পোরেট সমাজসেবা</label>
+          <label class="opt"><input type="radio" name="q47" value="b"> b. রাজ্য বাজেট</label>
+          <label class="opt"><input type="radio" name="q47" value="c"> c. আন্তর্জাতিক বিধি</label>
+          <label class="opt"><input type="radio" name="q47" value="d"> d. শিক্ষা নীতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. কর্পোরেট সমাজসেবা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 48. আন্তর্জাতিক সম্মেলনে ভারতের কূটনৈতিক লক্ষ্য কী থাকে সাধারণত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q48" value="a"> a. বাণিজ্য ও নিরাপত্তা সহযোগিতা বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q48" value="b"> b. শুধু খেলাধুলা আয়োজন</label>
+          <label class="opt"><input type="radio" name="q48" value="c"> c. স্কুল বিনিময় প্রোগ্রাম</label>
+          <label class="opt"><input type="radio" name="q48" value="d"> d. স্থানীয় উৎসব আয়োজন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বাণিজ্য ও নিরাপত্তা সহযোগিতা বৃদ্ধি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 49. গ্লোবাল ক্লাইমেট ফান্ডের সিদ্ধান্ত সাধারণত কোন বিভাগে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q49" value="a"> a. পরিবেশ ও জলবায়ু</label>
+          <label class="opt"><input type="radio" name="q49" value="b"> b. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q49" value="c"> c. সাহিত্য</label>
+          <label class="opt"><input type="radio" name="q49" value="d"> d. প্রযুক্তি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. পরিবেশ ও জলবায়ু</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 50. রাজ্য সরকারের বেকারত্ব হ্রাস প্রকল্প কোন দফতর পরিচালনা করে সাধারণত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q50" value="a"> a. Labour and Employment</label>
+          <label class="opt"><input type="radio" name="q50" value="b"> b. Health</label>
+          <label class="opt"><input type="radio" name="q50" value="c"> c. Environment</label>
+          <label class="opt"><input type="radio" name="q50" value="d"> d. Sports</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. Labour and Employment</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 51. ভারতের GDP‑র বৃদ্ধিতে প্রধান প্রভাবক কোনগুলো?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q51" value="a"> a. ভোক্তা ব্যয়, সরকারি খরচ ও বিনিয়োগ</label>
+          <label class="opt"><input type="radio" name="q51" value="b"> b. কেবল খেলাধুলার ফল</label>
+          <label class="opt"><input type="radio" name="q51" value="c"> c. আন্তর্জাতিক চলচ্চিত্র</label>
+          <label class="opt"><input type="radio" name="q51" value="d"> d. স্থানীয় মেলার আয়</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. ভোক্তা ব্যয়, সরকারি খরচ ও বিনিয়োগ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 52. "Quantum computing" কোন বিভাগে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q52" value="a"> a. প্রযুক্তি ও বিজ্ঞান</label>
+          <label class="opt"><input type="radio" name="q52" value="b"> b. খেলাধুলা</label>
+          <label class="opt"><input type="radio" name="q52" value="c"> c. সাহিত্য</label>
+          <label class="opt"><input type="radio" name="q52" value="d"> d. কৃষি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. প্রযুক্তি ও বিজ্ঞান</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 53. বিধানসভা নির্বাচনের ফলাফল কোন ধরনের সংবাদ?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q53" value="a"> a. রাজ্য সংবাদ</label>
+          <label class="opt"><input type="radio" name="q53" value="b"> b. আন্তর্জাতিক শিক্ষা</label>
+          <label class="opt"><input type="radio" name="q53" value="c"> c. মহাকাশ মিশন</label>
+          <label class="opt"><input type="radio" name="q53" value="d"> d. প্রযুক্তি সম্মেলন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. রাজ্য সংবাদ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 54. আন্তর্জাতিক পুরস্কার‑এ ভারতীয় চলচ্চিত্র সম্মান পেলে সেটি কোন বিভাগের অন্তর্ভুক্ত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q54" value="a"> a. সংস্কৃতি ও আন্তর্জাতিক সম্মান</label>
+          <label class="opt"><input type="radio" name="q54" value="b"> b. কৃষি উন্নয়ন</label>
+          <label class="opt"><input type="radio" name="q54" value="c"> c. রাজ্য অর্থনীতি</label>
+          <label class="opt"><input type="radio" name="q54" value="d"> d. প্রযুক্তি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. সংস্কৃতি ও আন্তর্জাতিক সম্মান</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 55. বিশ্ব সূচকের পতন হলে তা সাধারণত কোন ক্ষেত্রে প্রভাব ফেলে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q55" value="a"> a. শেয়ার বাজারে মূল্য পতন</label>
+          <label class="opt"><input type="radio" name="q55" value="b"> b. স্থানীয় বিদ্যালয় বন্ধ</label>
+          <label class="opt"><input type="radio" name="q55" value="c"> c. ক্রীড়া বাতিল</label>
+          <label class="opt"><input type="radio" name="q55" value="d"> d. কোনো প্রভাব নেই</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. শেয়ার বাজারে মূল্য পতন</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 56. ডিজিটাল পদ্ধতি চালু করলে সরকার কোন সুবিধা পায়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q56" value="a"> a. সেবা প্রদানে স্বচ্ছতা ও নমনীয়তা</label>
+          <label class="opt"><input type="radio" name="q56" value="b"> b. খেলাধুলা দক্ষতা বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q56" value="c"> c. কেবল সাংস্কৃতিক অনুষ্ঠান</label>
+          <label class="opt"><input type="radio" name="q56" value="d"> d. স্থানীয় পরিবহন বন্ধ করা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. সেবা প্রদানে স্বচ্ছতা ও নমনীয়তা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 57. পশ্চিমবঙ্গে বড় পরিবেশগত দুর্যোগ হলে সেটি কোন বিভাগের আওতায় পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q57" value="a"> a. পরিবেশ ও জলবায়ু</label>
+          <label class="opt"><input type="radio" name="q57" value="b"> b. প্রযুক্তি</label>
+          <label class="opt"><input type="radio" name="q57" value="c"> c. সাহিত্য</label>
+          <label class="opt"><input type="radio" name="q57" value="d"> d. ক্রীড়া</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. পরিবেশ ও জলবায়ু</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 58. ভারতের তরুণ উদ্যোক্তাদের সফলতা সাধারণত কোন বিভাগে ধরা হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q58" value="a"> a. অর্থনীতি ও প্রযুক্তি</label>
+          <label class="opt"><input type="radio" name="q58" value="b"> b. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q58" value="c"> c. রাজনীতি</label>
+          <label class="opt"><input type="radio" name="q58" value="d"> d. পরিবেশ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. অর্থনীতি ও প্রযুক্তি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 59. নতুন স্বাস্থ্য প্রকল্পের ঘোষণা পশ্চিমবঙ্গে কোন বিভাগে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q59" value="a"> a. রাজ্য স্বাস্থ্য ও জনকল্যাণ</label>
+          <label class="opt"><input type="radio" name="q59" value="b"> b. ক্রিকেট</label>
+          <label class="opt"><input type="radio" name="q59" value="c"> c. ভাষা বিভাগ</label>
+          <label class="opt"><input type="radio" name="q59" value="d"> d. শিল্প সংরক্ষণ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. রাজ্য স্বাস্থ্য ও জনকল্যাণ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-medium">Medium</span> 60. আন্তর্জাতিক বিবাদ‑সমাধান সংক্রান্ত বড় সংবাদ কোন বিভাগের?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q60" value="a"> a. আন্তর্জাতিক সংবাদ</label>
+          <label class="opt"><input type="radio" name="q60" value="b"> b. রাজ্য সংবাদ</label>
+          <label class="opt"><input type="radio" name="q60" value="c"> c. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q60" value="d"> d. শিক্ষা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. আন্তর্জাতিক সংবাদ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+    </section>
+
+    <!-- Hard (50) -->
+    <section id="hard" style="margin-top:22px">
+      <h2>কঠিন (Hard) — ৫০টি</h2>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 61. National Hydrogen Mission‑এর মূল উদ্দেশ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q61" value="a"> a. গ্রিন হাইড্রোজেন উৎপাদন ও ব্যবহার উৎসাহিত করা</label>
+          <label class="opt"><input type="radio" name="q61" value="b"> b. কেবল কৃষি উন্নয়ন</label>
+          <label class="opt"><input type="radio" name="q61" value="c"> c. স্কুলে হাইড্রোজেন পাঠ্য চালু করা</label>
+          <label class="opt"><input type="radio" name="q61" value="d"> d. খেলাধুলায় সহায়তা করা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. গ্রিন হাইড্রোজেন উৎপাদন ও ব্যবহার উৎসাহিত করা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 62. Aditya‑L1 মিশন সূর্যের কোন বৈশিষ্ট্য পর্যবেক্ষণ করে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q62" value="a"> a. সোলার করোনার গঠন ও সৌর বায়ুমণ্ডলীয় প্রক্রিয়া</label>
+          <label class="opt"><input type="radio" name="q62" value="b"> b. মঙ্গল গ্রহের মেরু অঞ্চল</label>
+          <label class="opt"><input type="radio" name="q62" value="c"> c. শনির বায়ু গঠন</label>
+          <label class="opt"><input type="radio" name="q62" value="d"> d. চাঁদের ভূতত্ত্ব</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. সোলার করোনার গঠন ও সৌর বায়ুমণ্ডলীয় প্রক্রিয়া</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 63. G20‑এর Global Infrastructure সিদ্ধান্ত কীভাবে প্রভাব ফেলে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q63" value="a"> a. বিনিয়োগ বাড়িয়ে অর্থনৈতিক বৃদ্ধি ত্বরান্বিত করে</label>
+          <label class="opt"><input type="radio" name="q63" value="b"> b. কেবল খেলাধুলা উন্নত করে</label>
+          <label class="opt"><input type="radio" name="q63" value="c"> c. সাহিত্য উন্নয়ন করে</label>
+          <label class="opt"><input type="radio" name="q63" value="d"> d. কোনো প্রভাব নেই</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বিনিয়োগ বাড়িয়ে অর্থনৈতিক বৃদ্ধি ত্বরান্বিত করে</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 64. Jangalmahal উন্নয়ন প্রকল্পে প্রধান বিনিয়োগ কোন খাতে হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q64" value="a"> a. গ্রামীণ অবকাঠামো ও কৃষি উদ্যোগ</label>
+          <label class="opt"><input type="radio" name="q64" value="b"> b. মহাকাশ প্রযুক্তি</label>
+          <label class="opt"><input type="radio" name="q64" value="c"> c. আন্তর্জাতিক বাণিজ্য জেটি</label>
+          <label class="opt"><input type="radio" name="q64" value="d"> d. ফিল্ম ইন্ডাস্ট্রি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. গ্রামীণ অবকাঠামো ও কৃষি উদ্যোগ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 65. বাজেটে 'PM‑KSNY' বা অনুরূপ ধারের লক্ষ্য সাধারণত কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q65" value="a"> a. ক্ষুদ্র কৃষকদের আর্থিক সহায়তা</label>
+          <label class="opt"><input type="radio" name="q65" value="b"> b. ক্রিকেট খেলোয়াড়দের বেতন বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q65" value="c"> c. আবহাওয়া পরিষেবা স্থগিত করা</label>
+          <label class="opt"><input type="radio" name="q65" value="d"> d. বেসরকারি বিনিয়োগ রোধ করা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. ক্ষুদ্র কৃষকদের আর্থিক সহায়তা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 66. India‑EU trade আলোচনায় Geographical Indications আলোচনা হলে তা কোন বিষয়ে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q66" value="a"> a. বাণিজ্য ও বৌদ্ধিক সম্পত্তি</label>
+          <label class="opt"><input type="radio" name="q66" value="b"> b. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q66" value="c"> c. রাজ্য রাজনীতি</label>
+          <label class="opt"><input type="radio" name="q66" value="d"> d. পরিবেশ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বাণিজ্য ও বৌদ্ধিক সম্পত্তি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 67. SEBI‑র নতুন নির্দেশ আনা হলে এর প্রভাব কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q67" value="a"> a. বাজারে স্বচ্ছতা ও প্রতারণা রোধ</label>
+          <label class="opt"><input type="radio" name="q67" value="b"> b. স্কুলে বড় পরিবর্তন</label>
+          <label class="opt"><input type="radio" name="q67" value="c"> c. কৃষিকে ক্ষতিগ্রস্ত করে</label>
+          <label class="opt"><input type="radio" name="q67" value="d"> d. ক্রীড়া ইভেন্ট বন্ধ করে</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বাজারে স্বচ্ছতা ও প্রতারণা রোধ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 68. Banglar Krishi প্রকল্পে প্রযুক্তি সংযোজনের মূল ফোকাস কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q68" value="a"> a. কৃষি উৎপাদন বাড়ানো ও ডিজিটাল কৃষি সেবা</label>
+          <label class="opt"><input type="radio" name="q68" value="b"> b. মহাকাশ মিশন</label>
+          <label class="opt"><input type="radio" name="q68" value="c"> c. আন্তর্জাতিক ভিসা</label>
+          <label class="opt"><input type="radio" name="q68" value="d"> d. শহর উন্নয়ন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. কৃষি উৎপাদন বাড়ানো ও ডিজিটাল কৃষি সেবা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 69. 'Blue Economy' উন্নয়নে প্রধান নীতি কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q69" value="a"> a. টেকসই মেরিটাইম রিসোর্স ব্যবস্থাপনা</label>
+          <label class="opt"><input type="radio" name="q69" value="b"> b. কেবল খনি উত্তোলন বাড়ানো</label>
+          <label class="opt"><input type="radio" name="q69" value="c"> c. বিনোদন কেন্দ্র তৈরি</label>
+          <label class="opt"><input type="radio" name="q69" value="d"> d. উৎসব আয়োজন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. টেকসই মেরিটাইম রিসোর্স ব্যবস্থাপনা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 70. India‑EU trade pact হলে কোন খাত লাভবান হতে পারে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q70" value="a"> a. IT ও কৃষি রফতানি</label>
+          <label class="opt"><input type="radio" name="q70" value="b"> b. স্থানীয় স্কুল</label>
+          <label class="opt"><input type="radio" name="q70" value="c"> c. ক্রীড়া স্টেডিয়াম</label>
+          <label class="opt"><input type="radio" name="q70" value="d"> d. শুধু শিল্প শহর</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. IT ও কৃষি রফতানি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 71. বড় স্টার্টআপের IPO ঘোশণা হলে স্টক‑বাজারে কি ঘটে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q71" value="a"> a. বিনিয়োগ আকর্ষণ বাড়ে ও টেকসেক্টরে মূল্যায়ন বৃদ্ধি পায়</label>
+          <label class="opt"><input type="radio" name="q71" value="b"> b. স্কুল সিলেবাস বদলে যায়</label>
+          <label class="opt"><input type="radio" name="q71" value="c"> c. খেলাধুলা বন্ধ হয়</label>
+          <label class="opt"><input type="radio" name="q71" value="d"> d. পরিবহন বন্ধ হয়</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বিনিয়োগ আকর্ষণ বাড়ে ও টেকসেক্টরে মূল্যায়ন বৃদ্ধি পায়</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 72. NITI Aayog‑এর প্রযুক্তি নীতি উদ্দেশ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q72" value="a"> a. ডিজিটালাইজেশন ও প্রযুক্তি ইনোভেশন প্রমোট করা</label>
+          <label class="opt"><input type="radio" name="q72" value="b"> b. স্থানীয় শিল্প বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q72" value="c"> c. বিদেশি বিনিয়োগ বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q72" value="d"> d. ক্রীড়া ক্ষতি করা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. ডিজিটালাইজেশন ও প্রযুক্তি ইনোভেশন প্রমোট করা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 73. River rejuvenation প্রকল্পের উদ্দেশ্য কি?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q73" value="a"> a. পানি মান উন্নয়ন, বন্যা নিয়ন্ত্রণ ও ইকোসিস্টেম পুনরুদ্ধার</label>
+          <label class="opt"><input type="radio" name="q73" value="b"> b. মহাকাশ রকেট উৎক্ষেপণ</label>
+          <label class="opt"><input type="radio" name="q73" value="c"> c. আন্তর্জাতিক বাণিজ্য বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q73" value="d"> d. ক্রীড়া উন্নয়ন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. পানি মান উন্নয়ন, বন্যা নিয়ন্ত্রণ ও ইকোসিস্টেম পুনরুদ্ধার</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 74. আন্তর্জাতিকভাবে কোন দেশ স্পেস পার্টনার হিসেবে ভারতের সাথে ত্বরান্বিত সহযোগিতা করলে কী প্রভাব পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q74" value="a"> a. প্রযুক্তিগত দক্ষতা ও গবেষণা উন্নতি করে</label>
+          <label class="opt"><input type="radio" name="q74" value="b"> b. কেবল খেলাধুলা উন্নত করে</label>
+          <label class="opt"><input type="radio" name="q74" value="c"> c. স্কুল সমাপন করে</label>
+          <label class="opt"><input type="radio" name="q74" value="d"> d. পরিবেশের অবনতি ঘটায়</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. প্রযুক্তিগত দক্ষতা ও গবেষণা উন্নতি করে</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 75. PM Gati Shakti‑এর প্রধান লক্ষ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q75" value="a"> a. মালবাহী ও লোকাল ট্রান্সপোর্ট ইন্টিগ্রেশন উন্নত করা</label>
+          <label class="opt"><input type="radio" name="q75" value="b"> b. কেবল সিনেমা উন্নয়ন</label>
+          <label class="opt"><input type="radio" name="q75" value="c"> c. বিদেশি উৎসব আয়োজন</label>
+          <label class="opt"><input type="radio" name="q75" value="d"> d. কৃষি থেকে প্রযুক্তি সরিয়ে দেওয়া</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. মালবাহী ও লোকাল ট্রান্সপোর্ট ইন্টিগ্রেশন উন্নত করা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 76. Mangrove restoration কিসের জন্য গুরুত্বপূর্ণ?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q76" value="a"> a. উপকূল রক্ষা ও বায়ুমণ্ডলীয় ভারসাম্য রক্ষা</label>
+          <label class="opt"><input type="radio" name="q76" value="b"> b. শহুরে বাজার বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q76" value="c"> c. মহাকাশ মিশন</label>
+          <label class="opt"><input type="radio" name="q76" value="d"> d. ক্রীড়া আয়োজনে সহায়তা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. উপকূল রক্ষা ও বায়ুমণ্ডলীয় ভারসাম্য রক্ষা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 77. চীনের নীতি পরিবর্তন হলে ভারতের কোন খাত প্রভাবিত হতে পারে সবচেয়ে বেশি?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q77" value="a"> a. উৎপাদন ও রপ্তানি</label>
+          <label class="opt"><input type="radio" name="q77" value="b"> b. স্কুল সিলেবাস</label>
+          <label class="opt"><input type="radio" name="q77" value="c"> c. রাজ্য পরিষদ</label>
+          <label class="opt"><input type="radio" name="q77" value="d"> d. ক্রীড়া</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. উৎপাদন ও রপ্তানি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 78. Digital Rupee (CBDC) চালুর উদ্দেশ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q78" value="a"> a. ডিজিটাল কেন্দ্রীয় ব্যাংক মুদ্রা ব্যবহার সহজ ও স্বচ্ছ করা</label>
+          <label class="opt"><input type="radio" name="q78" value="b"> b. কেবল খেলাধুলার জন্য পেমেন্ট</label>
+          <label class="opt"><input type="radio" name="q78" value="c"> c. স্থানীয় মিডিয়া বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q78" value="d"> d. কৃষি বন্ধ করা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. ডিজিটাল কেন্দ্রীয় ব্যাংক মুদ্রা ব্যবহার সহজ ও স্বচ্ছ করা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+            <!-- Continue Hard questions 79-100 -->
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 79. West Bengal‑এ যে নতুন শিল্প পার্ক খোলা হয়েছে, তা প্রধানত কোন ক্ষেত্রে কর্মসংস্থান বাড়ায়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q79" value="a"> a. উৎপাদন ও সার্ভিস সেক্টর</label>
+          <label class="opt"><input type="radio" name="q79" value="b"> b. সাহিত্য</label>
+          <label class="opt"><input type="radio" name="q79" value="c"> c. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q79" value="d"> d. শুধুমাত্র কৃষি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. উৎপাদন ও সার্ভিস সেক্টর</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 80. 'Net Zero' লক্ষ্য মানে কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q80" value="a"> a. গ্রিনহাউস গ্যাস নিঃসরণ শূন্য বা ক্ষতিপূরণ করা</label>
+          <label class="opt"><input type="radio" name="q80" value="b"> b. কেবল অর্থনীতি বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q80" value="c"> c. প্রযুক্তি বিনিয়োগ বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q80" value="d"> d. ক্রীড়া বন্ধ করা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. গ্রিনহাউস গ্যাস নিঃসরণ শূন্য বা ক্ষতিপূরণ করা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 81. 'One District One Product' (ODOP) উদ্যোগে কোন পণ্যের প্রচার করা হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q81" value="a"> a. স্থানীয় হস্তশিল্প ও প্রতিযোগীতামূলক পণ্য</label>
+          <label class="opt"><input type="radio" name="q81" value="b"> b. অস্ত্র সামগ্রী</label>
+          <label class="opt"><input type="radio" name="q81" value="c"> c. চলচ্চিত্র</label>
+          <label class="opt"><input type="radio" name="q81" value="d"> d. মহাকাশ সরঞ্জাম</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. স্থানীয় হস্তশিল্প ও প্রতিযোগীতামূলক পণ্য</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 82. রাজ্যে জাতীয় সড়ক উন্নয়ন হলে সেটা কোন সেক্টরের উন্নতি নির্দেশ করে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q82" value="a"> a. অবকাঠামো ও পরিবহন</label>
+          <label class="opt"><input type="radio" name="q82" value="b"> b. সাহিত্য</label>
+          <label class="opt"><input type="radio" name="q82" value="c"> c. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q82" value="d"> d. স্বাস্থ্য</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. অবকাঠামো ও পরিবহন</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 83. আন্তর্জাতিক সম্মেলনে স্টার্টআপ অংশগ্রহণের সুবিধা কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q83" value="a"> a. বিনিয়োগ ও গ্লোবাল পার্টনারশিপ বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q83" value="b"> b. স্কুল বন্ধ</label>
+          <label class="opt"><input type="radio" name="q83" value="c"> c. ক্রীড়া দল গঠন</label>
+          <label class="opt"><input type="radio" name="q83" value="d"> d. পরিবেশ ক্ষতি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বিনিয়োগ ও গ্লোবাল পার্টনারশিপ বৃদ্ধি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 84. 'Ayushman Bharat' সম্প্রসারণ করলে কী প্রভাব পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q84" value="a"> a. স্বাস্থ্যসেবা কভারেজ বাড়ে</label>
+          <label class="opt"><input type="radio" name="q84" value="b"> b. শিল্প বন্ধ হয়</label>
+          <label class="opt"><input type="radio" name="q84" value="c"> c. ক্রীড়া বাড়ে</label>
+          <label class="opt"><input type="radio" name="q84" value="d"> d. শিক্ষা ক্ষতি হয়</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. স্বাস্থ্যসেবা কভারেজ বাড়ে</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 85. আন্তর্জাতিক শীর্ষ সম্মেলনে কী ধরণের কূটনৈতিক সফলতা গুরুত্বপূর্ণ?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q85" value="a"> a. নতুন যৌথ ঘোষণাপত্র বা চুক্তি স্বাক্ষর</label>
+          <label class="opt"><input type="radio" name="q85" value="b"> b. কেবল সাংস্কৃতিক অনুষ্ঠান</label>
+          <label class="opt"><input type="radio" name="q85" value="c"> c. স্কুল বই বিতরণ</label>
+          <label class="opt"><input type="radio" name="q85" value="d"> d. ক্রীড়া পুরস্কার</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. নতুন যৌথ ঘোষণাপত্র বা চুক্তি স্বাক্ষর</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 86. রাজ্যের পরিবেশ নীতি‑এ CO‑benefits বলতে কী বোঝানো হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q86" value="a"> a. পরিবেশ রক্ষা ও সামাজিক‑আর্থিক উপকার একসঙ্গে অর্জন করা</label>
+          <label class="opt"><input type="radio" name="q86" value="b"> b. রাজকীয় ভাতা বাড়ানো</label>
+          <label class="opt"><input type="radio" name="q86" value="c"> c. স্কুল নতুন কোর্স চালু করা</label>
+          <label class="opt"><input type="radio" name="q86" value="d"> d. উৎসব আয়োজন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. পরিবেশ রক্ষা ও সামাজিক‑আর্থিক উপকার একসঙ্গে অর্জন করা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 87. Global supply chain বিঘ্ন হলে ভারতের ব্যবসার ওপর প্রধান প্রভাব কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q87" value="a"> a. কাঁচামালদর বাড়ে ও রপ্তানি প্রভাবিত হয়</label>
+          <label class="opt"><input type="radio" name="q87" value="b"> b. স্কুল বন্ধ হয়</label>
+          <label class="opt"><input type="radio" name="q87" value="c"> c. ক্রীড়া বাতিল হয়</label>
+          <label class="opt"><input type="radio" name="q87" value="d"> d. পরিবেশ উন্নতি হয়</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. কাঁচামালদর বাড়ে ও রপ্তানি প্রভাবিত হয়</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 88. আন্তর্জাতিক চিকিৎসা সংস্থার সঙ্গে যৌথ উদ্যোগ হলে সেটা কোন বিভাগে পড়ে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q88" value="a"> a. স্বাস্থ্য ও বিজ্ঞান সহযোগিতা</label>
+          <label class="opt"><input type="radio" name="q88" value="b"> b. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q88" value="c"> c. রাজনীতি</label>
+          <label class="opt"><input type="radio" name="q88" value="d"> d. পরিবেশ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. স্বাস্থ্য ও বিজ্ঞান সহযোগিতা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 89. গ্রামীণ সোলার প্রকল্পের প্রধান উপকারিতা কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q89" value="a"> a. স্থায়ী বিদ্যুৎ সরবরাহ ও গ্রীন এনার্জি বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q89" value="b"> b. শহুরে বিনোদন বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q89" value="c"> c. মহাকাশ মিশন বন্ধ</label>
+          <label class="opt"><input type="radio" name="q89" value="d"> d. ক্রীড়া উন্নয়ন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. স্থায়ী বিদ্যুৎ সরবরাহ ও গ্রীন এনার্জি বৃদ্ধি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 90. আন্তর্জাতিক চুক্তির সংবাদ যাচাইয়ের প্রধান উৎস কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q90" value="a"> a. সরকারি বিবৃতিপত্র ও অফিসিয়াল পোর্টাল</label>
+          <label class="opt"><input type="radio" name="q90" value="b"> b. এনজিও ব্লগ</label>
+          <label class="opt"><input type="radio" name="q90" value="c"> c. সোশ্যাল মিডিয়া পোস্ট</label>
+          <label class="opt"><input type="radio" name="q90" value="d"> d. লোকাল রুমরুম</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. সরকারি বিবৃতিপত্র ও অফিসিয়াল পোর্টাল</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 91. 'Climate resilient agriculture' কৃষকদের কী দেয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q91" value="a"> a. বন্যা ও খরার বিরুদ্ধে টেকসই প্রযুক্তি ও প্রশিক্ষণ</label>
+          <label class="opt"><input type="radio" name="q91" value="b"> b. আন্তর্জাতিক বাণিজ্য বন্ধ</label>
+          <label class="opt"><input type="radio" name="q91" value="c"> c. মহাকাশ গবেষণা বন্ধ</label>
+          <label class="opt"><input type="radio" name="q91" value="d"> d. স্কুল উন্নয়ন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বন্যা ও খরার বিরুদ্ধে টেকসই প্রযুক্তি ও প্রশিক্ষণ</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 92. রাজ্যে ডিজিটাল বিস্তারের প্রকল্পের প্রধান লক্ষ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q92" value="a"> a. ডিজিটাল অন্তর্ভুক্তি ও গ্রামীণ এলাকায় ইন্টারনেট পৌঁছানো</label>
+          <label class="opt"><input type="radio" name="q92" value="b"> b. শহরের সিনেমা বাড়ানো</label>
+          <label class="opt"><input type="radio" name="q92" value="c"> c. ক্রীড়া গাছ লাগানো</label>
+          <label class="opt"><input type="radio" name="q92" value="d"> d. মহাকাশ রকেট তৈরি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. ডিজিটাল অন্তর্ভুক্তি ও গ্রামীণ এলাকায় ইন্টারনেট পৌঁছানো</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 93. 'Pharma corridor' চুক্তি হলে সুবিধা কী হবে?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q93" value="a"> a. ঔষধ উৎপাদন ও রপ্তানি বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q93" value="b"> b. খেলাধুলা বন্ধ</label>
+          <label class="opt"><input type="radio" name="q93" value="c"> c. সাহিত্য শুরু</label>
+          <label class="opt"><input type="radio" name="q93" value="d"> d. কৃষি বন্ধ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. ঔষধ উৎপাদন ও রপ্তানি বৃদ্ধি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 94. বন্যা ব্যবস্থাপনায় প্রযুক্তি ব্যবহারের মূল লক্ষ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q94" value="a"> a. পূর্বাভাস, দ্রুত প্রতিক্রিয়া ও দুর্যোগ প্রশমন</label>
+          <label class="opt"><input type="radio" name="q94" value="b"> b. সিনেমা আয়োজন</label>
+          <label class="opt"><input type="radio" name="q94" value="c"> c. আন্তর্জাতিক সম্মেলন বন্ধ</label>
+          <label class="opt"><input type="radio" name="q94" value="d"> d. ক্রীড়া আয়োজন</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. পূর্বাভাস, দ্রুত প্রতিক্রিয়া ও দুর্যোগ প্রশমন</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 95. Global climate finance‑এ ভারতের অংশ ঢুকলে কৃষকদের কী সুবিধা হয়?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q95" value="a"> a. জলবায়ু‑টেকসাহায্য ও প্রযুক্তি প্রাপ্তি</label>
+          <label class="opt"><input type="radio" name="q95" value="b"> b. শহুরে বিল্ডিং নির্মাণ</label>
+          <label class="opt"><input type="radio" name="q95" value="c"> c. ক্রীড়া বন্ধ করা</label>
+          <label class="opt"><input type="radio" name="q95" value="d"> d. স্কুল বই মূল্য বৃদ্ধি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. জলবায়ু‑টেকসাহায্য ও প্রযুক্তি প্রাপ্তি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 96. AI নীতিমালা নিয়ে আন্তর্জাতিক আলোচনায় প্রধান উদ্বেগ কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q96" value="a"> a. নৈতিকতা, চাকরিতে প্রভাব ও ডেটা সুরক্ষা</label>
+          <label class="opt"><input type="radio" name="q96" value="b"> b. চলচ্চিত্র গল্প</label>
+          <label class="opt"><input type="radio" name="q96" value="c"> c. ক্রীড়া মাঠ পুনর্নির্মাণ</label>
+          <label class="opt"><input type="radio" name="q96" value="d"> d. কৃষি জমি বিক্রি</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. নৈতিকতা, চাকরিতে প্রভাব ও ডেটা সুরক্ষা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 97. Urban Solid Waste Management‑এর প্রধান উদ্দেশ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q97" value="a"> a. আবর্জনা হ্রাস ও পুনর্ব্যবহার ব্যবস্থার উন্নতি</label>
+          <label class="opt"><input type="radio" name="q97" value="b"> b. মহাকাশ গবেষণা বন্ধ</label>
+          <label class="opt"><input type="radio" name="q97" value="c"> c. সংস্কৃতিক উৎসব বাড়ানো</label>
+          <label class="opt"><input type="radio" name="q97" value="d"> d. ক্রীড়া সংরক্ষণ বন্ধ</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. আবর্জনা হ্রাস ও পুনর্ব্যবহার ব্যবস্থার উন্নতি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 98. Data localization নীতির উদ্দেশ্য কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q98" value="a"> a. নাগরিক ডেটার নিরাপত্তা ও নিয়ন্ত্রণ বাড়ানো</label>
+          <label class="opt"><input type="radio" name="q98" value="b"> b. খেলাধুলা বৃদ্ধি</label>
+          <label class="opt"><input type="radio" name="q98" value="c"> c. স্কুল বন্ধ</label>
+          <label class="opt"><input type="radio" name="q98" value="d"> d. মহাকাশ চুক্তি বাতিল</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. নাগরিক ডেটার নিরাপত্তা ও নিয়ন্ত্রণ বাড়ানো</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 99. আন্তর্জাতিক পুরস্কারে ভারতীয় বিজ্ঞানীর সম্মান বেড়ে গেলে সেটা কোন বিভাগের অন্তর্ভুক্ত?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q99" value="a"> a. বিজ্ঞান ও প্রযুক্তি</label>
+          <label class="opt"><input type="radio" name="q99" value="b"> b. ক্রীড়া</label>
+          <label class="opt"><input type="radio" name="q99" value="c"> c. রাজ্য অর্থনীতি</label>
+          <label class="opt"><input type="radio" name="q99" value="d"> d. সাহিত্য</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. বিজ্ঞান ও প্রযুক্তি</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+      <div class="q" data-answer="a">
+        <div class="title"><span class="difficulty diff-hard">Hard</span> 100. কেন্দ্র ও রাজ্য যৌথ উন্নয়ন প্রকল্পের প্রধান চ্যালেঞ্জ কী?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q100" value="a"> a. অর্থায়ন, ভূমি অধিগ্রহণ ও সমন্বয় সমস্যা</label>
+          <label class="opt"><input type="radio" name="q100" value="b"> b. ক্রীড়া আয়োজন</label>
+          <label class="opt"><input type="radio" name="q100" value="c"> c. সাহিত্য বিরোধ</label>
+          <label class="opt"><input type="radio" name="q100" value="d"> d. মহাকাশ প্রযুক্তি সমস্যা</label>
+        </div>
+        <div class="answer">সঠিক উত্তর: a. অর্থায়ন, ভূমি অধিগ্রহণ ও সমন্বয় সমস্যা</div>
+        <button onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+
+    </section>
+
+    <footer>
+      <p>প্রশ্নপত্র সম্পূর্ণ হয়েছে — অনুশীলনের জন্য পছন্দমত অংশে ব্রাউজ করুন।</p>
+    </footer>
   </div>
 
   <script>
-    const questions = [
-      {q:"২০২৪ সালে ভারত কোন দেশের সাথে ক্ষুদ্র উপগ্রহ (small satellite) সহযোগিতার ঘোষণা করেছিল?", opts:["রাশিয়া","জাপান","ইউরোপীয় ইউনিয়ন","ফ্রান্স"], a:0},
-      {q:"২০২৪ সালে পশ্চিমবঙ্গ সরকার কোন ধরনের নতুন শিক্ষাকেন্দ্র প্রতিষ্ঠার ঘোষণা দিয়েছিল?", opts:["টেকনিক্যাল স্কুল ক্লাস্টার","ব্লক-ভিত্তিক শিক্ষাকেন্দ্র","স্পেশালাইজড বিজ্ঞান হাব","ভোকেশনাল ট্রেইনিং সেন্টার"], a:3},
-      {q:"গত বছরে কোন রাজ্যটি সবচেয়ে দ্রুত অর্থনৈতিক বৃদ্ধির হারের কথা ঘোষণা করেছিল?", opts:["মহারাষ্ট্র","তামিলনাড়ু","গুজরাট","পশ্চিমবঙ্গ"], a:2},
-      {q:"২০২৪ সালে নোবেল শান্তি পুরস্কার কোন খাতে কাজ করা সংস্থাকে দেওয়া হয়েছিল বলে আলোচিত হয়েছিল?", opts:["জলবায়ু আন্দোলন","শান্তি আলোচনায় মধ্যস্থতা","মানবাধিকার","গৃহহীনতা নির্মূল"], a:0},
-      {q:"গত বছরে কোন শহরে নতুন আন্তর্জাতিক এয়ারপোর্ট টার্মিনাল উদ্বোধন হয়েছিল?", opts:["কলকাতা","হায়দ্রাবাদ","বেঙ্গালুরু","পুনে"], a:3},
-      {q:"২০২৪ সালের কেন্দ্রীয় বাজেটে কোন খাতে বড়ো বরাদ্দ বা বৃদ্ধির ঘোষণা সবচেয়ে বেশি আলোচনা সৃষ্টি করেছিল?", opts:["শিক্ষা","কৃষি","স্বাস্থ্য","অবকাঠামো"], a:2},
-      {q:"গত বছর ভারত কোন আন্তর্জাতিক ক্রিকেট সিরিজে জয়ী হয়েছিল বলে খবর ছিল?", opts:["টেস্ট সিরিজ অস্ট্রেলিয়া","টি-২০ সিরিজ ইংল্যান্ড","ওয়ানডে সিরিজ দক্ষিণ আফ্রিকা","কোনো বিজয় ছিল না"], a:1},
-      {q:"২০২৪ সালে পশ্চিমবঙ্গে কোন পরিবেশ সংরক্ষণ প্রকল্প বড়ো আকারে নেওয়া হয়েছিল?", opts:["ম্যাঙ্গ্রোভ পুনরুদ্ধার","শহুরে বনায়ন","নদী পরিষ্কার অভিযান","বন্যপ্রাণী করিডর পুনরুদ্ধার"], a:2},
-      {q:"গত বছর কেন্দ্রীয় সরকার কোন নতুন সামাজিক কল্যাণ স্কিম চালু বা ঘোষণা করেছিল?", opts:["বার্ধক্য পেনশন বৃদ্ধি","শক্তি ভর্তুকি কর্মসূচি","গ্রামীণ স্বাস্থ্য ইনসিওরেন্স","বেকারত্ব ভাতা"], a:2},
-      {q:"২০২৪ সালে আন্তর্জাতিক কূটনৈতিক কোনো বড় সাফল্য হিসেবে ভারত কী অর্জন করেছিল?", opts:["ফ্রি ট্রেড চুক্তি স্বাক্ষর","শান্তি মধ্যস্থতায় সাফল্য","জাতিসংঘে নতুন দায়িত্ব প্রাপ্তি","মহাকাশ মিশনে অংশীদারিত্ব বৃদ্ধি"], a:3},
-      {q:"গত বছরে পশ্চিমবঙ্গের কোনো শিল্পীকে কোন আন্তর্জাতিক সাহিত্য/শিল্প পুরস্কার পাওয়া নিয়ে খবর হয়েছিল?", opts:["টার্নার প্রাইজ","আকাডেমি পুরস্কার","আন্তর্জাতিক সাহিত্য পুরস্কার","বিশ্বসঙ্গীত পুরস্কার"], a:2},
-      {q:"২০২৪ সালে ভারত কোন প্রযুক্তি কোম্পানির সঙ্গে যৌথভাবে নতুন ডাটা সেন্টার স্থাপনের ঘোষণা দিয়েছিল?", opts:["গুগল","মাইক্রোসফট","অ্যামাজন","আলিবাবা"], a:1},
-      {q:"গত বছর পশ্চিমবঙ্গের কোন ডিজাস্টার ব্যবস্থাপনা উদ্যোগ বিশেষভাবে প্রশংসিত হয়েছিল?", opts:["টাইফুন রিলিফ অপারেশন","বন্যা সতর্কতা সিস্টেম","ভূমিকম্প রেসপন্স টিম","সাইক্লোন ঝুঁকি হ্রাস কর্মসূচি"], a:1},
-      {q:"২০২৪ সালে ভারতের কোন বৈজ্ঞানিক সংস্থার মিশন বা গবেষণা আন্তর্জাতিক জার্নালে আলোচিত হয়েছিল?", opts:["IISc বেঙ্গালুরু","ISRO","CSIR","অন্য কোনো প্রতিষ্ঠান"], a:1},
-      {q:"গত বছর আন্তর্জাতিক অর্থনীতিতে কোন দেশের মুদ্রার ধারাবাহিক পতন বিশ্ববাজারে উদ্বেগ সৃষ্টি করেছিল?", opts:["তুরস্ক","ব্রাজিল","জাপান","কানাডা"], a:0}
-    ];
-
-    const quizEl = document.getElementById('quiz');
-    let userAnswers = Array(questions.length).fill(null);
-    function renderQuiz(){
-      quizEl.innerHTML = '';
-      questions.forEach((it, idx) => {
-        const qDiv = document.createElement('div');
-        qDiv.className = 'question';
-        qDiv.id = 'q'+idx;
-
-        const title = document.createElement('div');
-        title.className = 'q-title';
-        title.textContent = (idx+1)+'. '+ it.q;
-        qDiv.appendChild(title);
-
-        const opts = document.createElement('div');
-        opts.className = 'options';
-        it.opts.forEach((opt, oi) => {
-          const label = document.createElement('label');
-          label.className = 'option';
-          label.dataset.q = idx;
-          label.dataset.opt = oi;
-          label.tabIndex = 0;
-
-          const input = document.createElement('input');
-          input.type = 'radio';
-          input.name = 'q'+idx;
-          input.value = oi;
-          input.id = 'q'+idx+'o'+oi;
-          input.checked = userAnswers[idx] === oi;
-
-          input.addEventListener('change', () => {
-            userAnswers[idx] = oi;
-            updateSubmitState();
-            // visually mark selected option
-            const parent = label.parentElement;
-            parent.querySelectorAll('.option').forEach(el=>el.classList.remove('selected'));
-            label.classList.add('selected');
-          });
-
-          // allow clicking the whole label
-          label.addEventListener('click', (e) => {
-            if(e.target.tagName.toLowerCase() !== 'input'){
-              input.checked = true;
-              input.dispatchEvent(new Event('change', { bubbles:true }));
-            }
-          });
-
-          const spanLetter = document.createElement('div');
-          spanLetter.style.minWidth='28px';
-          spanLetter.style.fontWeight='700';
-          spanLetter.textContent = String.fromCharCode(65+oi)+'.';
-
-          const spanText = document.createElement('div');
-          spanText.textContent = opt;
-
-          label.appendChild(input);
-          label.appendChild(spanLetter);
-          label.appendChild(spanText);
-          opts.appendChild(label);
-        });
-
-        qDiv.appendChild(opts);
-        quizEl.appendChild(qDiv);
-      });
-
-      const controls = document.createElement('div');
-      controls.className = 'controls';
-      const submitBtn = document.createElement('button');
-      submitBtn.id = 'submitBtn';
-      submitBtn.textContent = 'Submit';
-      submitBtn.disabled = true;
-      submitBtn.addEventListener('click', submitQuiz);
-
-      const resetBtn = document.createElement('button');
-      resetBtn.className='secondary';
-      resetBtn.textContent='Reset';
-      resetBtn.addEventListener('click', () => {
-        if(!confirm('সব উত্তর মুছে ফেলা হবে এবং কুইজ রিসেট হবে। চালিয়ে যেতে চান?')) return;
-        userAnswers = Array(questions.length).fill(null);
-        renderQuiz();
-        window.scrollTo({top:0, behavior:'smooth'});
-      });
-
-      controls.appendChild(submitBtn);
-      controls.appendChild(resetBtn);
-
-      const resultWrap = document.createElement('div');
-      resultWrap.className = 'result';
-      resultWrap.id = 'resultWrap';
-
-      quizEl.appendChild(controls);
-      quizEl.appendChild(resultWrap);
+    // Toggle single answer (button is inside q div)
+    function toggleAnswer(btn){
+      const q = btn.parentElement;
+      const ans = q.querySelector('.answer');
+      ans.classList.toggle('visible');
+      btn.textContent = ans.classList.contains('visible') ? 'Hide Answer' : 'Show Answer';
     }
 
-    function updateSubmitState(){
-      const s = userAnswers.every(a => a !== null);
-      document.getElementById('submitBtn').disabled = !s;
-    }
-
-    function submitQuiz(){
-      // prevent double submit
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.disabled = true;
-
-      let correctCount = 0;
-      questions.forEach((it, idx) => {
-        const qDiv = document.getElementById('q'+idx);
-        const opts = qDiv.querySelectorAll('.option');
-        opts.forEach(optEl => {
-          const oi = Number(optEl.dataset.opt);
-          optEl.classList.remove('correct','incorrect','selected');
-          // mark user's selection
-          if(userAnswers[idx] === oi) optEl.classList.add('selected');
-          // highlight correct and incorrect
-          if(oi === it.a){
-            optEl.classList.add('correct');
-          }
-          if(userAnswers[idx] !== it.a && oi === userAnswers[idx]){
-            optEl.classList.add('incorrect');
-          }
-        });
-
-        if(userAnswers[idx] === it.a) correctCount++;
-      });
-
-      const wrongCount = questions.length - correctCount;
-      const resultWrap = document.getElementById('resultWrap');
-      resultWrap.innerHTML = '';
-
-      const corr = document.createElement('div');
-      corr.className='correct';
-      corr.textContent = 'সঠিক: ' + correctCount;
-
-      const wrong = document.createElement('div');
-      wrong.className='wrong';
-      wrong.textContent = 'ভুল: ' + wrongCount;
-
-      const summary = document.createElement('div');
-      summary.className = 'summary';
-      summary.innerHTML = '<strong>ফলাফল:</strong> আপনি ' + correctCount + ' টি সঠিক এবং ' + wrongCount + ' টি ভুল করেছেন।';
-
-      resultWrap.appendChild(corr);
-      resultWrap.appendChild(wrong);
-      resultWrap.appendChild(summary);
-
-      // Show correct answers text under each question for wrong ones
-      questions.forEach((it, idx) => {
-        const qDiv = document.getElementById('q'+idx);
-        // remove old answer display if any
-        const old = qDiv.querySelector('.answer');
-        if(old) old.remove();
-        const ansDiv = document.createElement('div');
-        ansDiv.className = 'answer';
-        const correctLetter = String.fromCharCode(65 + it.a);
-        const correctText = it.opts[it.a];
-        if(userAnswers[idx] === it.a){
-          ansDiv.innerHTML = '<strong>আপনার উত্তর সঠিক:</strong> ' + correctLetter + '. ' + correctText;
-        } else {
-          const userAnsText = userAnswers[idx] !== null ? String.fromCharCode(65 + userAnswers[idx]) + '. ' + it.opts[userAnswers[idx]] : 'উত্তর দেওয়া হয়নি';
-          ansDiv.innerHTML = '<strong>আপনার উত্তর:</strong> ' + userAnsText + ' &nbsp; • &nbsp; <strong>সঠিক উত্তর:</strong> ' + correctLetter + '. ' + correctText;
+    // Show/hide all answers
+    let allVisible = false;
+    function toggleAnswers(){
+      const answers = document.querySelectorAll('.answer');
+      answers.forEach(a => a.classList.toggle('visible', !allVisible));
+      allVisible = !allVisible;
+      document.querySelectorAll('button').forEach(b=>{
+        if(b.textContent === 'Show Answer' || b.textContent === 'Hide Answer'){
+          b.textContent = allVisible ? 'Hide Answer' : 'Show Answer';
         }
-        qDiv.appendChild(ansDiv);
       });
-
-      // scroll to result
-      summary.scrollIntoView({behavior:'smooth'});
     }
 
-    // initial render
-    renderQuiz();
+    // Reset all radio selections and hide answers
+    function clearSelections(){
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      document.querySelectorAll('.answer').forEach(a => a.classList.remove('visible'));
+      document.querySelectorAll('button').forEach(b=>{
+        if(b.textContent === 'Hide Answer') b.textContent = 'Show Answer';
+      });
+      allVisible = false;
+    }
+
+    // Scroll to section
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
   </script>
 </body>
 </html>
