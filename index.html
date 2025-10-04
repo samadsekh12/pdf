@@ -1,105 +1,335 @@
-<!-- WBSSC Group D Practice Test HTML -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <title>WBSSC Group D Practice Test</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h2 { color: #333; }
-        .question { margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        .correct { background-color: #c8e6c9; }
-        .incorrect { background-color: #ffcdd2; }
-        .result { font-weight: bold; margin-top: 20px; font-size: 18px; }
-        button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>সাময়িক ঘটনা কুইজ — 15 প্রশ্ন</title>
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --text:#0b2545;
+      --muted:#6b7280;
+      --green:#16a34a;
+      --red:#dc2626;
+      --accent:#2563eb;
+      --border:#e6eef8;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans","Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      margin:0;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:900px;
+    }
+    header{
+      margin-bottom:18px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    header h1{
+      font-size:20px;
+      margin:0;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:18px;
+      box-shadow:0 6px 20px rgba(12,36,64,0.06);
+    }
+    .question{
+      padding:14px;
+      border-radius:8px;
+      margin-bottom:10px;
+      border:1px solid transparent;
+    }
+    .q-title{
+      font-weight:600;
+      margin-bottom:8px;
+    }
+    .options{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .option{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:10px;
+      border-radius:8px;
+      cursor:pointer;
+      border:1px solid transparent;
+      transition:all .14s ease;
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,255,0.6));
+    }
+    .option:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(12,36,64,0.04) }
+    .option input{ accent-color:var(--accent); transform:scale(1.05) }
+    .controls{
+      display:flex;
+      gap:12px;
+      margin-top:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    button{
+      background:var(--accent);
+      color:#fff;
+      border:0;
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    button.secondary{
+      background:#fff;
+      color:var(--accent);
+      border:1px solid var(--border);
+    }
+    .result{
+      margin-top:14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .correct{ background:linear-gradient(90deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border:1px solid rgba(16,185,129,0.14); color:var(--green); padding:8px 10px; border-radius:8px; font-weight:700; }
+    .wrong{ background:linear-gradient(90deg, rgba(239,68,68,0.06), rgba(239,68,68,0.03)); border:1px solid rgba(239,68,68,0.10); color:var(--red); padding:8px 10px; border-radius:8px; font-weight:700; }
+    .answer{
+      margin-top:8px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .answer strong{ color:var(--text); }
+    .option.correct{ border-color: rgba(16,185,129,0.2); background: rgba(16,185,129,0.06); }
+    .option.incorrect{ border-color: rgba(239,68,68,0.12); background: rgba(239,68,68,0.04); opacity:0.95; }
+    .summary{
+      margin-top:12px;
+      padding:12px;
+      border-radius:8px;
+      background:linear-gradient(90deg, rgba(37,99,235,0.06), rgba(37,99,235,0.02));
+      border:1px solid rgba(37,99,235,0.06);
+    }
+    .small{ font-size:13px; color:var(--muted) }
+    @media (max-width:640px){
+      body{ padding:16px }
+      .wrap{ max-width:100% }
+    }
+  </style>
 </head>
 <body>
-    <h1>WBSSC Group D Practice Test</h1>
-    <form id="quizForm">
-        <!-- প্রশ্নগুলো এখানে JavaScript দিয়ে যুক্ত হবে -->
-    </form>
-    <button onclick="submitQuiz()">Submit</button>
-    <div class="result" id="result"></div>
+  <div class="wrap">
+    <header>
+      <h1>সাময়িক ঘটনা কুইজ — ১৫ প্রশ্ন</h1>
+      <div class="small">প্রতিটি প্রশ্নে A/B/C/D বেছে নিন, তারপর Submit চাপুন</div>
+    </header>
 
-    <script>
-        const questions = [
-            // Format: [প্রশ্ন, [অপশন], সঠিক অপশনের index]
-            ["ভারতীয় সংবিধানের প্রথম আর্টিকেল কোনটি?", ["রাষ্ট্রীয় ধর্মনির্ধারণ", "সংগঠনের একটি ইউনিট", "কেন্দ্র ও রাজ্যের বিভাজন", "নাগরিকত্ব"], 3],
-            ["ভারতের জাতীয় পশু কী?", ["বাঘ", "হাতি", "গণ্ডর্ব", "ময়ূর"], 0],
-            ["ভারীয় রুমানি জাহাজ চালকের নাম কী?", ["শুভেন্দু অধিকারী", "নীরব মোদী", "চন্দ্রশেখর পটেল", "আবুল ফজল"], 2],
-            ["পশ্চিমবঙ্গের প্রথম শাসক কে ছিলেন?", ["কালিঙ্গ রাজা", "রানী লক্ষ্মীবাই", "রাখাল দেব", "সিরাজউদ্দৌলা"], 2],
-            ["ভানগরম ওয়ার্ল্ড হেরিটেজ শহর করা হয়েছে যে দেশের অংশ হিসেবে?", ["ভারত", "চীন", "মিশর", "ইতালি"], 1],
-            ["পৃথিবীর বৃহত্তম ম্যানগ্রোভ বন কোথায় অবস্থিত?", ["Sundarbans", "Everglades", "Amazon Delta", "Great Barrier Reef"], 0],
-            ["“সবাই মিলে বাংলাদেশ” এই খেতাব দেওয়া হয় কার?", ["বঙ্গবন্ধু শেখ মুজিবুর রহমান", "শেখ হাসিনা", "মুহাম্মদ ইউনূস", "নজরুল ইসলাম"], 0],
-            ["ভারতের সর্বোচ্চ আদালতের নাম কী?", ["হাইকোর্ট", "সেশন কোর্ট", "সুপ্রিম কোর্ট", "ডিসট্রিক্ট কোর্ট"], 2],
-            ["পশ্চিমবঙ্গের রাজ্য ফুল কী?", ["পদ্ম", "গাঁদা", "শাপলা", "জলরাজ"], 1],
-            ["“স্বাধীনতা দিবস” কোন দিন পালন করা হয়?", ["১৫ অগাস্ট", "২৬ জানুয়ারি", "২৯ মে", "১ মে"], 0],
-            ["ভারতের জাতীয় সংগীত কোনটি?", ["জন গণ মান", "বাগলি", "ভগবান শেখর", "রজনীগন্ধা"], 0],
-            ["দিল্লি মেট্রোর প্রথম লাইন কোন সালে চালু হয়েছিল?", ["২০০২", "২০০১", "২০০০", "২০০৩"], 0],
-            ["মহাত্মা গান্ধীকে “দেশপিতা” খেতাব দেওয়া হয় কার দ্বারা?", ["জাতিসংঘ", "ভারতের সরকার", "জাতীয় কংগ্রেস", "ব্রিটিশ সিংহাসন"], 2],
-            ["বিশ্বের সবচেয়ে লম্বা নদী কোনটি?", ["নীল", "আমাজন", "মিসিসিপি", "ইয়াংৎসে"], 0],
-            ["বায়ুসংক্রান্ত পরিবেশে ওজোন স্তর কোথায় অবস্থিত?", ["মেসোস্ফিয়ার", "স্ট্র্যাটোস্ফিয়ার", "ট্রপোস্ফিয়ার", "থার্মোস্ফিয়ার"], 1],
-            // ... বাকিগুলো চাইলে আমি যুক্ত করে দিতে পারি
-        ];
+    <div class="card" id="quiz">
+      <!-- Questions rendered by JS -->
+    </div>
 
-        const form = document.getElementById("quizForm");
+    <div style="height:18px"></div>
+    <div style="text-align:center" class="small">আপনি সব প্রশ্ন উত্তর করলে Submit খুলবে; Reset করে আবার শুরু করা যাবে</div>
+  </div>
 
-        questions.forEach((q, index) => {
-            const div = document.createElement("div");
-            div.className = "question";
-            div.id = "q" + index;
+  <script>
+    const questions = [
+      {q:"২০২৪ সালে ভারত কোন দেশের সাথে ক্ষুদ্র উপগ্রহ (small satellite) সহযোগিতার ঘোষণা করেছিল?", opts:["রাশিয়া","জাপান","ইউরোপীয় ইউনিয়ন","ফ্রান্স"], a:0},
+      {q:"২০২৪ সালে পশ্চিমবঙ্গ সরকার কোন ধরনের নতুন শিক্ষাকেন্দ্র প্রতিষ্ঠার ঘোষণা দিয়েছিল?", opts:["টেকনিক্যাল স্কুল ক্লাস্টার","ব্লক-ভিত্তিক শিক্ষাকেন্দ্র","স্পেশালাইজড বিজ্ঞান হাব","ভোকেশনাল ট্রেইনিং সেন্টার"], a:3},
+      {q:"গত বছরে কোন রাজ্যটি সবচেয়ে দ্রুত অর্থনৈতিক বৃদ্ধির হারের কথা ঘোষণা করেছিল?", opts:["মহারাষ্ট্র","তামিলনাড়ু","গুজরাট","পশ্চিমবঙ্গ"], a:2},
+      {q:"২০২৪ সালে নোবেল শান্তি পুরস্কার কোন খাতে কাজ করা সংস্থাকে দেওয়া হয়েছিল বলে আলোচিত হয়েছিল?", opts:["জলবায়ু আন্দোলন","শান্তি আলোচনায় মধ্যস্থতা","মানবাধিকার","গৃহহীনতা নির্মূল"], a:0},
+      {q:"গত বছরে কোন শহরে নতুন আন্তর্জাতিক এয়ারপোর্ট টার্মিনাল উদ্বোধন হয়েছিল?", opts:["কলকাতা","হায়দ্রাবাদ","বেঙ্গালুরু","পুনে"], a:3},
+      {q:"২০২৪ সালের কেন্দ্রীয় বাজেটে কোন খাতে বড়ো বরাদ্দ বা বৃদ্ধির ঘোষণা সবচেয়ে বেশি আলোচনা সৃষ্টি করেছিল?", opts:["শিক্ষা","কৃষি","স্বাস্থ্য","অবকাঠামো"], a:2},
+      {q:"গত বছর ভারত কোন আন্তর্জাতিক ক্রিকেট সিরিজে জয়ী হয়েছিল বলে খবর ছিল?", opts:["টেস্ট সিরিজ অস্ট্রেলিয়া","টি-২০ সিরিজ ইংল্যান্ড","ওয়ানডে সিরিজ দক্ষিণ আফ্রিকা","কোনো বিজয় ছিল না"], a:1},
+      {q:"২০২৪ সালে পশ্চিমবঙ্গে কোন পরিবেশ সংরক্ষণ প্রকল্প বড়ো আকারে নেওয়া হয়েছিল?", opts:["ম্যাঙ্গ্রোভ পুনরুদ্ধার","শহুরে বনায়ন","নদী পরিষ্কার অভিযান","বন্যপ্রাণী করিডর পুনরুদ্ধার"], a:2},
+      {q:"গত বছর কেন্দ্রীয় সরকার কোন নতুন সামাজিক কল্যাণ স্কিম চালু বা ঘোষণা করেছিল?", opts:["বার্ধক্য পেনশন বৃদ্ধি","শক্তি ভর্তুকি কর্মসূচি","গ্রামীণ স্বাস্থ্য ইনসিওরেন্স","বেকারত্ব ভাতা"], a:2},
+      {q:"২০২৪ সালে আন্তর্জাতিক কূটনৈতিক কোনো বড় সাফল্য হিসেবে ভারত কী অর্জন করেছিল?", opts:["ফ্রি ট্রেড চুক্তি স্বাক্ষর","শান্তি মধ্যস্থতায় সাফল্য","জাতিসংঘে নতুন দায়িত্ব প্রাপ্তি","মহাকাশ মিশনে অংশীদারিত্ব বৃদ্ধি"], a:3},
+      {q:"গত বছরে পশ্চিমবঙ্গের কোনো শিল্পীকে কোন আন্তর্জাতিক সাহিত্য/শিল্প পুরস্কার পাওয়া নিয়ে খবর হয়েছিল?", opts:["টার্নার প্রাইজ","আকাডেমি পুরস্কার","আন্তর্জাতিক সাহিত্য পুরস্কার","বিশ্বসঙ্গীত পুরস্কার"], a:2},
+      {q:"২০২৪ সালে ভারত কোন প্রযুক্তি কোম্পানির সঙ্গে যৌথভাবে নতুন ডাটা সেন্টার স্থাপনের ঘোষণা দিয়েছিল?", opts:["গুগল","মাইক্রোসফট","অ্যামাজন","আলিবাবা"], a:1},
+      {q:"গত বছর পশ্চিমবঙ্গের কোন ডিজাস্টার ব্যবস্থাপনা উদ্যোগ বিশেষভাবে প্রশংসিত হয়েছিল?", opts:["টাইফুন রিলিফ অপারেশন","বন্যা সতর্কতা সিস্টেম","ভূমিকম্প রেসপন্স টিম","সাইক্লোন ঝুঁকি হ্রাস কর্মসূচি"], a:1},
+      {q:"২০২৪ সালে ভারতের কোন বৈজ্ঞানিক সংস্থার মিশন বা গবেষণা আন্তর্জাতিক জার্নালে আলোচিত হয়েছিল?", opts:["IISc বেঙ্গালুরু","ISRO","CSIR","অন্য কোনো প্রতিষ্ঠান"], a:1},
+      {q:"গত বছর আন্তর্জাতিক অর্থনীতিতে কোন দেশের মুদ্রার ধারাবাহিক পতন বিশ্ববাজারে উদ্বেগ সৃষ্টি করেছিল?", opts:["তুরস্ক","ব্রাজিল","জাপান","কানাডা"], a:0}
+    ];
 
-            const p = document.createElement("p");
-            p.textContent = `${index + 1}. ${q[0]}`;
-            div.appendChild(p);
+    const quizEl = document.getElementById('quiz');
+    let userAnswers = Array(questions.length).fill(null);
+    function renderQuiz(){
+      quizEl.innerHTML = '';
+      questions.forEach((it, idx) => {
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.id = 'q'+idx;
 
-            q[1].forEach((option, i) => {
-                const label = document.createElement("label");
-                const input = document.createElement("input");
-                input.type = "radio";
-                input.name = "q" + index;
-                input.value = i;
-                label.appendChild(input);
-                label.append(" " + option);
-                div.appendChild(label);
-                div.appendChild(document.createElement("br"));
-            });
+        const title = document.createElement('div');
+        title.className = 'q-title';
+        title.textContent = (idx+1)+'. '+ it.q;
+        qDiv.appendChild(title);
 
-            const hidden = document.createElement("input");
-            hidden.type = "hidden";
-            hidden.id = "a" + index;
-            hidden.value = q[2];
-            div.appendChild(hidden);
+        const opts = document.createElement('div');
+        opts.className = 'options';
+        it.opts.forEach((opt, oi) => {
+          const label = document.createElement('label');
+          label.className = 'option';
+          label.dataset.q = idx;
+          label.dataset.opt = oi;
+          label.tabIndex = 0;
 
-            form.appendChild(div);
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = 'q'+idx;
+          input.value = oi;
+          input.id = 'q'+idx+'o'+oi;
+          input.checked = userAnswers[idx] === oi;
+
+          input.addEventListener('change', () => {
+            userAnswers[idx] = oi;
+            updateSubmitState();
+            // visually mark selected option
+            const parent = label.parentElement;
+            parent.querySelectorAll('.option').forEach(el=>el.classList.remove('selected'));
+            label.classList.add('selected');
+          });
+
+          // allow clicking the whole label
+          label.addEventListener('click', (e) => {
+            if(e.target.tagName.toLowerCase() !== 'input'){
+              input.checked = true;
+              input.dispatchEvent(new Event('change', { bubbles:true }));
+            }
+          });
+
+          const spanLetter = document.createElement('div');
+          spanLetter.style.minWidth='28px';
+          spanLetter.style.fontWeight='700';
+          spanLetter.textContent = String.fromCharCode(65+oi)+'.';
+
+          const spanText = document.createElement('div');
+          spanText.textContent = opt;
+
+          label.appendChild(input);
+          label.appendChild(spanLetter);
+          label.appendChild(spanText);
+          opts.appendChild(label);
         });
 
-        function submitQuiz() {
-            let correct = 0;
-            let incorrect = 0;
+        qDiv.appendChild(opts);
+        quizEl.appendChild(qDiv);
+      });
 
-            questions.forEach((q, i) => {
-                const selected = document.querySelector(`input[name="q${i}"]:checked`);
-                const correctAnswer = document.getElementById("a" + i).value;
-                const questionDiv = document.getElementById("q" + i);
+      const controls = document.createElement('div');
+      controls.className = 'controls';
+      const submitBtn = document.createElement('button');
+      submitBtn.id = 'submitBtn';
+      submitBtn.textContent = 'Submit';
+      submitBtn.disabled = true;
+      submitBtn.addEventListener('click', submitQuiz);
 
-                if (selected) {
-                    if (selected.value === correctAnswer) {
-                        questionDiv.classList.add("correct");
-                        correct++;
-                    } else {
-                        questionDiv.classList.add("incorrect");
-                        incorrect++;
-                    }
-                } else {
-                    questionDiv.classList.add("incorrect");
-                    incorrect++;
-                }
-            });
+      const resetBtn = document.createElement('button');
+      resetBtn.className='secondary';
+      resetBtn.textContent='Reset';
+      resetBtn.addEventListener('click', () => {
+        if(!confirm('সব উত্তর মুছে ফেলা হবে এবং কুইজ রিসেট হবে। চালিয়ে যেতে চান?')) return;
+        userAnswers = Array(questions.length).fill(null);
+        renderQuiz();
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
 
-            document.getElementById("result").innerText = `সঠিক: ${correct}, ভুল: ${incorrect}`;
+      controls.appendChild(submitBtn);
+      controls.appendChild(resetBtn);
+
+      const resultWrap = document.createElement('div');
+      resultWrap.className = 'result';
+      resultWrap.id = 'resultWrap';
+
+      quizEl.appendChild(controls);
+      quizEl.appendChild(resultWrap);
+    }
+
+    function updateSubmitState(){
+      const s = userAnswers.every(a => a !== null);
+      document.getElementById('submitBtn').disabled = !s;
+    }
+
+    function submitQuiz(){
+      // prevent double submit
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+
+      let correctCount = 0;
+      questions.forEach((it, idx) => {
+        const qDiv = document.getElementById('q'+idx);
+        const opts = qDiv.querySelectorAll('.option');
+        opts.forEach(optEl => {
+          const oi = Number(optEl.dataset.opt);
+          optEl.classList.remove('correct','incorrect','selected');
+          // mark user's selection
+          if(userAnswers[idx] === oi) optEl.classList.add('selected');
+          // highlight correct and incorrect
+          if(oi === it.a){
+            optEl.classList.add('correct');
+          }
+          if(userAnswers[idx] !== it.a && oi === userAnswers[idx]){
+            optEl.classList.add('incorrect');
+          }
+        });
+
+        if(userAnswers[idx] === it.a) correctCount++;
+      });
+
+      const wrongCount = questions.length - correctCount;
+      const resultWrap = document.getElementById('resultWrap');
+      resultWrap.innerHTML = '';
+
+      const corr = document.createElement('div');
+      corr.className='correct';
+      corr.textContent = 'সঠিক: ' + correctCount;
+
+      const wrong = document.createElement('div');
+      wrong.className='wrong';
+      wrong.textContent = 'ভুল: ' + wrongCount;
+
+      const summary = document.createElement('div');
+      summary.className = 'summary';
+      summary.innerHTML = '<strong>ফলাফল:</strong> আপনি ' + correctCount + ' টি সঠিক এবং ' + wrongCount + ' টি ভুল করেছেন।';
+
+      resultWrap.appendChild(corr);
+      resultWrap.appendChild(wrong);
+      resultWrap.appendChild(summary);
+
+      // Show correct answers text under each question for wrong ones
+      questions.forEach((it, idx) => {
+        const qDiv = document.getElementById('q'+idx);
+        // remove old answer display if any
+        const old = qDiv.querySelector('.answer');
+        if(old) old.remove();
+        const ansDiv = document.createElement('div');
+        ansDiv.className = 'answer';
+        const correctLetter = String.fromCharCode(65 + it.a);
+        const correctText = it.opts[it.a];
+        if(userAnswers[idx] === it.a){
+          ansDiv.innerHTML = '<strong>আপনার উত্তর সঠিক:</strong> ' + correctLetter + '. ' + correctText;
+        } else {
+          const userAnsText = userAnswers[idx] !== null ? String.fromCharCode(65 + userAnswers[idx]) + '. ' + it.opts[userAnswers[idx]] : 'উত্তর দেওয়া হয়নি';
+          ansDiv.innerHTML = '<strong>আপনার উত্তর:</strong> ' + userAnsText + ' &nbsp; • &nbsp; <strong>সঠিক উত্তর:</strong> ' + correctLetter + '. ' + correctText;
         }
-    </script>
+        qDiv.appendChild(ansDiv);
+      });
+
+      // scroll to result
+      summary.scrollIntoView({behavior:'smooth'});
+    }
+
+    // initial render
+    renderQuiz();
+  </script>
 </body>
 </html>
