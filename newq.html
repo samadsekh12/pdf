@@ -1,4 +1,4 @@
-### HTML ফাইল (সংরক্ষণ করে ব্রাউজারে খুলুন)
+### WBSSC Practice Test — Single HTML file
 
 ```html
 <!doctype html>
@@ -6,762 +6,708 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WBSSC Group D মক টেস্ট — 45 প্রশ্ন</title>
+  <title>WBSSC Group D Practice Test — 60min</title>
   <style>
     :root{
-      --correct:#0b8a3e;
-      --wrong:#c92a2a;
-      --neutral:#333;
-      --bg:#f7f7f8;
+      --ok:#1a9a2f;
+      --bad:#d62828;
+      --bg:#f7f9fb;
       --card:#ffffff;
-      --accent:#1565c0;
+      --muted:#666;
+      --accent:#075985;
     }
-    body{
-      font-family: "Noto Sans Bengali", "Arial", sans-serif;
-      background:var(--bg);
-      color:var(--neutral);
-      margin:0;
-      padding:20px;
-    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{background:var(--bg);color:#111;padding-top:72px;}
     header{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:14px;
+      position:fixed;top:0;left:0;right:0;height:72px;background:linear-gradient(90deg,#fff,#f1fbff);
+      display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #e6eef6;z-index:1000;
     }
-    .title{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    h1{font-size:18px;margin:0}
-    p.lead{margin:0;font-size:13px;color:#555}
-    .controls{display:flex;gap:8px;align-items:center}
-    button{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:6px;cursor:pointer}
-    button.secondary{background:#666}
-    button:disabled{opacity:.5;cursor:not-allowed}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand h1{font-size:18px;margin:0;color:var(--accent)}
     .timer{
-      font-weight:700;background:#fff;padding:8px 12px;border-radius:8px;border:1px solid #ddd;
+      font-weight:700;color:#111;background:#fff;padding:8px 12px;border-radius:8px;border:1px solid #e1eef9;box-shadow:0 2px 6px rgba(6,30,63,0.06);
+      min-width:150px;text-align:center;
     }
-    main{
-      max-width:980px;margin:0 auto;
-    }
-    .card{
-      background:var(--card);
-      border-radius:8px;
-      padding:14px;
-      box-shadow:0 1px 4px rgba(0,0,0,.06);
-      margin-bottom:12px;
-    }
-    .section-title{font-weight:700;margin:6px 0 10px 0}
-    .q{margin:10px 0;padding:8px;border-radius:6px;border:1px solid #eee}
-    .q h4{margin:0 0 6px 0;font-size:15px}
-    .opts{display:flex;flex-wrap:wrap;gap:8px}
-    label.opt{
-      background:#fafafa;border:1px solid #eee;padding:8px 10px;border-radius:6px;cursor:pointer;
-      display:flex;align-items:center;gap:8px;min-width:140px;
-    }
-    input[type="radio"]{accent-color:var(--accent)}
-    .result-row{display:flex;gap:12px;align-items:center;margin-top:12px}
-    .badge{padding:6px 10px;border-radius:999px;color:#fff;font-weight:700}
-    .badge.correct{background:var(--correct)}
-    .badge.wrong{background:var(--wrong)}
-    .summary{margin-top:12px;}
-    .answer-highlight.correct{background:rgba(11,138,62,0.08);border:1px solid rgba(11,138,62,0.18)}
-    .answer-highlight.wrong{background:rgba(201,42,42,0.06);border:1px solid rgba(201,42,42,0.12)}
-    footer{display:flex;justify-content:center;margin-top:18px}
-    .score-details{font-size:14px;color:#333}
-    .small{font-size:13px;color:#666;margin-top:6px}
-    @media (max-width:720px){
-      .opts{flex-direction:column}
-      label.opt{min-width:unset}
-      header{flex-direction:column;align-items:flex-start;gap:8px}
+    main{max-width:980px;margin:18px auto;padding:20px;}
+    .card{background:var(--card);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:0 6px 20px rgba(12,38,63,0.06);border:1px solid #eaf2fb}
+    h2.section{margin:0 0 12px 0;font-size:16px;color:var(--accent)}
+    .question{margin:12px 0;padding:12px;border-radius:8px;border:1px dashed #eef6fb;background:linear-gradient(180deg,#fff,#fbfeff)}
+    .q-title{font-weight:600;margin-bottom:8px}
+    .opts{display:flex;flex-direction:column;gap:8px}
+    .opt{display:flex;align-items:center;gap:8px;padding:8px;border-radius:6px;border:1px solid transparent}
+    .opt input[type="radio"]{transform:scale(1.02)}
+    .actions{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:18px;flex-wrap:wrap}
+    button{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+    button.secondary{background:#fff;color:var(--accent);border:1px solid #dceefb}
+    .result-summary{padding:12px;border-radius:8px;margin-top:12px;font-weight:700}
+    .result-correct{color:var(--ok)}
+    .result-wrong{color:var(--bad)}
+    .explain{margin-top:10px;padding:10px;border-radius:6px;background:#fcfcfe;border:1px solid #eef7f9;color:var(--muted)}
+    .sticky-note{font-size:13px;color:var(--muted)}
+    /* color feedback after submit */
+    .opt.correct{background:rgba(26,154,47,0.08);border-color:rgba(26,154,47,0.18)}
+    .opt.wrong{background:rgba(214,40,40,0.06);border-color:rgba(214,40,40,0.12)}
+    /* responsive */
+    @media (max-width:600px){
+      .timer{min-width:120px;font-size:14px}
+      main{padding:12px}
+      header{padding:10px}
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <div class="title">
-        <h1>WBSSC Group D — 45 প্রশ্ন মক টেস্ট (বাংলা)</h1>
-        <p class="lead">3 অংশ: General Knowledge (1–15), Current Affairs (16–30), Arithmetic (31–45)</p>
-      </div>
-      <div class="controls">
-        <div class="timer" id="timerDisplay">60:00</div>
-        <button id="startBtn">Start 60 min</button>
-        <button id="resetBtn" class="secondary" disabled>Reset</button>
-      </div>
-    </header>
-
-    <form id="quizForm" class="card" autocomplete="off" onsubmit="return false;">
-      <!-- Section I -->
+  <header>
+    <div class="brand">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><rect width="24" height="24" rx="6" fill="#e6f6ff"/><path d="M6 7h12M6 12h8M6 17h6" stroke="#075985" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <div>
-        <div class="section-title">Section I — General Knowledge (প্রশ্ন 1–15)</div>
+        <h1>WBSSC Group D — Practice Test</h1>
+        <div class="sticky-note">Section I: GK (1–15) • Section II: Current Affairs (16–30) • Section III: Arithmetic (31–45)</div>
+      </div>
+    </div>
 
-        <!-- Questions 1 - 15 -->
-        <!-- Each question container has data-answer attribute for correct option -->
-        <div class="q" data-answer="A">
-          <h4>1. নিচের কোনটি মানুষের ক্ষেত্রে প্রযোজ্য নয়?</h4>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="timer" id="timer">60:00</div>
+      <button id="submitBtn">Submit</button>
+    </div>
+  </header>
+
+  <main>
+    <form id="quizForm">
+      <!-- Generate questions: 45 -->
+      <!-- For brevity in markup every question block is explicit with data-q attribute -->
+      <!-- Questions 1-15 (General Knowledge) -->
+      <div class="card">
+        <h2 class="section">Section I — General Knowledge (1–15)</h2>
+
+        <!-- Q1 -->
+        <div class="question" data-q="1">
+          <div class="q-title">1. কোন প্রাণীর রক্ত নীলাভ-সবুজ রঙের হয় কারণ এতে কপারভিত্তিক হিমোসায়ানিন থাকে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q1" value="A"> A) Autotrophic</label>
-            <label class="opt"><input type="radio" name="q1" value="B"> B) Omnivore</label>
-            <label class="opt"><input class="opt" type="radio" name="q1" value="C"> C) Heterotrophic</label>
-            <label class="opt"><input type="radio" name="q1" value="D"> D) Carnivore</label>
+            <label class="opt"><input type="radio" name="q1" value="A"> A. অক্টোপাস</label>
+            <label class="opt"><input type="radio" name="q1" value="B"> B. গায়া</label>
+            <label class="opt"><input type="radio" name="q1" value="C"> C. কুমির</label>
+            <label class="opt"><input type="radio" name="q1" value="D"> D. কচ্ছপ</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: প্রাণীবিজ্ঞান — খাদ্যজীববিদ্যা</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>2. নাইট ব্লাইন্ডনেস কোন ভিটামিনের ঘাটতির কারণে হয়?</h4>
+        <!-- Q2 -->
+        <div class="question" data-q="2">
+          <div class="q-title">2. প্ল্যান্ট সেলগুলিতে কোন অর্গানেল আউটপুট হিসেবে ATP সর্বাধিক উৎপাদন করে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q2" value="A"> A) Vitamin D</label>
-            <label class="opt"><input type="radio" name="q2" value="B"> B) Vitamin C</label>
-            <label class="opt"><input type="radio" name="q2" value="C"> C) Vitamin K</label>
-            <label class="opt"><input type="radio" name="q2" value="D"> D) Vitamin A</label>
+            <label class="opt"><input type="radio" name="q2" value="A"> A. ক্লোরোপ্লাস্ট</label>
+            <label class="opt"><input type="radio" name="q2" value="B"> B. মাইটোকন্ড্রিয়া</label>
+            <label class="opt"><input type="radio" name="q2" value="C"> C. ভ্যাকিউল</label>
+            <label class="opt"><input type="radio" name="q2" value="D"> D. গলজি বডি</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: মানবচিকিৎসা — পুষ্টি ও ভিটামিন</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>3. দাঁতে ক্যারিস থাকলে কাকে দেখাবেন?</h4>
+        <!-- Q3 -->
+        <div class="question" data-q="3">
+          <div class="q-title">3. মানুষের রক্তসঞ্চালনে রক্তকোষের গড় আয়ু প্রায় কত (রেড ব্লাড সেল-এর ক্ষেত্রে)?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q3" value="A"> A) Cardiologist</label>
-            <label class="opt"><input type="radio" name="q3" value="B"> B) Orthopaedics</label>
-            <label class="opt"><input type="radio" name="q3" value="C"> C) Dentist</label>
-            <label class="opt"><input type="radio" name="q3" value="D"> D) Neurologist</label>
+            <label class="opt"><input type="radio" name="q3" value="A"> A. ২০ দিন</label>
+            <label class="opt"><input type="radio" name="q3" value="B"> B. ১২০ দিন</label>
+            <label class="opt"><input type="radio" name="q3" value="C"> C. ৩০০ দিন</label>
+            <label class="opt"><input type="radio" name="q3" value="D"> D. ৭ দিন</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: স্বাস্থ্যবিজ্ঞান — ডেন্টিস্ট্রি</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>4. কঙ্গারু কোন দেশের জাতীয় প্রতীক?</h4>
+        <!-- Q4 -->
+        <div class="question" data-q="4">
+          <div class="q-title">4. গ্লোবাল স্যামলিং বিশ্লেষণে 'এভাপোরেশন পেনম্যান' পদ্ধতি মূলত কোন জলের দিক নির্দেশ করে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q4" value="A"> A) Canada</label>
-            <label class="opt"><input type="radio" name="q4" value="B"> B) Australia</label>
-            <label class="opt"><input type="radio" name="q4" value="C"> C) Italy</label>
-            <label class="opt"><input type="radio" name="q4" value="D"> D) Ireland</label>
+            <label class="opt"><input type="radio" name="q4" value="A"> A. ভূগর্ভস্থ জল</label>
+            <label class="opt"><input type="radio" name="q4" value="B"> B. পৃষ্ঠজল বাষ্পীভবন হার</label>
+            <label class="opt"><input type="radio" name="q4" value="C"> C. সমুদ্র-ঝোখা</label>
+            <label class="opt"><input type="radio" name="q4" value="D"> D. বরফ গলনের হার</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ভূগোল — দেশ ও জাতীয় প্রতীক</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>5. টোফু কোনটি থেকে তৈরি করা হয়?</h4>
+        <!-- Q5 -->
+        <div class="question" data-q="5">
+          <div class="q-title">5. কোন অ্যালচিহ্নিত পেশীর কোষে মাইটোকন্ড্রিয়ার ঘনত্ব সবচেয়ে বেশি থাকে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q5" value="A"> A) Cocoa</label>
-            <label class="opt"><input type="radio" name="q5" value="B"> B) Soyabean milk curd</label>
-            <label class="opt"><input type="radio" name="q5" value="C"> C) Curd</label>
-            <label class="opt"><input type="radio" name="q5" value="D"> D) Coffee</label>
+            <label class="opt"><input type="radio" name="q5" value="A"> A. কুণ্ঠিত ফ্যাট কোষ</label>
+            <label class="opt"><input type="radio" name="q5" value="B"> B. কার্ডিয়াক মায়োকার্ডিয়াম</label>
+            <label class="opt"><input type="radio" name="q5" value="C"> C. চামড়ার তন্তু কোষ</label>
+            <label class="opt"><input type="radio" name="q5" value="D"> D. মসৃণ পেশী</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: খাদ্যপ্রযুক্তি — উদ্ভিদজাত প্রোটিন</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>6. বিশ্বের সবচেয়ে গভীর হ্রদ কোনটি?</h4>
+        <!-- Q6 -->
+        <div class="question" data-q="6">
+          <div class="q-title">6. গ্লেসবিয়াল ফ্লো এবং প্রলয়স্থল বিন্যাস পরিবর্তনে কোন ভূ-জলবৈজ্ঞানিক প্রক্রিয়া প্রধান?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q6" value="A"> A) Red Sea</label>
-            <label class="opt"><input type="radio" name="q6" value="B"> B) Dal Lake</label>
-            <label class="opt"><input type="radio" name="q6" value="C"> C) Caspian Sea</label>
-            <label class="opt"><input type="radio" name="q6" value="D"> D) Lake Baikal</label>
+            <label class="opt"><input type="radio" name="q6" value="A"> A. টেক্টোনিক প্লেট শলীলা</label>
+            <label class="opt"><input type="radio" name="q6" value="B"> B. গ্লেশিয়ারিক এrosion ও ডিপোজিশন</label>
+            <label class="opt"><input type="radio" name="q6" value="C"> C. সাদামাটা ঝড়</label>
+            <label class="opt"><input type="radio" name="q6" value="D"> D. পলি সঞ্চয়</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ভূগোল — হ্রদ ও জলরাশির বৈশিষ্ট্য</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>7. কোন স্তন্যপায়ী ডিম পাড়ে?</h4>
+        <!-- Q7 -->
+        <div class="question" data-q="7">
+          <div class="q-title">7. হিমোগ্লোবিনের গঠন কোন মৌলকে কেন্দ্র করে অক্সিজেন-বাঁধার ক্ষমতা দেয়?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q7" value="A"> A) Dolphin</label>
-            <label class="opt"><input type="radio" name="q7" value="B"> B) Duck-billed Platypus</label>
-            <label class="opt"><input type="radio" name="q7" value="C"> C) Whale</label>
-            <label class="opt"><input type="radio" name="q7" value="D"> D) Dugong</label>
+            <label class="opt"><input type="radio" name="q7" value="A"> A. লোহা (Fe)</label>
+            <label class="opt"><input type="radio" name="q7" value="B"> B. কপার (Cu)</label>
+            <label class="opt"><input type="radio" name="q7" value="C"> C. ম্যাগনেসিয়াম (Mg)</label>
+            <label class="opt"><input type="radio" name="q7" value="D"> D. জিঙ্ক (Zn)</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: জন্তুবিদ্যা — মনোট্রিমস</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>8. ভারতের সংবিধানের প্রধান স্থপতি হিসেবে কে গণ্য হন?</h4>
+        <!-- Q8 -->
+        <div class="question" data-q="8">
+          <div class="q-title">8. ভারতের সংবিধান অনুসারে প্রেসিডেন্টের প্রামাণ্য পদক্ষেপে 'অপেক্ষার অধিকার' (pardoning power) কোন অনুচ্ছেদে বা ধারায় প্রাধান্য পায়?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q8" value="A"> A) B. N. Rao</label>
-            <label class="opt"><input type="radio" name="q8" value="B"> B) Dr. B. R. Ambedkar</label>
-            <label class="opt"><input type="radio" name="q8" value="C"> C) N. Gopalswami Ayyangar</label>
-            <label class="opt"><input type="radio" name="q8" value="D"> D) Dr. Rajendra Prasad</label>
+            <label class="opt"><input type="radio" name="q8" value="A"> A. চতুর্থ তালিকা</label>
+            <label class="opt"><input type="radio" name="q8" value="B"> B. মৌলিক অধিকার</label>
+            <label class="opt"><input type="radio" name="q8" value="C"> C. অধ্যায় V</label>
+            <label class="opt"><input type="radio" name="q8" value="D"> D. রাষ্ট্রপতির ক্ষমতা-ধারা</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: রাজনীতি — ভারতীয় সংবিধান</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>9. নিম্নলিখিত কোন রোগ ব্যাকটেরিয়ার কারণে হয় না?</h4>
+        <!-- Q9 -->
+        <div class="question" data-q="9">
+          <div class="q-title">9. কোন ব্যাকটেরিয়া-জনিত রোগ সাধারণত কনট্যামিনেটেড খাদ্যের মাধ্যমে দ্রুত উপসর্গ দেয়?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q9" value="A"> A) Amoebiasis</label>
-            <label class="opt"><input type="radio" name="q9" value="B"> B) Typhoid</label>
-            <label class="opt"><input type="radio" name="q9" value="C"> C) Cholera</label>
-            <label class="opt"><input type="radio" name="q9" value="D"> D) Diphtheria</label>
+            <label class="opt"><input type="radio" name="q9" value="A"> A. সালমোনেলা ইনফেকশন</label>
+            <label class="opt"><input type="radio" name="q9" value="B"> B. ইনফ্লুয়েঞ্জা</label>
+            <label class="opt"><input type="radio" name="q9" value="C"> C. হেপাটাইটিস বি</label>
+            <label class="opt"><input type="radio" name="q9" value="D"> D. ডেঙ্গু</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: জীবাণুবিজ্ঞান — রোগজীবাণু পরিচিতি</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>10. Big-Bang তত্ত্ব কী ব্যাখ্যা করে?</h4>
+        <!-- Q10 -->
+        <div class="question" data-q="10">
+          <div class="q-title">10. মহাকাশ বিজ্ঞানে 'কোয়াসার' কোন শ্রেণীর বৃহৎ বস্তু হিসেবে বিবেচিত হয়?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q10" value="A"> A) origin of Universe</label>
-            <label class="opt"><input type="radio" name="q10" value="B"> B) origin of Sun</label>
-            <label class="opt"><input type="radio" name="q10" value="C"> C) origin of gravitation</label>
-            <label class="opt"><input type="radio" name="q10" value="D"> D) origin of microbes</label>
+            <label class="opt"><input type="radio" name="q10" value="A"> A. নক্ষত্রসমষ্টি</label>
+            <label class="opt"><input type="radio" name="q10" value="B"> B. সুপারনোভার অবশিষ্ট</label>
+            <label class="opt"><input type="radio" name="q10" value="C"> C. সক্রিয় মহাশূন্য কেন্দ্রিক কক্ষপথ</label>
+            <label class="opt"><input type="radio" name="q10" value="D"> D. সুপারম্যাসিভ ব্ল্যাকহোল-চালিত আভাস</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ভৌতবিজ্ঞান — মহাবিশ্বের উৎপত্তি</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>11. ভূমিকম্পের তীব্রতা মাপার যন্ত্র কোনটি?</h4>
+        <!-- Q11 -->
+        <div class="question" data-q="11">
+          <div class="q-title">11. ভূমিকম্প তরঙ্গের মধ্যে P-তরঙ্গ ও S-তরঙ্গের মধ্যে কোনটি প্রথম পৌঁছে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q11" value="A"> A) Barometer</label>
-            <label class="opt"><input type="radio" name="q11" value="B"> B) Hydrometer</label>
-            <label class="opt"><input type="radio" name="q11" value="C"> C) Polygraph</label>
-            <label class="opt"><input type="radio" name="q11" value="D"> D) Seismograph</label>
+            <label class="opt"><input type="radio" name="q11" value="A"> A. S-তরঙ্গ আগে; তরল মাধ্যমে যায়</label>
+            <label class="opt"><input type="radio" name="q11" value="B"> B. P-তরঙ্গ আগে; কঠিন ও তরল মাধ্যমে যায়</label>
+            <label class="opt"><input type="radio" name="q11" value="C"> C. S-তরঙ্গ আগে; শুধু কঠিন মাধ্যমে যায়</label>
+            <label class="opt"><input type="radio" name="q11" value="D"> D. P-তরঙ্গ পরে; শুধু কঠিন মাধ্যমে যায়</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ভূতত্ত্ব — সিসমোলজি</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>12. Deciduous গাছ সম্পর্কে কোনটি সঠিক?</h4>
+        <!-- Q12 -->
+        <div class="question" data-q="12">
+          <div class="q-title">12. বৃক্ষবিজ্ঞানে 'অপরগমী' উদ্ভিদ কোন পর্যায়ে পরাগায়ন ঘটে এবং এর উদাহরণ কোনটি?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q12" value="A"> A) গ্রীষ্মে তাদের ফুল ঝরে যায়</label>
-            <label class="opt"><input type="radio" name="q12" value="B"> B) শীতে তাদের পাতা ঝরে যায়</label>
-            <label class="opt"><input type="radio" name="q12" value="C"> C) শীতে তাদের ফুল ঝরে যায়</label>
-            <label class="opt"><input type="radio" name="q12" value="D"> D) শীতকালে তারা মারা যায়</label>
+            <label class="opt"><input type="radio" name="q12" value="A"> A. বৃষ্টির দ্বারা; আম</label>
+            <label class="opt"><input type="radio" name="q12" value="B"> B. বাতাস দ্বারা; বটবৃক্ষ</label>
+            <label class="opt"><input type="radio" name="q12" value="C"> C. প্রাণীর মাধ্যমে; কাঁঠাল</label>
+            <label class="opt"><input type="radio" name="q12" value="D"> D. জল-পরাগায়ন; কচু</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: উদ্ভিদবিদ্যা — ঋতুভিত্তিক পাতা পতন</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>13. মাছের কোন প্রজাতি মশা নিয়ন্ত্রণে বায়োলজিক্যাল কন্ট্রোল হিসেবে ব্যবহৃত হয়?</h4>
+        <!-- Q13 -->
+        <div class="question" data-q="13">
+          <div class="q-title">13. কোন প্রাণী ক্লাসের সাধারণ বৈশিষ্ট্য হল পেশীর মুলতন্ত্রে আস্তরণ, স্তনবৃন্তের অভাব এবং তিন-অংশযুক্ত শরীর?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q13" value="A"> A) Puntius</label>
-            <label class="opt"><input type="radio" name="q13" value="B"> B) Rohu</label>
-            <label class="opt"><input type="radio" name="q13" value="C"> C) Gambusia</label>
-            <label class="opt"><input type="radio" name="q13" value="D"> D) Bata</label>
+            <label class="opt"><input type="radio" name="q13" value="A"> A. ইনসেক্টা</label>
+            <label class="opt"><input type="radio" name="q13" value="B"> B. মলস্কা</label>
+            <label class="opt"><input type="radio" name="q13" value="C"> C. অ্যাম্ফিবিয়া</label>
+            <label class="opt"><input type="radio" name="q13" value="D"> D. অপিস্থিতোকোনটা</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: প্রয়োগিক জীববিজ্ঞান — বায়োলজিক্যাল কন্ট্রোল</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>14. ভোপাল গ্যাস ট্র্যাজিকটির কারণ ছিল MIC গ্যাস লিকেজ; MIC কোন যৌগ?</h4>
+        <!-- Q14 -->
+        <div class="question" data-q="14">
+          <div class="q-title">14. শিল্পবৈজ্ঞানিক ইতিহাসে 'রসায়ন বিপ্লব' প্রাথমিকত কোন প্রক্রিয়ার মাধ্যমে আধুনিক রসায়নকে মৌলিক তত্ত্ব দিল?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q14" value="A"> A) Methyl isocyanite</label>
-            <label class="opt"><input type="radio" name="q14" value="B"> B) Methyl isocyanate</label>
-            <label class="opt"><input type="radio" name="q14" value="C"> C) Methyl isocyanide</label>
-            <label class="opt"><input type="radio" name="q14" value="D"> D) Methyl isocitrate</label>
+            <label class="opt"><input type="radio" name="q14" value="A"> A. আলকেমি পদ্ধতি</label>
+            <label class="opt"><input type="radio" name="q14" value="B"> B. ল্যাবরেটরি পরীক্ষামূলক উপায়</label>
+            <label class="opt"><input type="radio" name="q14" value="C"> C. কৃষি পদ্ধতি</label>
+            <label class="opt"><input type="radio" name="q14" value="D"> D. বানিজ্যিক ধাতু উত্তোলন</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: রাসায়নবিদ্যা — শিল্পদুর্ঘটনা</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>15. নিম্নলিখিতগুলোর মধ্যে কোনটি গ্রিনহাউস গ্যাস হিসেবে পরিচিত নয়?</h4>
+        <!-- Q15 -->
+        <div class="question" data-q="15">
+          <div class="q-title">15. গ্রিনহাউস গ্যাসগুলোর মধ্যে গ্লোবালের উষ্ণায়নে মিথেনের প্রতিক্রিয়া শক্তি CO2 অপেক্ষায় কতগুণ বেশি প্রায় ২০ বছরের সূত্রে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q15" value="A"> A) Methane</label>
-            <label class="opt"><input type="radio" name="q15" value="B"> B) Nitrous oxide</label>
-            <label class="opt"><input type="radio" name="q15" value="C"> C) Carbon dioxide</label>
-            <label class="opt"><input type="radio" name="q15" value="D"> D) Hydrogen</label>
+            <label class="opt"><input type="radio" name="q15" value="A"> A. ৫–১০ গুণ</label>
+            <label class="opt"><input type="radio" name="q15" value="B"> B. ২০–৩০ গুণ</label>
+            <label class="opt"><input type="radio" name="q15" value="C"> C. ৮০–১০০ গুণ</label>
+            <label class="opt"><input type="radio" name="q15" value="D"> D. ২০০–৩০০ গুণ</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: পরিবেশবিজ্ঞান — বায়ুমণ্ডলীয় গ্যাস</div>
         </div>
       </div>
 
       <!-- Section II -->
-      <div style="margin-top:12px">
-        <div class="section-title">Section II — Current Affairs (প্রশ্ন 16–30)</div>
+      <div class="card">
+        <h2 class="section">Section II — Current Affairs (16–30)</h2>
 
-        <!-- Questions 16 - 30 -->
-        <div class="q" data-answer="D">
-          <h4>16. বই 'Playing It My Way' কার রচিত?</h4>
+        <!-- Generate Q16 to Q30 similarly -->
+        <!-- Q16 -->
+        <div class="question" data-q="16">
+          <div class="q-title">16. সাম্প্রতিক সময়ে আন্তর্জাতিক ক্রিকেটে 'ডেটা‑অ্যাডভাইজড ব্যাটিং' কৌশল কোন ক্ষেত্র উন্নত করেছে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q16" value="A"> A) Sunil Gavaskar</label>
-            <label class="opt"><input type="radio" name="q16" value="B"> B) G. R. Viswanath</label>
-            <label class="opt"><input type="radio" name="q16" value="C"> C) Sachin Tendulkar</label>
-            <label class="opt"><input type="radio" name="q16" value="D"> D) Sourav Ganguly</label>
+            <label class="opt"><input type="radio" name="q16" value="A"> A. ফিটনেস</label>
+            <label class="opt"><input type="radio" name="q16" value="B"> B. স্ট্রাইকারেট ও পাওয়ারহিটিং</label>
+            <label class="opt"><input type="radio" name="q16" value="C"> C. বোলিং গতিমাত্রা</label>
+            <label class="opt"><input type="radio" name="q16" value="D"> D. মাঠ সংযোগ</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: সাম্প্রতিক বিষয় — ক্রিকেট আত্মজীবনী</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>17. রাজ্যের মন্ত্রীরা সম্মিলিতভাবে কার কাছে দায়বদ্ধ?</h4>
+        <!-- Q17 -->
+        <div class="question" data-q="17">
+          <div class="q-title">17. জেলা প্রশাসকের প্রধান দায়িত্বের মধ্যে কোনটি আইনশৃঙ্খলা ও জরুরি ব্যবস্থাপনা সংক্রান্ত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q17" value="A"> A) the Governor</label>
-            <label class="opt"><input type="radio" name="q17" value="B"> B) the Chief Minister</label>
-            <label class="opt"><input type="radio" name="q17" value="C"> C) the Bidhan Sabha</label>
-            <label class="opt"><input type="radio" name="q17" value="D"> D) the Speaker</label>
+            <label class="opt"><input type="radio" name="q17" value="A"> A. রাজ্য বাজেট প্রণয়ন</label>
+            <label class="opt"><input type="radio" name="q17" value="B"> B. নির্বাচন তত্ত্বাবধান</label>
+            <label class="opt"><input type="radio" name="q17" value="C"> C. দুর্যোগ ব্যবস্থাপনা ও পাবলিক অর্ডার রক্ষা</label>
+            <label class="opt"><input type="radio" name="q17" value="D"> D. আন্তর্জাতিক পলিসি সংলাপ</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: প্রশাসন — রাজ্য নির্বাহী কাঠামো</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>18. মোহনবাগান ক্লাব কোন বছরে ব্রিটিশ দলকে পরাজিত করেছিল?</h4>
+        <!-- Q18 -->
+        <div class="question" data-q="18">
+          <div class="q-title">18. মধ্যযুগীয় বাংলায় কোন শিল্প বা কলা বিশেষভাবে বিকশিত হয়েছিল?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q18" value="A"> A) 1901</label>
-            <label class="opt"><input type="radio" name="q18" value="B"> B) 1905</label>
-            <label class="opt"><input type="radio" name="q18" value="C"> C) 1910</label>
-            <label class="opt"><input type="radio" name="q18" value="D"> D) 1911</label>
+            <label class="opt"><input type="radio" name="q18" value="A"> A. কাঁথা বুনন</label>
+            <label class="opt"><input type="radio" name="q18" value="B"> B. ইলেকট্রনিক্স</label>
+            <label class="opt"><input type="radio" name="q18" value="C"> C. রেলপথ নির্মাণ</label>
+            <label class="opt"><input type="radio" name="q18" value="D"> D. বিমান পরিবহন</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ইতিহাস — স্থানীয় ক্রীড়া ইতিহাস</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>19. নিম্নলিখিতের মধ্যে কোনটি ট্রপিক্যাল মনসুন ফসল?</h4>
+        <!-- Q19 -->
+        <div class="question" data-q="19">
+          <div class="q-title">19. ধানকে কৃষি শ্রেণিবিভাগে কোন হিসেবে ধরা হয়?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q19" value="A"> A) Paddy</label>
-            <label class="opt"><input type="radio" name="q19" value="B"> B) Wheat</label>
-            <label class="opt"><input type="radio" name="q19" value="C"> C) Bajra</label>
-            <label class="opt"><input type="radio" name="q19" value="D"> D) Mustard</label>
+            <label class="opt"><input type="radio" name="q19" value="A"> A. শস্য</label>
+            <label class="opt"><input type="radio" name="q19" value="B"> B. পাট</label>
+            <label class="opt"><input type="radio" name="q19" value="C"> C. ফল</label>
+            <label class="opt"><input type="radio" name="q19" value="D"> D. শাকসবজি</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: কৃষি বিজ্ঞান — ফসল শ্রেণিবিভাগ</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>20. বিশ্বভারতী কোন জেলায় অবস্থিত?</h4>
+        <!-- Q20 -->
+        <div class="question" data-q="20">
+          <div class="q-title">20. পশ্চিমবঙ্গের ভৌগোলিক শ্রেণিবিভাগে 'বিষ্ণুপুর ব্যাসিন' কোন বৈশিষ্ট্য বহন করে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q20" value="A"> A) Purulia</label>
-            <label class="opt"><input type="radio" name="q20" value="B"> B) Bankura</label>
-            <label class="opt"><input type="radio" name="q20" value="C"> C) Birbhum</label>
-            <label class="opt"><input type="radio" name="q20" value="D"> D) Medinipur</label>
+            <label class="opt"><input type="radio" name="q20" value="A"> A. পাহাড়ি সার</label>
+            <label class="opt"><input type="radio" name="q20" value="B"> B. জলাধারী ও নদী-ময়লাপূর্ণ সমভূমি</label>
+            <label class="opt"><input type="radio" name="q20" value="C"> C. মরূভূমি</label>
+            <label class="opt"><input type="radio" name="q20" value="D"> D. আর্কটিক জলাভূমি</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: রাজ্য ভূগোল — শিক্ষা প্রতিষ্ঠান অবস্থান</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>21. কুলিনবৃত্তির প্রতিষ্ঠার সাথে কার নাম জড়িত?</h4>
+        <!-- Q21 -->
+        <div class="question" data-q="21">
+          <div class="q-title">21. বাংলার মধ্যযুগীয় ইতিহাসে 'সেন বংশ' বা 'পাল বংশ' কোন ক্ষেত্রে প্রভাবশালী ছিল?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q21" value="A"> A) Samanta Sen</label>
-            <label class="opt"><input type="radio" name="q21" value="B"> B) Vijaya Sen</label>
-            <label class="opt"><input type="radio" name="q21" value="C"> C) Ballal Sen</label>
-            <label class="opt"><input type="radio" name="q21" value="D"> D) Lakshman Sen</label>
+            <label class="opt"><input type="radio" name="q21" value="A"> A. সামরিক প্রশাসন ও বৌদ্ধ-শিক্ষা পৃষ্ঠপোষকতা</label>
+            <label class="opt"><input type="radio" name="q21" value="B"> B. আধুনিক অর্থনীতি</label>
+            <label class="opt"><input type="radio" name="q21" value="C"> C. কল্যাণমূলক রাজনীতি</label>
+            <label class="opt"><input type="radio" name="q21" value="D"> D. ইন্ডাস্ট্রিয়াল ব্যবসা</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ইতিহাস — মধ্যযুগীয় বাঙালি রাজবংশ</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>22. ধ্যানচন্দ কোন খেলাধুলার সাথে পরিচিত?</h4>
+        <!-- Q22 -->
+        <div class="question" data-q="22">
+          <div class="q-title">22. সাম্প্রতিক কোন ভারতীয় ক্রিকেটারের পারফর্ম্যান্স 'অল‑রাউন্ডার' উপাধি নিয়ে আলোচ্য হয়েছে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q22" value="A"> A) Running</label>
-            <label class="opt"><input type="radio" name="q22" value="B"> B) Football</label>
-            <label class="opt"><input type="radio" name="q22" value="C"> C) Boxing</label>
-            <label class="opt"><input type="radio" name="q22" value="D"> D) Hockey</label>
+            <label class="opt"><input type="radio" name="q22" value="A"> A. কেবল ব্যাটসম্যান</label>
+            <label class="opt"><input type="radio" name="q22" value="B"> B. মূলত বোলিং</label>
+            <label class="opt"><input type="radio" name="q22" value="C"> C. ব্যাটিং ও বোলিং উভয় দক্ষতা</label>
+            <label class="opt"><input type="radio" name="q22" value="D"> D. উইকেটকিপিং দক্ষতা</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ক্রীড়া ইতিহাস — ভারতীয় ক্রীড়াবিদ</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>23. নিম্নলিখিত কোনটি নবায়নযোগ্য শক্তি?</h4>
+        <!-- Q23 -->
+        <div class="question" data-q="23">
+          <div class="q-title">23. গ্রামীণ উন্নয়ন প্রকল্পে সবচেয়ে কার্যকর উপাদান কোনটি?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q23" value="A"> A) Solar power</label>
-            <label class="opt"><input type="radio" name="q23" value="B"> B) Thermal power</label>
-            <label class="opt"><input type="radio" name="q23" value="C"> C) Atomic power</label>
-            <label class="opt"><input type="radio" name="q23" value="D"> D) Petroleum</label>
+            <label class="opt"><input type="radio" name="q23" value="A"> A. নগর প্রশিক্ষণ</label>
+            <label class="opt"><input type="radio" name="q23" value="B"> B. স্থানীয় অবকাঠামো ও স্ব-উদ্যোগ সহায়তা</label>
+            <label class="opt"><input type="radio" name="q23" value="C"> C. বিদেশি বিনিয়োগ</label>
+            <label class="opt"><input type="radio" name="q23" value="D"> D. সামরিক প্রকল্প</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: শক্তি বিজ্ঞান — পুনর্নবীকরণযোগ্য উৎস</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>24. Gatidhara Prakalpa কোন সরকারের উদ্যোগ?</h4>
+        <!-- Q24 -->
+        <div class="question" data-q="24">
+          <div class="q-title">24. জল সংরক্ষণ নীতির অংশ হিসেবে রাজ্য সরকার কোন কার্যক্রম প্রাধান্য দেয়?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q24" value="A"> A) Odisha</label>
-            <label class="opt"><input type="radio" name="q24" value="B"> B) Assam</label>
-            <label class="opt"><input type="radio" name="q24" value="C"> C) West Bengal</label>
-            <label class="opt"><input type="radio" name="q24" value="D"> D) Maharashtra</label>
+            <label class="opt"><input type="radio" name="q24" value="A"> A. সমুদ্র বাঁধ নির্মাণ</label>
+            <label class="opt"><input type="radio" name="q24" value="B"> B. বৃষ্টির পানি সংরক্ষণ ও পুনরুদ্ধার</label>
+            <label class="opt"><input type="radio" name="q24" value="C"> C. তেলে বিনিয়োগ</label>
+            <label class="opt"><input type="radio" name="q24" value="D"> D. বন কাটা</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: সরকারী প্রকল্প — রাজ্য নীতি</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>25. 2014 সালের জুনে ADB-র বোর্ড অফ গভর্নরসে ভারতের প্রতিনিধি হিসেবে কে মনোনীত ছিলেন?</h4>
+        <!-- Q25 -->
+        <div class="question" data-q="25">
+          <div class="q-title">25. ADB সাধারণত রাজ্য/দেশের সঙ্গে কোন ধরনের সহযোগিতা করে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q25" value="A"> A) Prakash Javadekar</label>
-            <label class="opt"><input type="radio" name="q25" value="B"> B) Nirmala Sitaraman</label>
-            <label class="opt"><input type="radio" name="q25" value="C"> C) Arun Jaitley</label>
-            <label class="opt"><input type="radio" name="q25" value="D"> D) Smriti Irani</label>
+            <label class="opt"><input type="radio" name="q25" value="A"> A. মিলিটারি লোন</label>
+            <label class="opt"><input type="radio" name="q25" value="B"> B. অবকাঠামো প্রকল্পে ঋণ ও প্রযুক্তি সহায়তা</label>
+            <label class="opt"><input type="radio" name="q25" value="C"> C. বিনোদন শিল্প বিনিয়োগ</label>
+            <label class="opt"><input type="radio" name="q25" value="D"> D. আন্তর্জাতিক সাংস্কৃতিক বিনিময়</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: অর্থনীতি ও প্রশাসন — আন্তর্জাতিক সংস্থা প্রতিনিধিত্ব</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>26. পৃথিবী নিজ অক্ষে কোন দিক থেকে ঘোরে?</h4>
+        <!-- Q26 -->
+        <div class="question" data-q="26">
+          <div class="q-title">26. পঞ্চায়েত সংক্রান্ত ক্ষমতা বিতরণে 'নির্বাহী ক্ষমতা' মূলত কাদের হাতে থাকে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q26" value="A"> A) North to South</label>
-            <label class="opt"><input type="radio" name="q26" value="B"> B) South to North</label>
-            <label class="opt"><input type="radio" name="q26" value="C"> C) East to West</label>
-            <label class="opt"><input type="radio" name="q26" value="D"> D) West to East</label>
+            <label class="opt"><input type="radio" name="q26" value="A"> A. কেন্দ্রীয় মন্ত্রিপরিষদ</label>
+            <label class="opt"><input type="radio" name="q26" value="B"> B. জেলা পরিষদ ও পঞ্চায়েত সমিতি</label>
+            <label class="opt"><input type="radio" name="q26" value="C"> C. আন্তর্জাতিক সংস্থা</label>
+            <label class="opt"><input type="radio" name="q26" value="D"> D. রেল বিভাগ</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ভূগোল — পৃথিবীর ঘূর্ণন</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>27. Park Street নামটি কার নামে পুনরায়করণ করা হয়েছে?</h4>
+        <!-- Q27 -->
+        <div class="question" data-q="27">
+          <div class="q-title">27. রাজ্যভিত্তিক স্বাস্থ্য প্রতিষ্ঠান সাধারণত কোন কাজ করে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q27" value="A"> A) Jagadish Chandra Bose</label>
-            <label class="opt"><input type="radio" name="q27" value="B"> B) Derozio</label>
-            <label class="opt"><input type="radio" name="q27" value="C"> C) Mother Teresa</label>
-            <label class="opt"><input type="radio" name="q27" value="D"> D) Netaji Subhas</label>
+            <label class="opt"><input type="radio" name="q27" value="A"> A. আন্তর্জাতিক কূটনীতি</label>
+            <label class="opt"><input type="radio" name="q27" value="B"> B. প্রাথমিক ও মাধ্যমিক স্বাস্থ্যসেবা প্রদান</label>
+            <label class="opt"><input type="radio" name="q27" value="C"> C. মহাসড়ক নির্মাণ</label>
+            <label class="opt"><input type="radio" name="q27" value="D"> D. ব্যাংকিং নিয়ন্ত্রণ</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: স্থানীয় ইতিহাস — শহর নামকরণ</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>28. Bengal Chemical প্রতিষ্ঠাতার নাম কে?</h4>
+        <!-- Q28 -->
+        <div class="question" data-q="28">
+          <div class="q-title">28. বাংলার কৃষি ইতিহাসে 'ইরিগেশন এবং নালা ব্যবস্থার' উন্নতি কিসের মাধ্যমে ঘটেছিল?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q28" value="A"> A) Nil Ratan Sarkar</label>
-            <label class="opt"><input type="radio" name="q28" value="B"> B) Prafulla Chandra Roy</label>
-            <label class="opt"><input type="radio" name="q28" value="C"> C) Dwarakanath Tagore</label>
-            <label class="opt"><input type="radio" name="q28" value="D"> D) Alamohan Das</label>
+            <label class="opt"><input type="radio" name="q28" value="A"> A. কৌশলগত যুদ্ধ</label>
+            <label class="opt"><input type="radio" name="q28" value="B"> B. শাসন ও প্রশাসনিক উদ্ভাবন ও প্রযুক্তি গ্রহণ</label>
+            <label class="opt"><input type="radio" name="q28" value="C"> C. চলচ্চিত্র শিল্প</label>
+            <label class="opt"><input type="radio" name="q28" value="D"> D. বিমানপথ উন্নয়ন</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: শিল্প ইতিহাস — ভারতীয় রাসায়নবিদ</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>29. ২০১৪ সালের অক্টোবরেও শহুরে আবাসন মিশন কোন নেতার নামে নামকরণ করা হয়েছিল?</h4>
+        <!-- Q29 -->
+        <div class="question" data-q="29">
+          <div class="q-title">29. জনকল্যাণ প্রকল্প নীতি নির্ধারণে 'প্রধান লক্ষ্য' কোনটি হওয়া উচিত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q29" value="A"> A) Sardar Patel</label>
-            <label class="opt"><input type="radio" name="q29" value="B"> B) Shyama Prasad Mukherjee</label>
-            <label class="opt"><input type="radio" name="q29" value="C"> C) Subhas Chandra Bose</label>
-            <label class="opt"><input type="radio" name="q29" value="D"> D) B. R. Ambedkar</label>
+            <label class="opt"><input type="radio" name="q29" value="A"> A. বৈদেশিক মুদ্রা রিজার্ভ বৃদ্ধি</label>
+            <label class="opt"><input type="radio" name="q29" value="B"> B. দরিদ্র ও ক্ষতিগ্রস্ত জনগোষ্ঠীর জীবনমান উন্নত করা</label>
+            <label class="opt"><input type="radio" name="q29" value="C"> C. ব্যবসায়িক লাভ বৃদ্ধি</label>
+            <label class="opt"><input type="radio" name="q29" value="D"> D. আন্তর্জাতিক বাণিজ্য বৃদ্ধি</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: সামাজিক নীতি — সরকারি কর্মসূচি নামকরণ</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>30. সিন্ধু সভ্যতার মানুষের প্রধান পেশা কী ছিল?</h4>
+        <!-- Q30 -->
+        <div class="question" data-q="30">
+          <div class="q-title">30. স্থানীয় ইতিহাস ও সাংস্কৃতিক ঐতিহ্য রক্ষায় কোন উদ্যোগ সবচেয়ে কার্যকর?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q30" value="A"> A) Agriculture</label>
-            <label class="opt"><input type="radio" name="q30" value="B"> B) Cattle rearing</label>
-            <label class="opt"><input type="radio" name="q30" value="C"> C) Hunting</label>
-            <label class="opt"><input type="radio" name="q30" value="D"> D) Trade</label>
+            <label class="opt"><input type="radio" name="q30" value="A"> A. প্রযুক্তি স্টার্টআপ উৎসাহ</label>
+            <label class="opt"><input type="radio" name="q30" value="B"> B. ঐতিহ্যবাহী উৎসব, স্মৃতিস্তম্ভ সংরক্ষণ ও শিক্ষা</label>
+            <label class="opt"><input type="radio" name="q30" value="C"> C. বিদেশী বিনিয়োগ</label>
+            <label class="opt"><input type="radio" name="q30" value="D"> D. বড় কর হ্রাস</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: প্রাচীন ইতিহাস — সভ্যতার অর্থনীতি</div>
         </div>
       </div>
 
       <!-- Section III -->
-      <div style="margin-top:12px">
-        <div class="section-title">Section III — Arithmetic (প্রশ্ন 31–45)</div>
+      <div class="card">
+        <h2 class="section">Section III — Arithmetic (31–45)</h2>
 
-        <!-- Questions 31 - 45 -->
-        <div class="q" data-answer="B">
-          <h4>31. 6598-এ সর্বনিম্ন কত যোগ করলে পরফেক্ট স্কোয়ার হবে?</h4>
+        <!-- Q31 -->
+        <div class="question" data-q="31">
+          <div class="q-title">31. পাঁচ সংখ্যার সমষ্টি ৩০, প্রথম চারটির গড় ৬ হলে পঞ্চম সংখ্যার মান কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q31" value="A"> A) 124</label>
-            <label class="opt"><input type="radio" name="q31" value="B"> B) 116</label>
-            <label class="opt"><input class="opt" type="radio" name="q31" value="C"> C) 126</label>
-            <label class="opt"><input type="radio" name="q31" value="D"> D) 112</label>
+            <label class="opt"><input type="radio" name="q31" value="A"> A. ৬</label>
+            <label class="opt"><input type="radio" name="q31" value="B"> B. ১০</label>
+            <label class="opt"><input type="radio" name="q31" value="C"> C. ৭</label>
+            <label class="opt"><input type="radio" name="q31" value="D"> D. ৮</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: সংখ্যা পদ্ধতি — পারফেক্ট স্কোয়ার</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>32. একটি ট্রেন 30 km/h গতিতে চললে এবং একটি বিন্দু পার হতে t সেকেন্ড লাগলে ট্রেনের দৈর্ঘ্য কত হবে?</h4>
+        <!-- Q32 -->
+        <div class="question" data-q="32">
+          <div class="q-title">32. দুই ট্রেন বিপরীতমুখে 144 ও 96 কিমি/ঘঃ; প্রারম্ভিক দূরত্ব 480 কিমি; কত সময়ে মিলবে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q32" value="A"> A) 112.5 metre</label>
-            <label class="opt"><input type="radio" name="q32" value="B"> B) 140.5 metre</label>
-            <label class="opt"><input type="radio" name="q32" value="C"> C) 150 metre</label>
-            <label class="opt"><input type="radio" name="q32" value="D"> D) 132 metre</label>
+            <label class="opt"><input type="radio" name="q32" value="A"> A. 2 ঘন্টা</label>
+            <label class="opt"><input type="radio" name="q32" value="B"> B. 3 ঘন্টা</label>
+            <label class="opt"><input type="radio" name="q32" value="C"> C. 2.5 ঘন্টা</label>
+            <label class="opt"><input type="radio" name="q32" value="D"> D. 4 ঘন্টা</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: গতি ও দূরত্ব — ট্রেন সমস্যা</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>33. 1023 এবং 750 সংখ্যাগুলোকে এমন কোন সর্ববৃহৎ সংখ্যায় ভাগ করলে বাকি যথাক্রমে 3 এবং 2 থাকে?</h4>
+        <!-- Q33 -->
+        <div class="question" data-q="33">
+          <div class="q-title">33. n ও n+2 উভয়ই মৌলিক; 100-এর মধ্যে কত জুটী আছে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q33" value="A"> A) 65</label>
-            <label class="opt"><input type="radio" name="q33" value="B"> B) 68</label>
-            <label class="opt"><input type="radio" name="q33" value="C"> C) 78</label>
-            <label class="opt"><input type="radio" name="q33" value="D"> D) 11</label>
+            <label class="opt"><input type="radio" name="q33" value="A"> A. 8</label>
+            <label class="opt"><input type="radio" name="q33" value="B"> B. 9</label>
+            <label class="opt"><input type="radio" name="q33" value="C"> C. 12</label>
+            <label class="opt"><input type="radio" name="q33" value="D"> D. 11</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: সংখ্যাতত্ত্ব — GCD/বিভাজক</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>34. 2 থেকে 12 এর মধ্যে prime সংখ্যাগুলোর যোগফল কত?</h4>
+        <!-- Q34 -->
+        <div class="question" data-q="34">
+          <div class="q-title">34. পণ্যের দাম 25% কমে বিক্রয় মূল্য ১৫০ হলে আসল মূল্য কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q34" value="A"> A) 26</label>
-            <label class="opt"><input type="radio" name="q34" value="B"> B) 29</label>
-            <label class="opt"><input type="radio" name="q34" value="C"> C) 25</label>
-            <label class="opt"><input type="radio" name="q34" value="D"> D) 28</label>
+            <label class="opt"><input type="radio" name="q34" value="A"> A. ১৮৭.৫</label>
+            <label class="opt"><input type="radio" name="q34" value="B"> B. ২০০</label>
+            <label class="opt"><input type="radio" name="q34" value="C"> C. ১২৫</label>
+            <label class="opt"><input type="radio" name="q34" value="D"> D. ১৫০</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: প্রাইম সংখ্যা — মৌলিক সংখ্যা তালিকা</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>35. সুদের হার 5% থেকে 4% কমলে বার্ষিক সুদে একজন ব্যক্তি Rs.250 কম পান; তখন মূলধন কত?</h4>
+        <!-- Q35 -->
+        <div class="question" data-q="35">
+          <div class="q-title">35. অনুপাত 7:13 ও যোগফল 60 হলে বড় সংখ্যা কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q35" value="A"> A) Rs. 22,500</label>
-            <label class="opt"><input type="radio" name="q35" value="B"> B) Rs. 25,000</label>
-            <label class="opt"><input type="radio" name="q35" value="C"> C) Rs. 20,000</label>
-            <label class="opt"><input type="radio" name="q35" value="D"> D) Rs. 25,500</label>
+            <label class="opt"><input type="radio" name="q35" value="A"> A. 39</label>
+            <label class="opt"><input type="radio" name="q35" value="B"> B. 65</label>
+            <label class="opt"><input type="radio" name="q35" value="C"> C. 78</label>
+            <label class="opt"><input type="radio" name="q35" value="D"> D. 52</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: আর্থিক গণিত — সাধারণ সুদ</div>
         </div>
 
-        <div class="q" data-answer="A">
-          <h4>36. যদি 79.63 + 963.8 − x + 7.953 = 18.732 হয়, তাহলে x = ?</h4>
+        <!-- Q36 -->
+        <div class="question" data-q="36">
+          <div class="q-title">36. 2x + 3y = 17 এবং x − y = 4; x ও y?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q36" value="A"> A) 1070.115</label>
-            <label class="opt"><input type="radio" name="q36" value="B"> B) 1063.115</label>
-            <label class="opt"><input type="radio" name="q36" value="C"> C) 1032.651</label>
-            <label class="opt"><input type="radio" name="q36" value="D"> D) 979.214</label>
+            <label class="opt"><input type="radio" name="q36" value="A"> A. x=7, y=3</label>
+            <label class="opt"><input type="radio" name="q36" value="B"> B. x=5, y=1</label>
+            <label class="opt"><input type="radio" name="q36" value="C"> C. x=6, y=2</label>
+            <label class="opt"><input type="radio" name="q36" value="D"> D. x=8, y=4</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: বীজগণিত — সমীকরণ সমাধান</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>37. 90 + 0.09 × 10 এর মান কত?</h4>
+        <!-- Q37 -->
+        <div class="question" data-q="37">
+          <div class="q-title">37. পাঁচ ব্যক্তি 12 দিনে কাজ শেষ করে; প্রথম তিনজন মিলে একই কাজ 20 দিনে করলে বাকি দুইজনের একদিনে কাজের হার কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q37" value="A"> A) 8100</label>
-            <label class="opt"><input type="radio" name="q37" value="B"> B) 100</label>
-            <label class="opt"><input type="radio" name="q37" value="C"> C) 1000</label>
-            <label class="opt"><input type="radio" name="q37" value="D"> D) 81000</label>
+            <label class="opt"><input type="radio" name="q37" value="A"> A. 1/15</label>
+            <label class="opt"><input type="radio" name="q37" value="B"> B. 1/12</label>
+            <label class="opt"><input type="radio" name="q37" value="C"> C. 1/20</label>
+            <label class="opt"><input type="radio" name="q37" value="D"> D. 1/10</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: মৌলিক গণিত — অগ্রাধিকার নির্দেশনা</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>38. এক চতুর্ভুজের প্রতিটি বাহু 10% বেড়ে গেলে পরিসরের পরিমাণের শতকরা বৃদ্ধি হবে কত?</h4>
+        <!-- Q38 -->
+        <div class="question" data-q="38">
+          <div class="q-title">38. সংখ্যার 18% = 54; সংখ্যাটি কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q38" value="A"> A) 10%</label>
-            <label class="opt"><input type="radio" name="q38" value="B"> B) 21%</label>
-            <label class="opt"><input type="radio" name="q38" value="C"> C) 25%</label>
-            <label class="opt"><input type="radio" name="q38" value="D"> D) 100%</label>
+            <label class="opt"><input type="radio" name="q38" value="A"> A. 300</label>
+            <label class="opt"><input type="radio" name="q38" value="B"> B. 250</label>
+            <label class="opt"><input type="radio" name="q38" value="C"> C. 200</label>
+            <label class="opt"><input type="radio" name="q38" value="D"> D. 150</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: জ্যামিতি — শতাংশ পরিবর্তন</div>
         </div>
 
-        <div class="q" data-answer="D">
-          <h4>39. একজন পিতা এবং তার যুগল যমজ সন্তানের বর্তমান গড় বয়স 30 বছর; পিতার এবং এক সন্তানের বয়সের অনুপাত 5:2 হলে পিতার বয়স কত?</h4>
+        <!-- Q39 -->
+        <div class="question" data-q="39">
+          <div class="q-title">39. তিনটি সংখ্যার সমষ্টি 150; অনুপাত 2:3:5 হলে বড়তম সংখ্যা কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q39" value="A"> A) 42 years</label>
-            <label class="opt"><input type="radio" name="q39" value="B"> B) 45 years</label>
-            <label class="opt"><input type="radio" name="q39" value="C"> C) 60 years</label>
-            <label class="opt"><input type="radio" name="q39" value="D"> D) 50 years</label>
+            <label class="opt"><input type="radio" name="q39" value="A"> A. 50</label>
+            <label class="opt"><input type="radio" name="q39" value="B"> B. 75</label>
+            <label class="opt"><input type="radio" name="q39" value="C"> C. 60</label>
+            <label class="opt"><input type="radio" name="q39" value="D"> D. 25</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: অনুপাত ও গড় — বয়স সমস্যা</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>40. একটি সংখ্যার 25% তার 30%-এর থেকে 15 কম; তখন সংখ্যার 20% কত?</h4>
+        <!-- Q40 -->
+        <div class="question" data-q="40">
+          <div class="q-title">40. আইটেমের দাম 30% বাড়লে নতুন দাম 130 হলে পুরনো দাম কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q40" value="A"> A) 75</label>
-            <label class="opt"><input type="radio" name="q40" value="B"> B) 60</label>
-            <label class="opt"><input type="radio" name="q40" value="C"> C) 225</label>
-            <label class="opt"><input type="radio" name="q40" value="D"> D) 65</label>
+            <label class="opt"><input type="radio" name="q40" value="A"> A. 100</label>
+            <label class="opt"><input type="radio" name="q40" value="B"> B. 90</label>
+            <label class="opt"><input type="radio" name="q40" value="C"> C. 110</label>
+            <label class="opt"><input type="radio" name="q40" value="D"> D. 80</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: শতাংশ সমস্যা — অনুপাতে সংখ্যার নির্ণয়</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>41. সংখ্যাটিতে 564823–এ সংখ্যার 4-এর place value ও face value-এর গুণফল কত?</h4>
+        <!-- Q41 -->
+        <div class="question" data-q="41">
+          <div class="q-title">41. 1 থেকে 20 পর্যন্ত সংখ্যাগুলোর HCF কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q41" value="A"> A) 16000</label>
-            <label class="opt"><input type="radio" name="q41" value="B"> B) 160</label>
-            <label class="opt"><input type="radio" name="q41" value="C"> C) 1600</label>
-            <label class="opt"><input type="radio" name="q41" value="D"> D) 16</label>
+            <label class="opt"><input type="radio" name="q41" value="A"> A. 1</label>
+            <label class="opt"><input type="radio" name="q41" value="B"> B. 2</label>
+            <label class="opt"><input type="radio" name="q41" value="C"> C. 4</label>
+            <label class="opt"><input type="radio" name="q41" value="D"> D. 0</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: সংখ্যা বিন্যাস — place value ও face value</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>42. একটি খুঁটিরে বিভিন্ন রঙের অংশগুলোর অনুপাতে বাকিটি সবুজ; যদি সবুজ অংশের দৈর্ঘ্য 12.08 m হয় তাহলে খুঁটির মোট দৈর্ঘ্য কত হবে?</h4>
+        <!-- Q42 -->
+        <div class="question" data-q="42">
+          <div class="q-title">42. 40% কে ভগ্নাংশে প্রকাশ করলে ফল কী?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q42" value="A"> A) 10 metre</label>
-            <label class="opt"><input type="radio" name="q42" value="B"> B) 20 metre</label>
-            <label class="opt"><input type="radio" name="q42" value="C"> C) 16 metre</label>
-            <label class="opt"><input type="radio" name="q42" value="D"> D) 14 metre</label>
+            <label class="opt"><input type="radio" name="q42" value="A"> A. 2/5</label>
+            <label class="opt"><input type="radio" name="q42" value="B"> B. 4/10</label>
+            <label class="opt"><input type="radio" name="q42" value="C"> C. 1/4</label>
+            <label class="opt"><input type="radio" name="q42" value="D"> D. 3/4</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: অনুপাত ও গাণিতিক বিচার — অনুপাত সমস্যা</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>43. নিম্নলিখিত ভগ্নাংশগুলোর মধ্যে কোনটি সবচেয়ে বড়?</h4>
+        <!-- Q43 -->
+        <div class="question" data-q="43">
+          <div class="q-title">43. একটি সংখ্যার 5 গুণে থেকে 25 কমালে ফল 100 হয়; সংখ্যাটি কত?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q43" value="A"> A) 4/12</label>
-            <label class="opt"><input type="radio" name="q43" value="B"> B) 6/39</label>
-            <label class="opt"><input type="radio" name="q43" value="C"> C) 47/12</label>
-            <label class="opt"><input type="radio" name="q43" value="D"> D) 2/3</label>
+            <label class="opt"><input type="radio" name="q43" value="A"> A. 25</label>
+            <label class="opt"><input type="radio" name="q43" value="B"> B. 30</label>
+            <label class="opt"><input type="radio" name="q43" value="C"> C. 20</label>
+            <label class="opt"><input type="radio" name="q43" value="D"> D. 35</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: ভগ্নাংশ — তুলনামূলক বিশ্লেষণ</div>
         </div>
 
-        <div class="q" data-answer="C">
-          <h4>44. 24 জন 12 দিনে একটি পুকুর খনন করে; তাহলে 8 দিনে একই কাজ করতে কতজন প্রয়োজন?</h4>
+        <!-- Q44 -->
+        <div class="question" data-q="44">
+          <div class="q-title">44. প্রথম ট্রেন 90 কিমি/ঘঃ, দ্বিতীয় 60; প্রথম ট্রেন 30 মিনিট আগে ছেড়ে গেলে দ্বিতীয়কে কত সময়ে ধরবে?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q44" value="A"> A) 20</label>
-            <label class="opt"><input type="radio" name="q44" value="B"> B) 40</label>
-            <label class="opt"><input type="radio" name="q44" value="C"> C) 32</label>
-            <label class="opt"><input type="radio" name="q44" value="D"> D) 36</label>
+            <label class="opt"><input type="radio" name="q44" value="A"> A. 1 ঘন্টা</label>
+            <label class="opt"><input type="radio" name="q44" value="B"> B. 2 ঘন্টা</label>
+            <label class="opt"><input type="radio" name="q44" value="C"> C. 3 ঘন্টা</label>
+            <label class="opt"><input type="radio" name="q44" value="D"> D. 30 মিনিট</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: কাজ ও সময় — শ্রম-দিবস গণনা</div>
         </div>
 
-        <div class="q" data-answer="B">
-          <h4>45. কোন সংখ্যার সাথে 3 গুণ করলে ফল হয় −1; সেই সংখ্যা কত?</h4>
+        <!-- Q45 -->
+        <div class="question" data-q="45">
+          <div class="q-title">45. সমীকরণ: 4(x − 3) + 2 = 3x + 5; x = ?</div>
           <div class="opts">
-            <label class="opt"><input type="radio" name="q45" value="A"> A) 1</label>
-            <label class="opt"><input type="radio" name="q45" value="B"> B) −1/3</label>
-            <label class="opt"><input type="radio" name="q45" value="C"> C) 1/3</label>
-            <label class="opt"><input type="radio" name="q45" value="D"> D) 1/2</label>
+            <label class="opt"><input type="radio" name="q45" value="A"> A. 14</label>
+            <label class="opt"><input type="radio" name="q45" value="B"> B. 13</label>
+            <label class="opt"><input type="radio" name="q45" value="C"> C. 12</label>
+            <label class="opt"><input type="radio" name="q45" value="D"> D. 11</label>
           </div>
-          <div class="small">সিলেবাস ট্যাগ: বীজগণিত — সরল রৈখিক সমীকরণ</div>
         </div>
 
       </div>
 
-      <div class="result-row">
-        <div class="score-details">সঠিক: <span id="correctCount">0</span>  ভুল: <span id="wrongCount">0</span></div>
-        <div class="summary" id="summaryMsg"></div>
+      <div style="text-align:center;margin:18px 0">
+        <button type="button" id="submitBottom">Submit Answers</button>
       </div>
 
-      <footer>
-        <button id="submitBtn" style="margin-top:12px">Submit</button>
-      </footer>
+      <div id="resultsArea" style="display:none" class="card">
+        <div id="scoreSummary" class="result-summary"></div>
+        <div id="perQuestionFeedback"></div>
+      </div>
     </form>
   </main>
 
   <script>
-    // Timer
-    const startBtn = document.getElementById('startBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const timerDisplay = document.getElementById('timerDisplay');
-    const submitBtn = document.getElementById('submitBtn');
-    const quizForm = document.getElementById('quizForm');
-    const correctCountEl = document.getElementById('correctCount');
-    const wrongCountEl = document.getElementById('wrongCount');
-    const summaryMsg = document.getElementById('summaryMsg');
+    (function(){
+      // Correct answers according to previous "show all answer"
+      const answers = {
+        1:'A',2:'B',3:'B',4:'B',5:'B',6:'B',7:'A',8:'B',9:'A',10:'D',
+        11:'B',12:'C',13:'A',14:'B',15:'C',
+        16:'B',17:'C',18:'A',19:'A',20:'B',21:'A',22:'C',23:'B',24:'B',25:'B',
+        26:'B',27:'B',28:'B',29:'B',30:'B',
+        31:'A',32:'A',33:'A',34:'B',35:'A',36:'C',37:'A',38:'A',39:'B',40:'A',
+        41:'A',42:'A',43:'A',44:'A',45:'A'
+      };
 
-    let timer = null;
-    let timeLeft = 60*60; // 60 minutes in seconds
-    let started = false;
-    let evaluated = false;
+      // Timer
+      const TIMER_SEC = 60*60; // 60 minutes
+      let remaining = TIMER_SEC;
+      const timerEl = document.getElementById('timer');
+      let timerId = null;
 
-    function formatTime(s){
-      const mm = String(Math.floor(s/60)).padStart(2,'0');
-      const ss = String(s%60).padStart(2,'0');
-      return mm + ':' + ss;
-    }
-
-    function tick(){
-      if(timeLeft <= 0){
-        clearInterval(timer);
-        timer = null;
-        timerDisplay.textContent = "00:00";
-        if(!evaluated) evaluateAnswers();
-        return;
+      function formatTime(s){
+        const m = Math.floor(s/60).toString().padStart(2,'0');
+        const sec = (s%60).toString().padStart(2,'0');
+        return m + ':' + sec;
       }
-      timeLeft--;
-      timerDisplay.textContent = formatTime(timeLeft);
-    }
+      timerEl.textContent = formatTime(remaining);
 
-    startBtn.addEventListener('click',()=>{
-      if(started) return;
-      started = true;
-      startBtn.disabled = true;
-      resetBtn.disabled = false;
-      timerDisplay.textContent = formatTime(timeLeft);
-      timer = setInterval(tick,1000);
-    });
-
-    resetBtn.addEventListener('click',()=>{
-      if(timer) clearInterval(timer);
-      timeLeft = 60*60;
-      timerDisplay.textContent = formatTime(timeLeft);
-      started = false;
-      evaluated = false;
-      startBtn.disabled = false;
-      resetBtn.disabled = true;
-      clearHighlights();
-      correctCountEl.textContent = '0';
-      wrongCountEl.textContent = '0';
-      summaryMsg.textContent = '';
-    });
-
-    // Evaluation
-    submitBtn.addEventListener('click', ()=>{
-      evaluateAnswers();
-      if(timer){
-        clearInterval(timer);
-        timer = null;
-      }
-      startBtn.disabled = true;
-      resetBtn.disabled = false;
-    });
-
-    function evaluateAnswers(){
-      if(evaluated) return;
-      evaluated = true;
-      const questions = Array.from(document.querySelectorAll('.q'));
-      let correct = 0, wrong = 0;
-      questions.forEach((q, idx)=>{
-        const correctAns = q.getAttribute('data-answer');
-        const name = 'q' + (idx+1);
-        const selected = quizForm.querySelector('input[name="'+name+'"]:checked');
-        // clear previous classes
-        q.classList.remove('answer-highlight','correct','wrong');
-        // highlight all options accordingly
-        const opts = Array.from(q.querySelectorAll('label.opt'));
-        opts.forEach(l=>{
-          l.style.outline = 'none';
-        });
-        if(selected){
-          const val = selected.value;
-          if(val === correctAns){
-            correct++;
-            q.classList.add('answer-highlight','correct');
-            // mark chosen option green
-            const chosenLabel = selected.closest('label.opt');
-            if(chosenLabel) chosenLabel.style.background = 'linear-gradient(90deg, rgba(11,138,62,0.12), rgba(11,138,62,0.06))';
-          } else {
-            wrong++;
-            q.classList.add('answer-highlight','wrong');
-            // mark chosen option red
-            const chosenLabel = selected.closest('label.opt');
-            if(chosenLabel) chosenLabel.style.background = 'linear-gradient(90deg, rgba(201,42,42,0.12), rgba(201,42,42,0.06))';
-            // also indicate correct option
-            const correctInput = q.querySelector('input[value="'+correctAns+'"]');
-            if(correctInput){
-              const correctLabel = correctInput.closest('label.opt');
-              correctLabel.style.background = 'linear-gradient(90deg, rgba(11,138,62,0.12), rgba(11,138,62,0.06))';
-            }
-          }
-        } else {
-          // unanswered counts as wrong; show correct
-          wrong++;
-          q.classList.add('answer-highlight','wrong');
-          const correctInput = q.querySelector('input[value="'+correctAns+'"]');
-          if(correctInput){
-            const correctLabel = correctInput.closest('label.opt');
-            correctLabel.style.background = 'linear-gradient(90deg, rgba(11,138,62,0.12), rgba(11,138,62,0.06))';
-          }
+      function tick(){
+        remaining--;
+        if(remaining < 0){
+          clearInterval(timerId);
+          timerEl.textContent = '00:00';
+          autoSubmit();
+          return;
         }
-      });
-      correctCountEl.textContent = String(correct);
-      wrongCountEl.textContent = String(wrong);
-      summaryMsg.innerHTML = '<span class="badge correct">Correct '+correct+'</span> <span class="badge wrong">Wrong '+wrong+'</span>';
-    }
-
-    function clearHighlights(){
-      const questions = Array.from(document.querySelectorAll('.q'));
-      questions.forEach(q=>{
-        q.classList.remove('answer-highlight','correct','wrong');
-        const opts = Array.from(q.querySelectorAll('label.opt'));
-        opts.forEach(l=>{
-          l.style.background = '';
-        });
-        const inputs = q.querySelectorAll('input[type="radio"]');
-        inputs.forEach(i=>i.checked = false);
-      });
-    }
-
-    // Warn before leaving if started and not submitted
-    window.addEventListener('beforeunload', function(e){
-      if(started && !evaluated){
-        e.preventDefault();
-        e.returnValue = '';
+        timerEl.textContent = formatTime(remaining);
       }
-    });
+      timerId = setInterval(tick,1000);
+
+      // Submit handlers
+      const submitBtns = [document.getElementById('submitBtn'), document.getElementById('submitBottom')];
+      submitBtns.forEach(b => b.addEventListener('click', submitQuiz));
+
+      function autoSubmit(){
+        // if not yet submitted
+        const submitButton = document.getElementById('submitBottom');
+        submitQuiz();
+      }
+
+      let submitted = false;
+      function submitQuiz(){
+        if(submitted) return;
+        submitted = true;
+        clearInterval(timerId);
+        const total = Object.keys(answers).length;
+        let correct = 0;
+        const feedbackWrap = document.getElementById('perQuestionFeedback');
+        feedbackWrap.innerHTML = '';
+        // iterate questions 1..45
+        for(let q=1;q<=45;q++){
+          const name = 'q'+q;
+          const radios = document.getElementsByName(name);
+          let selected = null;
+          for(const r of radios){ if(r.checked) selected = r.value; }
+          const correctAns = answers[q];
+          const qDiv = document.querySelector('.question[data-q="'+q+'"]');
+          // highlight options
+          if(qDiv){
+            const opts = qDiv.querySelectorAll('.opt');
+            opts.forEach(optEl => {
+              optEl.classList.remove('correct','wrong');
+              const inp = optEl.querySelector('input');
+              if(!inp) return;
+              const val = inp.value;
+              // mark
+              if(val === correctAns){
+                optEl.classList.add('correct');
+              }
+              if(selected && val === selected && val !== correctAns){
+                optEl.classList.add('wrong');
+              }
+            });
+          }
+
+          if(selected === correctAns){
+            correct++;
+          }
+          // Build per-question summary
+          const p = document.createElement('div');
+          p.style.padding = '8px 0';
+          p.style.borderBottom = '1px dashed #eef6fb';
+          p.innerHTML = '<strong>প্রশ্ন ' + q + ':</strong> আপনার উত্তর: <span style="color:' + (selected? '#111':'#999') + '">' + (selected? selected : 'No answer') + '</span> • সঠিক: <span style="color:' + (correctAns === selected ? 'var(--ok)' : 'var(--bad)') + ';">' + correctAns + '</span>';
+          feedbackWrap.appendChild(p);
+        }
+
+        const wrong = total - correct;
+        const summary = document.getElementById('scoreSummary');
+        summary.innerHTML = 'Result: <span class="result-correct">Correct: ' + correct + '</span> • <span class="result-wrong">Wrong/Blank: ' + wrong + '</span> • Total: ' + total;
+        document.getElementById('resultsArea').style.display = 'block';
+        // scroll to results smoothly
+        setTimeout(()=> document.getElementById('resultsArea').scrollIntoView({behavior:'smooth'}),200);
+      }
+
+      // Allow pressing Enter to not accidentally submit; keep it disabled
+      document.getElementById('quizForm').addEventListener('submit', function(e){
+        e.preventDefault();
+      });
+
+      // Make header sticky visible on scroll (already fixed). Also keep timer visible.
+      // Accessibility: allow keyboard submit by focusing bottom button and pressing Space/Enter handled by default.
+
+    })();
   </script>
 </body>
 </html>
