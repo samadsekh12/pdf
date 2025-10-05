@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="bn">
 <head>
@@ -5,105 +6,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>বহুনির্বাচনী পরীক্ষা — 45 প্রশ্ন</title>
   <style>
-    :root{
-      --bg:#f7f9fc;
-      --panel:#fff;
-      --muted:#475569;
-      --accent:#0063f7;
-      --green:#1fa851;
-      --red:#d93025;
-    }
+    :root{--bg:#f7f9fc;--panel:#fff;--muted:#475569;--accent:#0063f7;--green:#1fa851;--red:#d93025}
     *{box-sizing:border-box}
-    body { font-family: "Helvetica Neue", Arial, sans-serif; margin:0; background:var(--bg); color:#111; }
-    /* Sticky top bar */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.98));
-      border-bottom: 1px solid #e6eef8;
-      padding: 10px 16px;
-      display:flex;
-      align-items:center;
-      gap:16px;
-      box-shadow: 0 2px 6px rgba(18,38,63,0.03);
-    }
-    .title {
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-      min-width: 260px;
-    }
-    h1 { margin:0; font-size:18px; line-height:1.1; }
-    .badges {
-      display:flex;
-      gap:8px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .badge {
-      background:var(--panel);
-      border:1px solid #e1e6ee;
-      padding:8px 10px;
-      border-radius:8px;
-      font-weight:600;
-      font-size:13px;
-      color:var(--muted);
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    /* put Start button to the far right inside topbar */
-    .top-actions { margin-left:auto; display:flex; gap:8px; align-items:center; }
-    .btn {
-      padding:8px 12px;
-      border-radius:8px;
-      border:1px solid #cbd5e1;
-      background:#fff;
-      cursor:pointer;
-      font-weight:700;
-    }
-    .btn.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
-    /* main content */
-    main { max-width:980px; margin:18px auto; padding:0 16px 80px; }
-    .panel { background:var(--panel); border:1px solid #e6eef8; border-radius:10px; padding:14px; box-shadow:0 6px 18px rgba(15,30,60,0.03); }
-    form { margin-top:12px; }
-    .question { margin:12px 0; padding:12px; border-radius:8px; background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid #eef3fa; }
-    .qnum { font-weight:700; margin-bottom:6px; }
-    .options label { display:block; margin:6px 0; cursor:pointer; padding:6px 8px; border-radius:6px; transition:all .12s; }
-    .options input { margin-right:8px; }
-    .correct { background:#e6ffea; border:1px solid var(--green); color:#063; }
-    .wrong { background:#ffecec; border:1px solid var(--red); color:#800; }
-    .reveal-correct { outline:2px solid var(--green); border-radius:6px; }
-    /* bottom controls box always visible when scrolling (sticky footer-like) */
-    .bottombar {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 9999;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      background: linear-gradient(180deg,#fff,#fbfdff);
-      border:1px solid #e6eef8;
-      padding:10px;
-      border-radius:10px;
-      box-shadow: 0 8px 30px rgba(10,20,40,0.08);
-    }
-    .resultsBox { min-width:220px; background:transparent; display:flex; gap:12px; align-items:center; }
-    .resultsBox div { font-weight:700; color:var(--muted); }
-    .small { font-size:13px; color:var(--muted); }
-    /* responsive */
-    @media (max-width:720px){
-      .topbar { flex-wrap:wrap; gap:10px; padding:12px; }
-      .title { min-width:auto; }
-      .badges { gap:6px; }
-      .bottombar { left:16px; right:16px; justify-content:space-between; }
-    }
+    body{font-family:"Helvetica Neue",Arial,sans-serif;margin:0;background:var(--bg);color:#111}
+    .topbar{position:sticky;top:0;z-index:9999;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,252,255,0.98));border-bottom:1px solid #e6eef8;padding:10px 16px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 6px rgba(18,38,63,0.03)}
+    .title{display:flex;align-items:flex-start;gap:12px;min-width:260px}
+    h1{margin:0;font-size:18px;line-height:1.1}
+    .badges{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:8px}
+    .badge{background:var(--panel);border:1px solid #e1e6ee;padding:8px 10px;border-radius:8px;font-weight:600;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .top-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+    .btn{padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    main{max-width:980px;margin:18px auto;padding:0 16px 120px}
+    .panel{background:var(--panel);border:1px solid #e6eef8;border-radius:10px;padding:14px;box-shadow:0 6px 18px rgba(15,30,60,0.03)}
+    form{margin-top:12px}
+    .question{margin:12px 0;padding:12px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #eef3fa}
+    .qnum{font-weight:700;margin-bottom:6px}
+    .options label{display:block;margin:6px 0;cursor:pointer;padding:6px 8px;border-radius:6px;transition:all .12s}
+    .options input{margin-right:8px}
+    .correct{background:#e6ffea;border:1px solid var(--green);color:#063}
+    .wrong{background:#ffecec;border:1px solid var(--red);color:#800}
+    .reveal-correct{outline:2px solid var(--green);border-radius:6px}
+    .bottombar{position:fixed;right:16px;bottom:16px;z-index:9999;display:flex;gap:12px;align-items:center;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #e6eef8;padding:10px;border-radius:10px;box-shadow:0 8px 30px rgba(10,20,40,0.08)}
+    .resultsBox{min-width:220px;background:transparent;display:flex;gap:12px;align-items:center}
+    .resultsBox div{font-weight:700;color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+    @media (max-width:720px){.topbar{flex-wrap:wrap;gap:10px;padding:12px}.bottombar{left:16px;right:16px;justify-content:space-between}}
   </style>
 </head>
 <body>
-  <!-- sticky header with badges and Start button aligned to right -->
   <div class="topbar" role="banner" aria-label="Exam header">
     <div class="title">
       <div>
@@ -133,50 +64,463 @@
       </div>
 
       <form id="quizForm" autocomplete="off">
-        <!-- For brevity include a representative set of questions; in real use paste all 45 unique questions -->
-        <!-- Question 1 -->
-        <div class="question" data-answer="B">
-          <div class="qnum">1. মানুষের রক্তের প্রধান গঠন উপাদান কোনটি?</div>
+        <!-- All 45 questions below -->
+        <div class="question" data-answer="C">
+          <div class="qnum">1. নিচের কোনটি মানুষের ক্ষেত্রে প্রযোজ্য নয়?</div>
           <div class="options">
-            <label><input type="radio" name="q1" value="A"> A. প্লেটলেট</label>
-            <label><input type="radio" name="q1" value="B"> B. লাল রক্ত কণিকা</label>
-            <label><input type="radio" name="q1" value="C"> C. প্লাজমা</label>
-            <label><input type="radio" name="q1" value="D"> D. লিউকোসাইট</label>
+            <label><input type="radio" name="q1" value="A"> A. অপরজীবী-নির্ভর (Heterotrophic)</label>
+            <label><input type="radio" name="q1" value="B"> B. সবধারী (Omnivore)</label>
+            <label><input type="radio" name="q1" value="C"> C. স্বউৎপাদক (Autotrophic)</label>
+            <label><input type="radio" name="q1" value="D"> D. মাংসাশী (Carnivore)</label>
           </div>
         </div>
 
-        <!-- Question 2 -->
         <div class="question" data-answer="D">
-          <div class="qnum">2. সূর্যের নিকটতম গ্রহ কোনটি?</div>
+          <div class="qnum">2. নাইট ব্লাইন্ডনেস (রাত্রিকালীন অন্ধত্ব) কোন ভিটামিনের ঘাটতির কারণে হয়?</div>
           <div class="options">
-            <label><input type="radio" name="q2" value="A"> A. মঙ্গল</label>
-            <label><input type="radio" name="q2" value="B"> B. বৃহস্পতি</label>
-            <label><input type="radio" name="q2" value="C"> C. শনির</label>
-            <label><input type="radio" name="q2" value="D"> D. বুধ</label>
+            <label><input type="radio" name="q2" value="A"> A. ভিটামিন D</label>
+            <label><input type="radio" name="q2" value="B"> B. ভিটামিন K</label>
+            <label><input type="radio" name="q2" value="C"> C. ভিটামিন C</label>
+            <label><input type="radio" name="q2" value="D"> D. ভিটামিন A</label>
           </div>
         </div>
 
-        <!-- Question 3 -->
+        <div class="question" data-answer="B">
+          <div class="qnum">3. দাঁতে ক্যারিস থাকলে আপনি কাকে দেখাবেন?</div>
+          <div class="options">
+            <label><input type="radio" name="q3" value="A"> A. অর্থোপেডিক্স</label>
+            <label><input type="radio" name="q3" value="B"> B. ডেন্টিস্ট (দাঁতের চিকিৎসক)</label>
+            <label><input type="radio" name="q3" value="C"> C. কার্ডিওলজিস্ট</label>
+            <label><input type="radio" name="q3" value="D"> D. নিউরোলজিস্ট</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">4. কঙ্গারু কোন দেশের জাতীয় প্রতীক?</div>
+          <div class="options">
+            <label><input type="radio" name="q4" value="A"> A. আইরল্যান্ড</label>
+            <label><input type="radio" name="q4" value="B"> B. ইতালি</label>
+            <label><input type="radio" name="q4" value="C"> C. অস্ট্রেলিয়া</label>
+            <label><input type="radio" name="q4" value="D"> D. কানাডা</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">5. টোফু কী থেকে তৈরি হয়?</div>
+          <div class="options">
+            <label><input type="radio" name="q5" value="A"> A. কফি</label>
+            <label><input type="radio" name="q5" value="B"> B. কোকোয়া</label>
+            <label><input type="radio" name="q5" value="C"> C. সয়াবিন দুধের পনির (Soyabean milk curd)</label>
+            <label><input type="radio" name="q5" value="D"> D. দই (Curd)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">6. বিশ্বের সবচেয়ে গভীর হ্রদ কোনটি?</div>
+          <div class="options">
+            <label><input type="radio" name="q6" value="A"> A. ক্যাস্পিয়ান সি (Caspian Sea)</label>
+            <label><input type="radio" name="q6" value="B"> B. দল লেক (Dal Lake)</label>
+            <label><input type="radio" name="q6" value="C"> C. রেড সি (Red Sea)</label>
+            <label><input type="radio" name="q6" value="D"> D. লেক বাইক্যাল (Lake Baikal)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">7. কোন স্তন্যপায়ী ডিম পাড়ে?</div>
+          <div class="options">
+            <label><input type="radio" name="q7" value="A"> A. ডুগং</label>
+            <label><input type="radio" name="q7" value="B"> B. ডলফিন</label>
+            <label><input type="radio" name="q7" value="C"> C. ডাক-বিল প্ল্যাটিপাস</label>
+            <label><input type="radio" name="q7" value="D"> D. হোয়েল</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">8. ভারতের সংবিধানের প্রধান স্থপতি হিসেবে কে গণ্য হন?</div>
+          <div class="options">
+            <label><input type="radio" name="q8" value="A"> A. ড. রাজেন্দ্র প্রসাদ</label>
+            <label><input type="radio" name="q8" value="B"> B. ড. বি. আর. আম্বেদকর</label>
+            <label><input type="radio" name="q8" value="C"> C. বি. এন. রাও</label>
+            <label><input type="radio" name="q8" value="D"> D. এন. গোপালসুয়ামী আয়্যাঙ্গার</label>
+          </div>
+        </div>
+
         <div class="question" data-answer="A">
-          <div class="qnum">3. জৈব রাসায়নে পানির সূত্র কী?</div>
+          <div class="qnum">9. নিচের কোন রোগ ব্যাকটেরিয়ার কারণে হয় না?</div>
           <div class="options">
-            <label><input type="radio" name="q3" value="A"> A. H2O</label>
-            <label><input type="radio" name="q3" value="B"> B. HO2</label>
-            <label><input type="radio" name="q3" value="C"> C. H3O</label>
-            <label><input type="radio" name="q3" value="D"> D. OH2</label>
+            <label><input type="radio" name="q9" value="A"> A. অ্যামীবায়াসিস</label>
+            <label><input type="radio" name="q9" value="B"> B. টাইফয়েড</label>
+            <label><input type="radio" name="q9" value="C"> C. কলেরা</label>
+            <label><input type="radio" name="q9" value="D"> D. ডিফথেরিয়া</label>
           </div>
         </div>
 
-        <!-- ... add all remaining questions up to 45 with same structure ... -->
+        <div class="question" data-answer="D">
+          <div class="qnum">10. বিগ-ব্যাং তত্ত্ব কী ব্যাখ্যা করে?</div>
+          <div class="options">
+            <label><input type="radio" name="q10" value="A"> A. মাধ্যাকর্ষণের উৎপত্তি</label>
+            <label><input type="radio" name="q10" value="B"> B. সূর্যের উৎপত্তি</label>
+            <label><input type="radio" name="q10" value="C"> C. জীবাণুর উৎপত্তি</label>
+            <label><input type="radio" name="q10" value="D"> D. বিশ্বের উৎপত্তি</label>
+          </div>
+        </div>
 
-        <!-- bottom controls inside main (Submit, Clear) -->
+        <div class="question" data-answer="A">
+          <div class="qnum">11. ভূমিকম্পের তীব্রতা মাপার যন্ত্র কোনটি?</div>
+          <div class="options">
+            <label><input type="radio" name="q11" value="A"> A. সিসমোগ্রাফ (Seismograph)</label>
+            <label><input type="radio" name="q11" value="B"> B. হাইড্রোমিটার</label>
+            <label><input type="radio" name="q11" value="C"> C. বারোমিটার</label>
+            <label><input type="radio" name="q11" value="D"> D. পলিগ্রাফ</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">12. Deciduous বৃক্ষ সম্পর্কে কোনটি সঠিক?</div>
+          <div class="options">
+            <label><input type="radio" name="q12" value="A"> A. শীতে তাদের পাতা ঝড়ে যায়</label>
+            <label><input type="radio" name="q12" value="B"> B. শীতকালে তারা মারা যায়</label>
+            <label><input type="radio" name="q12" value="C"> C. শীতে তাদের ফুল ঝড়ে যায়</label>
+            <label><input type="radio" name="q12" value="D"> D. গ্রীষ্মে তাদের ফুল ঝড়ে যায়</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">13. মাছের কোন প্রজাতি মশা নিয়ন্ত্রণে জীববৈজ্ঞানিক নিয়ন্ত্রণ হিসেবে ব্যবহৃত হয়?</div>
+          <div class="options">
+            <label><input type="radio" name="q13" value="A"> A. রোহু (Rohu)</label>
+            <label><input type="radio" name="q13" value="B"> B. গ্যাম্বুসিয়া (Gambusia)</label>
+            <label><input type="radio" name="q13" value="C"> C. পুনটিয়াস (Puntius)</label>
+            <label><input type="radio" name="q13" value="D"> D. বাটা (Bata)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">14. ভোপাল গ্যাস ট্র্যাজিকটির সময় MIC কোন যৌগ ছিল?</div>
+          <div class="options">
+            <label><input type="radio" name="q14" value="A"> A. মিথাইল আইসোসায়ানাইট (Methyl isocyanite)</label>
+            <label><input type="radio" name="q14" value="B"> B. মিথাইল আইসোসায়ানাইড (Methyl isocyanide)</label>
+            <label><input type="radio" name="q14" value="C"> C. মিথাইল আইসোসায়ানেট (Methyl isocyanate)</label>
+            <label><input type="radio" name="q14" value="D"> D. মিথাইল আইসোকিট্রেট (Methyl isocitrate)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">15. নিচের কোনটি গ্রিনহাউস গ্যাস হিসেবে পরিচিত নয়?</div>
+          <div class="options">
+            <label><input type="radio" name="q15" value="A"> A. নাইট্রাস অক্সাইড (Nitrous oxide)</label>
+            <label><input type="radio" name="q15" value="B"> B. কার্বন ডাইঅক্সাইড (Carbon dioxide)</label>
+            <label><input type="radio" name="q15" value="C"> C. মিথেইন (Methane)</label>
+            <label><input type="radio" name="q15" value="D"> D. হাইড্রোজেন (Hydrogen)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">16. ‘Playing It My Way’ বইটি কার লিখেছেন?</div>
+          <div class="options">
+            <label><input type="radio" name="q16" value="A"> A. সুনীল গাভাস্কার</label>
+            <label><input type="radio" name="q16" value="B"> B. সচিন টেন্ডুলকর</label>
+            <label><input type="radio" name="q16" value="C"> C. সৌরভ গাঙ্গুলি</label>
+            <label><input type="radio" name="q16" value="D"> D. জি. আর. বিশনাথ</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">17. রাজ্যের মন্ত্রীরা সম্মিলিতভাবে কার কাছে দায়বদ্ধ?</div>
+          <div class="options">
+            <label><input type="radio" name="q17" value="A"> A. the Governor</label>
+            <label><input type="radio" name="q17" value="B"> B. the Vidhan Sabha</label>
+            <label><input type="radio" name="q17" value="C"> C. the Chief Minister</label>
+            <label><input type="radio" name="q17" value="D"> D. the Speaker</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">18. মোহনবাগান ক্লাব কোন বছরে ব্রিটিশ দলকে পরাজিত করেছিল?</div>
+          <div class="options">
+            <label><input type="radio" name="q18" value="A"> A. 1910</label>
+            <label><input type="radio" name="q18" value="B"> B. 1911</label>
+            <label><input type="radio" name="q18" value="C"> C. 1901</label>
+            <label><input type="radio" name="q18" value="D"> D. 1905</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">19. নিচের কোনটি ট্রপিক্যাল মনসুন ফসল?</div>
+          <div class="options">
+            <label><input type="radio" name="q19" value="A"> A. বাজরা (Bajra)</label>
+            <label><input type="radio" name="q19" value="B"> B. ধান (Paddy)</label>
+            <label><input type="radio" name="q19" value="C"> C. সরিষা (Mustard)</label>
+            <label><input type="radio" name="q19" value="D"> D. গম (Wheat)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">20. বিশ্বভারতী কোন জেলায় অবস্থিত?</div>
+          <div class="options">
+            <label><input type="radio" name="q20" value="A"> A. Medinipur</label>
+            <label><input type="radio" name="q20" value="B"> B. Bankura</label>
+            <label><input type="radio" name="q20" value="C"> C. Birbhum</label>
+            <label><input type="radio" name="q20" value="D"> D. Purulia</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">21. কুলীনবৃত্তির প্রতিষ্ঠার সঙ্গে কোন রাজা জড়িত?</div>
+          <div class="options">
+            <label><input type="radio" name="q21" value="A"> A. বিজয় সেন</label>
+            <label><input type="radio" name="q21" value="B"> B. বললাল সেন</label>
+            <label><input type="radio" name="q21" value="C"> C. লক্ষ্মণ সেন</label>
+            <label><input type="radio" name="q21" value="D"> D. সমন্ত সেন</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">22. ধ্যানচন্দ কোন খেলায় সম্পর্কিত ছিলেন?</div>
+          <div class="options">
+            <label><input type="radio" name="q22" value="A"> A. Hockey</label>
+            <label><input type="radio" name="q22" value="B"> B. Boxing</label>
+            <label><input type="radio" name="q22" value="C"> C. Running</label>
+            <label><input type="radio" name="q22" value="D"> D. Football</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">23. নিচের কোনটি পুনর্নবীকরণযোগ্য শক্তি?</div>
+          <div class="options">
+            <label><input type="radio" name="q23" value="A"> A. পেট্রোলিয়াম (Petroleum)</label>
+            <label><input type="radio" name="q23" value="B"> B. তাপীয় শক্তি (Thermal power)</label>
+            <label><input type="radio" name="q23" value="C"> C. সৌর শক্তি (Solar power)</label>
+            <label><input type="radio" name="q23" value="D"> D. পারমাণবিক শক্তি (Atomic power)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">24. 'Gatidhara Prakalpa' কোন রাজ্যের উদ্যোগ?</div>
+          <div class="options">
+            <label><input type="radio" name="q24" value="A"> A. Maharashtra</label>
+            <label><input type="radio" name="q24" value="B"> B. Odisha</label>
+            <label><input type="radio" name="q24" value="C"> C. Assam</label>
+            <label><input type="radio" name="q24" value="D"> D. West Bengal</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">25. 2014 সালের জুনে ADB বোর্ডে ভারতের প্রতিনিধি হিসেবে কোন কেন্দ্রীয় মন্ত্রী মনোনীত ছিলেন?</div>
+          <div class="options">
+            <label><input type="radio" name="q25" value="A"> A. Nirmala Sitharaman</label>
+            <label><input type="radio" name="q25" value="B"> B. Arun Jaitley</label>
+            <label><input type="radio" name="q25" value="C"> C. Smriti Irani</label>
+            <label><input type="radio" name="q25" value="D"> D. Prakash Javadekar</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">26. পৃথিবী নিজ অক্ষে কোন দিক থেকে ঘোরে?</div>
+          <div class="options">
+            <label><input type="radio" name="q26" value="A"> A. North to South</label>
+            <label><input type="radio" name="q26" value="B"> B. East to West</label>
+            <label><input type="radio" name="q26" value="C"> C. West to East</label>
+            <label><input type="radio" name="q26" value="D"> D. South to North</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">27. Park Street-এর নাম পুনরায় কী করা হয়েছে?</div>
+          <div class="options">
+            <label><input type="radio" name="q27" value="A"> A. Derozio</label>
+            <label><input type="radio" name="q27" value="B"> B. Netaji Subhas</label>
+            <label><input type="radio" name="q27" value="C"> C. Mother Teresa</label>
+            <label><input type="radio" name="q27" value="D"> D. Jagadish Chandra Bose</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">28. Bengal Chemical-এর প্রতিষ্ঠাতা কে?</div>
+          <div class="options">
+            <label><input type="radio" name="q28" value="A"> A. নীলরতন সরকার</label>
+            <label><input type="radio" name="q28" value="B"> B. প্রফুল্ল চন্দ্র রায়</label>
+            <label><input type="radio" name="q28" value="C"> C. দ্বারকানাথ ঠাকুর</label>
+            <label><input type="radio" name="q28" value="D"> D. আলমোহান দাশ</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">29. 2014 সালের অক্টোবর-এ নগর আবাসন মিশনটি কার নামে নামকরণ করা হয়েছিল?</div>
+          <div class="options">
+            <label><input type="radio" name="q29" value="A"> A. Sardar Patel</label>
+            <label><input type="radio" name="q29" value="B"> B. Shyama Prasad Mukherjee</label>
+            <label><input type="radio" name="q29" value="C"> C. B. R. Ambedkar</label>
+            <label><input type="radio" name="q29" value="D"> D. Subhas Chandra Bose</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">30. সিন্ধু সভ্যতার মানুষের প্রধান পেশা কী ছিল?</div>
+          <div class="options">
+            <label><input type="radio" name="q30" value="A"> A. পশুপালন (Cattle rearing)</label>
+            <label><input type="radio" name="q30" value="B"> B. বাণিজ্য (Trade)</label>
+            <label><input type="radio" name="q30" value="C"> C. শিকার (Hunting)</label>
+            <label><input type="radio" name="q30" value="D"> D. কৃষি (Agriculture)</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">31. 6598-এ সর্বনিম্ন কত যোগ করলে এটি একটি সম্পূর্ণ বর্গসংখ্যা হবে?</div>
+          <div class="options">
+            <label><input type="radio" name="q31" value="A"> A. 124</label>
+            <label><input type="radio" name="q31" value="B"> B. 126</label>
+            <label><input type="radio" name="q31" value="C"> C. 112</label>
+            <label><input type="radio" name="q31" value="D"> D. 116</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">32. একটি ট্রেন 30 km/h গতিতে চললে এবং একটি বিন্দু পার হতে t সেকেন্ড লাগে, ট্রেনের দৈর্ঘ্য কত হবে?</div>
+          <div class="options">
+            <label><input type="radio" name="q32" value="A"> A. 140.5 মিটার</label>
+            <label><input type="radio" name="q32" value="B"> B. 150 মিটার</label>
+            <label><input type="radio" name="q32" value="C"> C. 112.5 মিটার</label>
+            <label><input type="radio" name="q32" value="D"> D. 132 মিটার</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">33. 1023 ও 750-কে কোন সংখ্যায় ভাগ করলে বাকি যথাক্রমে 3 ও 2 পাওয়া যায়?</div>
+          <div class="options">
+            <label><input type="radio" name="q33" value="A"> A. 78</label>
+            <label><input type="radio" name="q33" value="B"> B. 65</label>
+            <label><input type="radio" name="q33" value="C"> C. 11</label>
+            <label><input type="radio" name="q33" value="D"> D. 68</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">34. 2 থেকে 12 পর্যন্ত prime সংখ্যাগুলোর যোগফল কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q34" value="A"> A. 25</label>
+            <label><input type="radio" name="q34" value="B"> B. 26</label>
+            <label><input type="radio" name="q34" value="C"> C. 29</label>
+            <label><input type="radio" name="q34" value="D"> D. 28</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">35. সুদের হার 5% থেকে 4% কমালে বার্ষিক সুদ Rs.250 কমে; তখন মূলধন কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q35" value="A"> A. Rs.20,000</label>
+            <label><input type="radio" name="q35" value="B"> B. Rs.25,000</label>
+            <label><input type="radio" name="q35" value="C"> C. Rs.25,500</label>
+            <label><input type="radio" name="q35" value="D"> D. Rs.22,500</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">36. যদি 79.63 + 963.8 − x + 7.953 = 18.732 হয়, তাহলে x = ?</div>
+          <div class="options">
+            <label><input type="radio" name="q36" value="A"> A. 1063.115</label>
+            <label><input type="radio" name="q36" value="B"> B. 1032.651</label>
+            <label><input type="radio" name="q36" value="C"> C. 1070.115</label>
+            <label><input type="radio" name="q36" value="D"> D. 979.214</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">37. 90 + 0.09 × 10 = ?</div>
+          <div class="options">
+            <label><input type="radio" name="q37" value="A"> A. 81000</label>
+            <label><input type="radio" name="q37" value="B"> B. 100</label>
+            <label><input type="radio" name="q37" value="C"> C. 8100</label>
+            <label><input type="radio" name="q37" value="D"> D. 1000</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">38. একটি চতুর্ভুজের প্রতিটি বাহু 10% বেড়ে গেলে পরিধির শতকরা বৃদ্ধি কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q38" value="A"> A. 100%</label>
+            <label><input type="radio" name="q38" value="B"> B. 10%</label>
+            <label><input type="radio" name="q38" value="C"> C. 25%</label>
+            <label><input type="radio" name="q38" value="D"> D. 21%</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">39. পিতা ও যুগল যমজ সন্তানের বর্তমান গড় বয়স 30; পিতার ও এক সন্তানের বয়স অনুপাত 5:2 হলে পিতার বয়স কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q39" value="A"> A. 50 বছর</label>
+            <label><input type="radio" name="q39" value="B"> B. 60 বছর</label>
+            <label><input type="radio" name="q39" value="C"> C. 42 বছর</label>
+            <label><input type="radio" name="q39" value="D"> D. 45 বছর</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">40. একটি সংখ্যার 25% তার 30%-এর থেকে 15 কম; সংখ্যার 20% কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q40" value="A"> A. 60</label>
+            <label><input type="radio" name="q40" value="B"> B. 65</label>
+            <label><input type="radio" name="q40" value="C"> C. 75</label>
+            <label><input type="radio" name="q40" value="D"> D. 225</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">41. 564823-এ '4' এর place value ও face value-এর গুণফল কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q41" value="A"> A. 16</label>
+            <label><input type="radio" name="q41" value="B"> B. 1600</label>
+            <label><input type="radio" name="q41" value="C"> C. 160</label>
+            <label><input type="radio" name="q41" value="D"> D. 16000</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="A">
+          <div class="qnum">42. একটি খুঁটিতে সবুজ অংশের দৈর্ঘ্য 12.08 মিটার হলে মোট দৈর্ঘ্য কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q42" value="A"> A. 16 মিটার</label>
+            <label><input type="radio" name="q42" value="B"> B. 10 মিটার</label>
+            <label><input type="radio" name="q42" value="C"> C. 14 মিটার</label>
+            <label><input type="radio" name="q42" value="D"> D. 20 মিটার</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="D">
+          <div class="qnum">43. নিচের ভগ্নাংশগুলোর মধ্যে কোনটি সবচেয়ে বড়?</div>
+          <div class="options">
+            <label><input type="radio" name="q43" value="A"> A. 4/12</label>
+            <label><input type="radio" name="q43" value="B"> B. 6/39</label>
+            <label><input type="radio" name="q43" value="C"> C. 2/3</label>
+            <label><input type="radio" name="q43" value="D"> D. 47/12</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="C">
+          <div class="qnum">44. 24 জন 12 দিনে একটি পুকুর খনন করে; 8 দিনে একই কাজ করতে কতজন প্রয়োজন?</div>
+          <div class="options">
+            <label><input type="radio" name="q44" value="A"> A. 32</label>
+            <label><input type="radio" name="q44" value="B"> B. 20</label>
+            <label><input type="radio" name="q44" value="C"> C. 40</label>
+            <label><input type="radio" name="q44" value="D"> D. 36</label>
+          </div>
+        </div>
+
+        <div class="question" data-answer="B">
+          <div class="qnum">45. কোন সংখ্যার তিনগুণ করলে ফল হয় −1; সেই সংখ্যা কত?</div>
+          <div class="options">
+            <label><input type="radio" name="q45" value="A"> A. 1/2</label>
+            <label><input type="radio" name="q45" value="B"> B. −1/3</label>
+            <label><input type="radio" name="q45" value="C"> C. 1</label>
+            <label><input type="radio" name="q45" value="D"> D. 1/3</label>
+          </div>
+        </div>
+
         <div style="margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
           <button type="button" id="submitBtn" class="btn primary">Submit Answers</button>
           <button type="button" id="clearBtn" class="btn">Clear Selections</button>
           <div class="small" style="margin-left:12px">Result: <span id="resultSummary">Not submitted</span></div>
         </div>
 
-        <!-- visible results block under submit button -->
         <div id="resultsBox" class="resultsBox" style="margin-top:12px; display:none;">
           <div>Attempted: <span id="resAttempted">0</span></div>
           <div>Correct: <span id="resCorrect">0</span></div>
@@ -186,7 +530,6 @@
     </div>
   </main>
 
-  <!-- floating bottom-right box with quick view (also fixed) -->
   <div class="bottombar" aria-hidden="false">
     <div class="resultsBox">
       <div>Attempted: <span id="brAttempted">0</span></div>
@@ -197,7 +540,6 @@
 
   <script>
     (function(){
-      // Timer
       const startBtn = document.getElementById('startBtn');
       const pauseBtn = document.getElementById('pauseBtn');
       const submitBtn = document.getElementById('submitBtn');
@@ -218,7 +560,7 @@
       const timeTakenSpan = document.getElementById('timeTaken');
       const marksScoredSpan = document.getElementById('marksScored');
 
-      let totalSeconds = 60 * 60; // 60:00
+      let totalSeconds = 60 * 60;
       let interval = null;
       let running = false;
       let startedAt = null;
@@ -229,7 +571,6 @@
         return `${m}:${s}`;
       }
       function updateHeaderTimer(){
-        // replace the small "Start Timer 60:00" text by updating the first small in topbar
         const small = document.querySelector('.topbar .small');
         if(small) small.textContent = running ? formatTime(totalSeconds) : `Start Timer ${formatTime(totalSeconds)}`;
       }
@@ -239,7 +580,7 @@
           updateHeaderTimer();
         } else {
           stopTimer();
-          evaluate(); // auto-submit
+          evaluate();
         }
       }
       function startTimer(){
@@ -258,7 +599,6 @@
       startBtn.addEventListener('click', ()=> startTimer());
       pauseBtn.addEventListener('click', ()=> running ? stopTimer() : startTimer());
 
-      // randomize options while keeping track of correct text
       function shuffle(arr){
         for(let i = arr.length-1; i>0; i--){
           const j = Math.floor(Math.random()*(i+1));
@@ -266,13 +606,15 @@
         }
         return arr;
       }
+
       function randomizeAllOptions(){
         const qDivs = Array.from(document.querySelectorAll('.question'));
         qDivs.forEach(q=>{
           const answerLetter = (q.dataset.answer || 'A').trim().toUpperCase();
           const idxMap = {A:0,B:1,C:2,D:3};
           const letterIndex = idxMap[answerLetter] ?? 0;
-          const opts = Array.from(q.querySelectorAll('label')).map(label=>{
+          const labels = Array.from(q.querySelectorAll('label'));
+          const opts = labels.map(label=>{
             const inp = label.querySelector('input');
             const text = label.textContent.replace(/^[A-D]\.\s*/,'').trim();
             return { text, name: inp.name };
@@ -295,9 +637,7 @@
         });
       }
 
-      // evaluate answers and highlight
       function evaluate(){
-        // clear previous highlights
         document.querySelectorAll('.options label').forEach(l=> l.classList.remove('correct','wrong','reveal-correct'));
         const qDivs = Array.from(document.querySelectorAll('.question'));
         let att=0, corr=0, wrg=0;
@@ -307,7 +647,6 @@
           const labels = Array.from(q.querySelectorAll('label'));
           const sel = radios.find(r=> r.checked);
           if(sel) att++;
-          // reveal correct label
           const cLabel = labels.find(l=> l.textContent.replace(/^[A-D]\.\s*/,'').trim() === correctText);
           if(cLabel) cLabel.classList.add('correct','reveal-correct');
           if(sel){
@@ -364,7 +703,6 @@
         marksScoredSpan.textContent = 0;
       });
 
-      // live attempted update
       document.getElementById('quizForm').addEventListener('change', ()=>{
         const inputs = Array.from(document.querySelectorAll('input[type=radio]'));
         const names = new Set(inputs.filter(i=>i.checked).map(i=>i.name));
@@ -372,10 +710,10 @@
         brAttempted.textContent = names.size;
       });
 
-      // initialize
       randomizeAllOptions();
       updateHeaderTimer();
     })();
   </script>
 </body>
 </html>
+```
