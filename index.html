@@ -1,3 +1,6 @@
+### Updated HTML page with mixed English-Bengali motivational quotes
+
+```html
 <!doctype html>
 <html lang="bn">
 <head>
@@ -132,10 +135,21 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
     }
 
-    .info{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.5;
+    .quotes{
+      font-size:14px;
+      color:#0f1724;
+      line-height:1.6;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .quote{
+      background:linear-gradient(90deg, rgba(11,92,255,0.03), rgba(62,199,255,0.02));
+      border-radius:10px;
+      padding:12px;
+      border:1px solid rgba(11,92,255,0.04);
     }
 
     footer{
@@ -172,7 +186,7 @@
           <div class="logo">WB</div>
           <div>
             <h1 id="main-title">wbssc group d and c mock test</h1>
-            <p class="lead">Group D এবং Group C পরীক্ষার জন্য mock test ও নতুন প্রশ্ন </p>
+            <p class="lead">Group D এবং Group C পরীক্ষার জন্য mock test ও নতুন প্রশ্ন তৈরির লিংকগুলো নিচে দেওয়া আছে</p>
           </div>
         </div>
 
@@ -199,10 +213,28 @@
           <div class="pill">New Questions</div>
         </div>
 
-       
-
   
+      </section>
+
+      <aside class="sidebar" aria-labelledby="aside-title">
+        <h2 id="aside-title" style="margin:0; font-size:15px;">Motivational Quotes </h2>
+
+        <div class="quotes" aria-live="polite">
+          <div class="quote"><br>আজকের ছোটো চেষ্টাই আগামীকাল বড়ো ফল দেবে।</div>
+
+          <div class="quote"><br>প্রতিদিন একট একট করে গড়লে success নিজের পথে চলে আসবে।</div>
+
+          <div class="quote"><br> ভয়কে শুনো, কিন্তু পরিশ্রমে জয় করো।</div>
+
+          <div class="quote"><br> তুমি যতটা পরিশ্রম করবে, confidence ততটাই বাড়বে।</div>
+
+          <div class="quote"><br>No shortcuts, শুধু smart effort; পরিকল্পনা করো, পড়ে যাও, উঠো, আর আবার চেষ্টা করো।</div>
+
+          <div class="quote"><br>One more attempt আজই দাও; আজকের extra push ভবিষ্যতকে বদলে দিতে পারে।</div>
+        </div>
+      </aside>
     </main>
   </div>
 </body>
 </html>
+```
