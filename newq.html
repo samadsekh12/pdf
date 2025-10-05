@@ -20,14 +20,16 @@
     form { margin-top:16px; }
     .question { margin:14px 0; padding:12px; border-radius:8px; background:linear-gradient(180deg,#ffffff,#fbfdff); border:1px solid #eef3fa; }
     .qnum { font-weight:700; margin-bottom:6px; }
-    .options label { display:block; margin:6px 0; cursor:pointer; padding:6px 8px; border-radius:6px; }
+    .options label { display:block; margin:6px 0; cursor:pointer; padding:6px 8px; border-radius:6px; transition: background .15s, border-color .15s; }
     .options input { margin-right:8px; }
     .correct { background: #e6ffea; border:1px solid #1fa851; color:#063; }
     .wrong { background: #ffecec; border:1px solid #d93025; color:#800; }
     .reveal-correct { outline: 2px solid #1fa851; }
     footer { margin-top:18px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
     .small { font-size:13px; color:#475569; }
-    .summary { font-weight:700; }
+    .summary { font-weight:700; padding:10px 12px; border-radius:8px; background:#f8fafc; display:inline-block; }
+    .resultsBox { margin-top:12px; padding:12px; border-radius:8px; background:#fff; border:1px solid #e6eef8; }
+    .controls-bottom { display:flex; gap:8px; align-items:center; margin-top:12px; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -35,7 +37,6 @@
     <h1>বহুনির্বাচনী পরীক্ষা — 45 প্রশ্ন</h1>
     <div class="panel status" aria-live="polite">
       <div class="badge" id="timer">Start Timer 60:00</div>
-      <div class="badge">Not started</div>
       <div class="badge">Total Questions: 45</div>
       <div class="badge">Attempted: <span id="attempted">0</span></div>
       <div class="badge">Correct: <span id="correct">0</span></div>
@@ -45,30 +46,32 @@
 
   <main>
     <div class="panel">
-      <div id="controls">
+      <div id="controls" style="align-items:center;">
         <button id="startBtn" class="primary">Start</button>
         <button id="pauseBtn">Pause</button>
         <button id="resetBtn" class="ghost">Reset</button>
-        <button id="submitBtn">Submit Answers</button>
-        <div class="small" style="margin-left:auto">Time taken (minutes): <span id="timeTaken">0.00</span></div>
+        <div style="margin-left:auto" class="small">Time taken (minutes): <span id="timeTaken">0.00</span></div>
         <div class="small">Marks scored: <span id="marksScored">0</span></div>
       </div>
 
       <form id="quizForm" autocomplete="off">
-        <!-- Questions 1-45. Each question has data-answer set to letter A-D indicating which original option is correct.
-             On load options will be shuffled; script will capture correct option text before shuffle and store it in data-correct-text.
-             On submit, selected option text is compared to data-correct-text to determine correctness. -->
-        
+        <!-- 45 questions. Each question has data-answer A-D (original correct letter).
+             The script captures correct option text, shuffles displayed options, stores correct text in data-correct-text.
+             On submit correct option(s) get green; incorrect selected options get red. Results shown below submit button. -->
+
+        <!-- Question set (45 items). For brevity layout uses simple factual items. -->
+        <!-- 1 -->
         <div class="question" data-answer="B">
           <div class="qnum">1. মানুষের রক্তের প্রধান গঠন উপাদান কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q1" value="A"> A. প্লেটলেট</label>
-            <label><input type="radio" name="q1" value="B"> B. লাল রক্ত কণিকা (Red blood cells)</label>
-            <label><input type="radio" name="q1" value="C"> C. প্লাজমা প্রোটিন</label>
+            <label><input type="radio" name="q1" value="B"> B. লাল রক্ত কণিকা</label>
+            <label><input type="radio" name="q1" value="C"> C. প্লাজমা</label>
             <label><input type="radio" name="q1" value="D"> D. লিউকোসাইট</label>
           </div>
         </div>
 
+        <!-- 2 -->
         <div class="question" data-answer="D">
           <div class="qnum">2. সূর্যের নিকটতম গ্রহ কোনটি?</div>
           <div class="options">
@@ -79,6 +82,7 @@
           </div>
         </div>
 
+        <!-- 3 -->
         <div class="question" data-answer="A">
           <div class="qnum">3. জৈব রাসায়নে পানির সূত্র কী?</div>
           <div class="options">
@@ -89,8 +93,9 @@
           </div>
         </div>
 
+        <!-- 4 -->
         <div class="question" data-answer="C">
-          <div class="qnum">4. ভারতের স্বাধীনতা আন্দোলনের প্রধান নেতা কারা ছিলেন?</div>
+          <div class="qnum">4. ভারতের স্বাধীনতা আন্দোলনের প্রধান নেতা ছিলেন?</div>
           <div class="options">
             <label><input type="radio" name="q4" value="A"> A. জে.এন.সেন</label>
             <label><input type="radio" name="q4" value="B"> B. সুভাষ বসু</label>
@@ -99,8 +104,9 @@
           </div>
         </div>
 
+        <!-- 5 -->
         <div class="question" data-answer="B">
-          <div class="qnum">5. উদ্ভিদের পাতায় যে রঙ প্রাপ্ত হয় তা বলে কোন বর্ণ?</div>
+          <div class="qnum">5. উদ্ভিদের পাতায় প্রধান রং কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q5" value="A"> A. কেরোটিন</label>
             <label><input type="radio" name="q5" value="B"> B. ক্লোরোফিল</label>
@@ -109,8 +115,9 @@
           </div>
         </div>
 
+        <!-- 6 -->
         <div class="question" data-answer="D">
-          <div class="qnum">6. একটি সাধারণ পিএইচ সূচকে কোন মান অত্যন্ত ক্ষারীয় নির্দেশ করে?</div>
+          <div class="qnum">6. পিএইচ মানে সবচেয়ে ক্ষারীয় নমুনা কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q6" value="A"> A. 1</label>
             <label><input type="radio" name="q6" value="B"> B. 4</label>
@@ -119,18 +126,20 @@
           </div>
         </div>
 
+        <!-- 7 -->
         <div class="question" data-answer="A">
           <div class="qnum">7. পৃথিবীর সবচেয়ে বড় মহাসাগর কোনটি?</div>
           <div class="options">
-            <label><input type="radio" name="q7" value="A"> A. প্রশান্ত মহাসাগর (Pacific)</label>
+            <label><input type="radio" name="q7" value="A"> A. প্রশান্ত মহাসাগর</label>
             <label><input type="radio" name="q7" value="B"> B. আটলান্টিক</label>
             <label><input type="radio" name="q7" value="C"> C. ভারত মহাসাগর</label>
             <label><input type="radio" name="q7" value="D"> D. আর্কটিক</label>
           </div>
         </div>
 
+        <!-- 8 -->
         <div class="question" data-answer="C">
-          <div class="qnum">8. যেসব প্রাণী রাতের বেলায় সক্রিয় তাদের বলা হয়?</div>
+          <div class="qnum">8. রাতের প্রাণীকে কোন শব্দে জানায়?</div>
           <div class="options">
             <label><input type="radio" name="q8" value="A"> A. ডায়ার্নাল</label>
             <label><input type="radio" name="q8" value="B"> B. ক্রিয়োপিক</label>
@@ -139,8 +148,9 @@
           </div>
         </div>
 
+        <!-- 9 -->
         <div class="question" data-answer="B">
-          <div class="qnum">9. সাধারণত লোহা অক্সাইড করলে যে রঙ্গ দেখা যায় তা কী?</div>
+          <div class="qnum">9. লোহা অক্সাইড হলে কি রঙ হয়?</div>
           <div class="options">
             <label><input type="radio" name="q9" value="A"> A. সবুজ</label>
             <label><input type="radio" name="q9" value="B"> B. লালচে বাদামী (জং)</label>
@@ -149,8 +159,9 @@
           </div>
         </div>
 
+        <!-- 10 -->
         <div class="question" data-answer="D">
-          <div class="qnum">10. EU এর পূর্ণরূপ কি?</div>
+          <div class="qnum">10. EU পূর্ণরূপ কি?</div>
           <div class="options">
             <label><input type="radio" name="q10" value="A"> A. Economic Union</label>
             <label><input type="radio" name="q10" value="B"> B. European Understanding</label>
@@ -159,14 +170,10 @@
           </div>
         </div>
 
-        <!-- Questions 11 to 45 follow same structure as above -->
-        <!-- For brevity included in the same pattern — ensure 45 distinct questions exist -->
-        <!-- ... (the rest of the 45 questions are the same as in the prior file) ... -->
-
-        <!-- To keep response concise here but still deliver functional HTML, include all remaining questions below exactly as prior.
-             (In actual use paste all 45 questions; the script below handles randomization and marking.) -->
-
-        <!-- --- START remaining questions (11..45) --- -->
+        <!-- 11-45: continue same structure (omitted here for brevity but must be present in actual file) -->
+        <!-- For completeness in this file we include the remaining questions 11..45 as in the previous response. -->
+        
+        <!-- 11 -->
         <div class="question" data-answer="A">
           <div class="qnum">11. 1 কিলোমিটার সমান কত মিটার?</div>
           <div class="options">
@@ -177,8 +184,9 @@
           </div>
         </div>
 
+        <!-- 12 -->
         <div class="question" data-answer="C">
-          <div class="qnum">12. গণিতে 'বর্গমূল' বোঝায় কোন প্রতীকটি?</div>
+          <div class="qnum">12. গণিতে 'বর্গমূল' প্রতীক কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q12" value="A"> A. ∑</label>
             <label><input type="radio" name="q12" value="B"> B. ∫</label>
@@ -187,8 +195,9 @@
           </div>
         </div>
 
+        <!-- 13 -->
         <div class="question" data-answer="B">
-          <div class="qnum">13. বিশ্ব ব্যাংকের সদর দফতর কোন শহরে অবস্থিত?</div>
+          <div class="qnum">13. বিশ্ব ব্যাংকের সদর দফতর কোথায়?</div>
           <div class="options">
             <label><input type="radio" name="q13" value="A"> A. প্যারিস</label>
             <label><input type="radio" name="q13" value="B"> B. ওয়াশিংটন, ডি.সি.</label>
@@ -197,8 +206,9 @@
           </div>
         </div>
 
+        <!-- 14 -->
         <div class="question" data-answer="D">
-          <div class="qnum">14. মানুষের রং নির্ধারণে কোন জিনগোষ্ঠী প্রধান ভূমিকা রাখে?</div>
+          <div class="qnum">14. মানুষের রং নির্ধারণে প্রধান পদার্থ?</div>
           <div class="options">
             <label><input type="radio" name="q14" value="A"> A. কোলাজেন</label>
             <label><input type="radio" name="q14" value="B"> B. হিমোগ্লোবিন</label>
@@ -207,18 +217,20 @@
           </div>
         </div>
 
+        <!-- 15 -->
         <div class="question" data-answer="C">
-          <div class="qnum">15. যেসব উদ্ভিদ মরূভূমির জন্য উপযোগী তাদের বলা হয়?</div>
+          <div class="qnum">15. মরূভূমির উদ্ভিদকে কী বলা হয়?</div>
           <div class="options">
             <label><input type="radio" name="q15" value="A"> A. হাইড্রোফাইল</label>
             <label><input type="radio" name="q15" value="B"> B. অরথোভাইল</label>
-            <label><input type="radio" name="q15" value="C"> C. xerophyte (শুকনো পরিবেশ অনুকূল)</label>
+            <label><input type="radio" name="q15" value="C"> C. Xerophyte</label>
             <label><input type="radio" name="q15" value="D"> D. হাইগ্রোফাইল</label>
           </div>
         </div>
 
+        <!-- 16 -->
         <div class="question" data-answer="A">
-          <div class="qnum">16. মোটরগাড়ির গতি পরিমাপের যন্ত্রকে কী বলা হয়?</div>
+          <div class="qnum">16. গাড়ির গতি মাপার যন্ত্র কী?</div>
           <div class="options">
             <label><input type="radio" name="q16" value="A"> A. স্পিডোমিটার</label>
             <label><input type="radio" name="q16" value="B"> B. ওডোমিটার</label>
@@ -227,8 +239,9 @@
           </div>
         </div>
 
+        <!-- 17 -->
         <div class="question" data-answer="B">
-          <div class="qnum">17. 'মহাভারত' লেখা কাকে অনুধাবন করা হয়?</div>
+          <div class="qnum">17. 'মহাভারত' কে রচনা করেন বলে ধরা হয়?</div>
           <div class="options">
             <label><input type="radio" name="q17" value="A"> A. বেদবর্জ্য</label>
             <label><input type="radio" name="q17" value="B"> B. বৃষ্ণু</label>
@@ -237,8 +250,9 @@
           </div>
         </div>
 
+        <!-- 18 -->
         <div class="question" data-answer="C">
-          <div class="qnum">18. একজন উদ্ভিদবিদকে সাধারণত কী নামে ডাকা হয়?</div>
+          <div class="qnum">18. উদ্ভিদবিজ্ঞানীর নাম কী?</div>
           <div class="options">
             <label><input type="radio" name="q18" value="A"> A. জুলজ</label>
             <label><input type="radio" name="q18" value="B"> B. ঝোলজ</label>
@@ -247,8 +261,9 @@
           </div>
         </div>
 
+        <!-- 19 -->
         <div class="question" data-answer="A">
-          <div class="qnum">19. একটি সপ্তাহে কত ঘন্টা থাকে?</div>
+          <div class="qnum">19. এক সপ্তাহে কত ঘণ্টা?</div>
           <div class="options">
             <label><input type="radio" name="q19" value="A"> A. 168</label>
             <label><input type="radio" name="q19" value="B"> B. 144</label>
@@ -257,8 +272,9 @@
           </div>
         </div>
 
+        <!-- 20 -->
         <div class="question" data-answer="D">
-          <div class="qnum">20. চুম্বকীয় বৃত্তাকার লাইনগুলোকে কী বলা হয়?</div>
+          <div class="qnum">20. চুম্বকীয় লাইনের নাম কী?</div>
           <div class="options">
             <label><input type="radio" name="q20" value="A"> A. ইলেকট্রিক লাইন</label>
             <label><input type="radio" name="q20" value="B"> B. গ্র্যাভিটি লাইন</label>
@@ -267,6 +283,7 @@
           </div>
         </div>
 
+        <!-- 21 -->
         <div class="question" data-answer="B">
           <div class="qnum">21. বাংলাদেশ স্বাধীন হয় কত সালে?</div>
           <div class="options">
@@ -277,28 +294,31 @@
           </div>
         </div>
 
+        <!-- 22 -->
         <div class="question" data-answer="C">
           <div class="qnum">22. মানবদেহে সবচেয়ে বড় অঙ্গ কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q22" value="A"> A. হৃদয়</label>
             <label><input type="radio" name="q22" value="B"> B. মস্তিষ্ক</label>
-            <label><input type="radio" name="q22" value="C"> C. চামড়া</label>
+            <label><input type="radio" name="q22" value="C"> C. চামড়া</label>
             <label><input type="radio" name="q22" value="D"> D. যকৃত</label>
           </div>
         </div>
 
+        <!-- 23 -->
         <div class="question" data-answer="A">
-          <div class="qnum">23. সাধারণত সূর্যোদয়ের দিকে কোন দিক বলা হয়?</div>
+          <div class="qnum">23. সূর্যোদয় সাধারণত কোন দিক থেকে হয়?</div>
           <div class="options">
-            <label><input type="radio" name="q23" value="A"> A. পূর্ব (East)</label>
+            <label><input type="radio" name="q23" value="A"> A. পূর্ব</label>
             <label><input type="radio" name="q23" value="B"> B. পশ্চিম</label>
             <label><input type="radio" name="q23" value="C"> C. উত্তর</label>
             <label><input type="radio" name="q23" value="D"> D. দক্ষিণ</label>
           </div>
         </div>
 
+        <!-- 24 -->
         <div class="question" data-answer="D">
-          <div class="qnum">24. বৈদ্যুতিক কর্মকর্তার ক্ষেত্রে ভোল্টের একক কী?</div>
+          <div class="qnum">24. ভোল্টের একক কী?</div>
           <div class="options">
             <label><input type="radio" name="q24" value="A"> A. ওয়াট</label>
             <label><input type="radio" name="q24" value="B"> B. জুল</label>
@@ -307,8 +327,9 @@
           </div>
         </div>
 
+        <!-- 25 -->
         <div class="question" data-answer="C">
-          <div class="qnum">25. 'ATP' অনুজীবের শক্তি পরিবাহক হিসেবে কী বোঝায়?</div>
+          <div class="qnum">25. ATP মানে কী?</div>
           <div class="options">
             <label><input type="radio" name="q25" value="A"> A. অ্যাডেনিন ট্রাইফসফেট</label>
             <label><input type="radio" name="q25" value="B"> B. অ্যাডেনাইন টেট্রা ফসফেট</label>
@@ -317,8 +338,9 @@
           </div>
         </div>
 
+        <!-- 26 -->
         <div class="question" data-answer="B">
-          <div class="qnum">26. একটি বর্গের একটি বাহু যদি 5 সেমি হয়, তার ক্ষেত্রফল কত?</div>
+          <div class="qnum">26. বর্গের বাহু 5 সেমি হলে ক্ষেত্রফল কত?</div>
           <div class="options">
             <label><input type="radio" name="q26" value="A"> A. 10 সেমি²</label>
             <label><input type="radio" name="q26" value="B"> B. 25 সেমি²</label>
@@ -327,8 +349,9 @@
           </div>
         </div>
 
+        <!-- 27 -->
         <div class="question" data-answer="A">
-          <div class="qnum">27. অণুজীবের পরিসরে 'প্যাথোজেন' বোঝায় কী?</div>
+          <div class="qnum">27. প্যাথোজেন কি?</div>
           <div class="options">
             <label><input type="radio" name="q27" value="A"> A. রোগ সৃষ্টিকারী জীব</label>
             <label><input type="radio" name="q27" value="B"> B. পুষ্টিকর ব্যাকটেরিয়া</label>
@@ -337,8 +360,9 @@
           </div>
         </div>
 
+        <!-- 28 -->
         <div class="question" data-answer="C">
-          <div class="qnum">28. 100 গুণ 0.01 এর ফল কত?</div>
+          <div class="qnum">28. 100 × 0.01 = ?</div>
           <div class="options">
             <label><input type="radio" name="q28" value="A"> A. 0.001</label>
             <label><input type="radio" name="q28" value="B"> B. 0.1</label>
@@ -347,28 +371,31 @@
           </div>
         </div>
 
+        <!-- 29 -->
         <div class="question" data-answer="B">
-          <div class="qnum">29. বায়ুমণ্ডলে সবচেয়ে প্রচুর গ্যাস কোনটি?</div>
+          <div class="qnum">29. বায়ুমণ্ডলের প্রধান গ্যাস কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q29" value="A"> A. অক্সিজেন</label>
             <label><input type="radio" name="q29" value="B"> B. নাইট্রোজেন</label>
-            <label><input type="radio" name="q29" value="C"> C. কার্বন ডাইঅক্সাইড</label>
+            <label><input type="radio" name="q29" value="C"> C. CO2</label>
             <label><input type="radio" name="q29" value="D"> D. হিলিয়াম</label>
           </div>
         </div>
 
+        <!-- 30 -->
         <div class="question" data-answer="A">
-          <div class="qnum">30. গণিতে 'প্রাইম সংখ্যা' বলতে কী বোঝায়?</div>
+          <div class="qnum">30. প্রাইম সংখ্যা কি?</div>
           <div class="options">
-            <label><input type="radio" name="q30" value="A"> A. কেবল 1 ও নিজে দ্বারা বিভাজ্য সংখ্যা</label>
+            <label><input type="radio" name="q30" value="A"> A. কেবল 1 ও নিজে দ্বারা বিভাজ্য</label>
             <label><input type="radio" name="q30" value="B"> B. জোড় সংখ্যা</label>
             <label><input type="radio" name="q30" value="C"> C. প্রপূরক সংখ্যা</label>
             <label><input type="radio" name="q30" value="D"> D. দ্বিগুণ সংখ্যা</label>
           </div>
         </div>
 
+        <!-- 31 -->
         <div class="question" data-answer="D">
-          <div class="qnum">31. 'আইফোন' কোন প্রতিষ্ঠান উত্পাদন করে?</div>
+          <div class="qnum">31. আইফোন কোন কোম্পানি তৈরি করে?</div>
           <div class="options">
             <label><input type="radio" name="q31" value="A"> A. মাইক্রোসফট</label>
             <label><input type="radio" name="q31" value="B"> B. স্যামসাং</label>
@@ -377,8 +404,9 @@
           </div>
         </div>
 
+        <!-- 32 -->
         <div class="question" data-answer="B">
-          <div class="qnum">32. পৃথিবীর ভূগোলিক অক্ষের একটি দিককে সাধারণত কী বলা হয়?</div>
+          <div class="qnum">32. পৃথিবীর ভূ-অক্ষকে কী বলা হয়?</div>
           <div class="options">
             <label><input type="radio" name="q32" value="A"> A. এক্স অক্ষ</label>
             <label><input type="radio" name="q32" value="B"> B. উত্তর-দক্ষিণ অক্ষ</label>
@@ -387,8 +415,9 @@
           </div>
         </div>
 
+        <!-- 33 -->
         <div class="question" data-answer="C">
-          <div class="qnum">33. একটি তিনকোণীর বাহুগুলির সমষ্টি কী নামে পরিচিত?</div>
+          <div class="qnum">33. তিনকোণীর বাহুগুলোর যোগফলকে কী বলে?</div>
           <div class="options">
             <label><input type="radio" name="q33" value="A"> A. ক্ষেত্রফল</label>
             <label><input type="radio" name="q33" value="B"> B. উচ্চতা</label>
@@ -397,8 +426,9 @@
           </div>
         </div>
 
+        <!-- 34 -->
         <div class="question" data-answer="A">
-          <div class="qnum">34. 'HTTP' পূর্ণরূপ কি?</div>
+          <div class="qnum">34. HTTP পূর্ণরূপ কি?</div>
           <div class="options">
             <label><input type="radio" name="q34" value="A"> A. HyperText Transfer Protocol</label>
             <label><input type="radio" name="q34" value="B"> B. High Transfer Text Protocol</label>
@@ -407,8 +437,9 @@
           </div>
         </div>
 
-        <div class="question" data-answer="B">
-          <div class="qnum">35. 12 এবং 18 সংখ্যার ল.সা.গুণ কত?</div>
+        <!-- 35 -->
+        <div class="question" data-answer="A">
+          <div class="qnum">35. 12 ও 18 এর LCM কত?</div>
           <div class="options">
             <label><input type="radio" name="q35" value="A"> A. 36</label>
             <label><input type="radio" name="q35" value="B"> B. 36</label>
@@ -417,8 +448,9 @@
           </div>
         </div>
 
+        <!-- 36 -->
         <div class="question" data-answer="C">
-          <div class="qnum">36. একটি ঘড়ির সুই নীল হলে কাকে রেফার করা হয়?</div>
+          <div class="qnum">36. ঘড়ির সেকেন্ড হ্যান্ড কী?</div>
           <div class="options">
             <label><input type="radio" name="q36" value="A"> A. টিকটিকি</label>
             <label><input type="radio" name="q36" value="B"> B. ডায়াল</label>
@@ -427,8 +459,9 @@
           </div>
         </div>
 
+        <!-- 37 -->
         <div class="question" data-answer="D">
-          <div class="qnum">37. সঙ্গীতের তালে চারটি সুর হলেও তার নাম কী?</div>
+          <div class="qnum">37. চার-তাল কাকে বলে?</div>
           <div class="options">
             <label><input type="radio" name="q37" value="A"> A. তিন-তাল</label>
             <label><input type="radio" name="q37" value="B"> B. দম-তাল</label>
@@ -437,18 +470,20 @@
           </div>
         </div>
 
+        <!-- 38 -->
         <div class="question" data-answer="B">
-          <div class="qnum">38. স্টিল তৈরির প্রধান কাঁচামাল কোনটি?</div>
+          <div class="qnum">38. স্টিলের প্রধান কাঁচামাল কী?</div>
           <div class="options">
             <label><input type="radio" name="q38" value="A"> A. বক্সাইট</label>
-            <label><input type="radio" name="q38" value="B"> B. লৌহ আয়রন (Iron ore)</label>
+            <label><input type="radio" name="q38" value="B"> B. লৌহ আয়রন</label>
             <label><input type="radio" name="q38" value="C"> C. সোডিয়াম ক্লোরাইড</label>
             <label><input type="radio" name="q38" value="D"> D. ক্যালসিয়াম কার্বোনেট</label>
           </div>
         </div>
 
+        <!-- 39 -->
         <div class="question" data-answer="A">
-          <div class="qnum">39. 'মহাকাশ' গবেষণার আন্তর্জাতিক সংস্থা কী নামে পরিচিত?</div>
+          <div class="qnum">39. মহাকাশ সংস্থা কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q39" value="A"> A. NASA</label>
             <label><input type="radio" name="q39" value="B"> B. WHO</label>
@@ -457,8 +492,9 @@
           </div>
         </div>
 
+        <!-- 40 -->
         <div class="question" data-answer="C">
-          <div class="qnum">40. যদি x = 5 হয়, তাহলে x^2 + 3x মান কত?</div>
+          <div class="qnum">40. x=5 হলে x^2+3x কত?</div>
           <div class="options">
             <label><input type="radio" name="q40" value="A"> A. 20</label>
             <label><input type="radio" name="q40" value="B"> B. 35</label>
@@ -467,8 +503,9 @@
           </div>
         </div>
 
+        <!-- 41 -->
         <div class="question" data-answer="B">
-          <div class="qnum">41. ভারতীয় সংবিধানে মোট কতটি ধারা আছে (প্রায়)?</div>
+          <div class="qnum">41. ভারতের সংবিধানে প্রায় কতো ধারা আছে?</div>
           <div class="options">
             <label><input type="radio" name="q41" value="A"> A. 300</label>
             <label><input type="radio" name="q41" value="B"> B. 395+</label>
@@ -477,8 +514,9 @@
           </div>
         </div>
 
+        <!-- 42 -->
         <div class="question" data-answer="D">
-          <div class="qnum">42. আধুনিক কম্পিউটারে তথ্য সংরক্ষণের মৌলিক একক কোনটি?</div>
+          <div class="qnum">42. কম্পিউটারে মৌলিক একক কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q42" value="A"> A. কিলোবাইট</label>
             <label><input type="radio" name="q42" value="B"> B. মেগাবাইট</label>
@@ -487,8 +525,9 @@
           </div>
         </div>
 
+        <!-- 43 -->
         <div class="question" data-answer="C">
-          <div class="qnum">43. বিশ্বের সর্বোচ্চ পর্বতাংশ কোনটি?</div>
+          <div class="qnum">43. বিশ্বের সর্বোচ্চ পর্বত কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q43" value="A"> A. কাঞ্চনজঙ্ঘা</label>
             <label><input type="radio" name="q43" value="B"> B. কিলিমানজারো</label>
@@ -497,8 +536,9 @@
           </div>
         </div>
 
+        <!-- 44 -->
         <div class="question" data-answer="A">
-          <div class="qnum">44. সাইকেল চালানোর সময় 'চেইন' মূলত কী ভূমিকা রাখে?</div>
+          <div class="qnum">44. সাইকেল চেইন কী করে?</div>
           <div class="options">
             <label><input type="radio" name="q44" value="A"> A. শক্তি স্থানান্তর</label>
             <label><input type="radio" name="q44" value="B"> B. গতি পরিমাপ</label>
@@ -507,8 +547,9 @@
           </div>
         </div>
 
+        <!-- 45 -->
         <div class="question" data-answer="B">
-          <div class="qnum">45. এক কিলোগ্রাম পানির তাপ ক্ষমতা বেশি বলে কোন শক্তি এককটি প্রয়োগ করা হয়?</div>
+          <div class="qnum">45. পানির তাপ ক্ষমতার একক কোনটি?</div>
           <div class="options">
             <label><input type="radio" name="q45" value="A"> A. ভোল্ট</label>
             <label><input type="radio" name="q45" value="B"> B. কিলো ক্যালরি</label>
@@ -516,38 +557,39 @@
             <label><input type="radio" name="q45" value="D"> D. নিউটন</label>
           </div>
         </div>
-        <!-- --- END remaining questions --- -->
+
+        <!-- bottom controls -->
+        <div class="controls-bottom">
+          <button type="button" id="submitBtn" class="primary">Submit Answers</button>
+          <button type="button" id="clearBtn" class="ghost">Clear Selections</button>
+          <div class="small" style="margin-left:12px">Result: <span id="resultSummary">Not submitted</span></div>
+        </div>
+
+        <div class="resultsBox" id="resultsBox" aria-live="polite" style="display:none;">
+          <div><strong>Attempted:</strong> <span id="resAttempted">0</span></div>
+          <div><strong>Correct:</strong> <span id="resCorrect">0</span></div>
+          <div><strong>Wrong:</strong> <span id="resWrong">0</span></div>
+        </div>
 
       </form>
 
       <footer>
-        <div class="small">উত্তর যাচাই করলে সঠিক সংখ্যা ও ভুল সংখ্যা দেখানো হবে</div>
-        <div>
-          <button id="clearBtn" class="ghost">Clear Selections</button>
-        </div>
-        <div class="summary">Result: <span id="resultSummary">Not submitted</span></div>
+        <div class="small">সঠিক উত্তরগুলো সবুজে হাইলাইট হবে; ভুল নির্বাচিতগুলো লাল হবে; কেবল ফল নিচে দৃশ্যমান</div>
       </footer>
     </div>
   </main>
 
   <script>
     (function(){
-      // Timer variables (same as before)
+      // Timer
       const startBtn = document.getElementById('startBtn');
       const pauseBtn = document.getElementById('pauseBtn');
       const resetBtn = document.getElementById('resetBtn');
-      const submitBtn = document.getElementById('submitBtn');
-      const clearBtn = document.getElementById('clearBtn');
       const timerDisplay = document.getElementById('timer');
-      const attemptedSpan = document.getElementById('attempted');
-      const correctSpan = document.getElementById('correct');
-      const wrongSpan = document.getElementById('wrong');
       const timeTakenSpan = document.getElementById('timeTaken');
       const marksScoredSpan = document.getElementById('marksScored');
-      const resultSummary = document.getElementById('resultSummary');
-      const form = document.getElementById('quizForm');
 
-      let totalSeconds = 60 * 60;
+      let totalSeconds = 60 * 60; // 60:00
       let interval = null;
       let running = false;
       let startedAt = null;
@@ -566,6 +608,7 @@
           updateTimerDisplay();
         } else {
           stopTimer();
+          // auto-submit when time up
           submitAnswers();
         }
       }
@@ -584,18 +627,19 @@
       }
       function resetTimer(){
         stopTimer();
-        totalSeconds = 60*60;
+        totalSeconds = 60 * 60;
         startedAt = null;
         updateTimerDisplay();
+        timeTakenSpan.textContent = '0.00';
       }
 
       startBtn.addEventListener('click', ()=> startTimer());
       pauseBtn.addEventListener('click', ()=> running ? stopTimer() : startTimer());
       resetBtn.addEventListener('click', ()=> {
-        if(confirm('Reset will clear timer but NOT your answers. Continue?')) resetTimer();
+        if(confirm('Reset will reset timer. Continue?')) resetTimer();
       });
 
-      // Utility: shuffle array
+      // Randomize options and keep track of correct text
       function shuffle(arr){
         for(let i = arr.length-1; i>0; i--){
           const j = Math.floor(Math.random()*(i+1));
@@ -604,35 +648,27 @@
         return arr;
       }
 
-      // For each question: capture correct option text, shuffle option labels, store correct text in data-correct-text
       function randomizeOptions(){
         const qDivs = Array.from(document.querySelectorAll('.question'));
         qDivs.forEach(q=>{
-          const answerLetter = (q.dataset.answer || 'A').trim().toUpperCase(); // original correct letter
+          const answerLetter = (q.dataset.answer || 'A').trim().toUpperCase();
           const letterIndex = {A:0,B:1,C:2,D:3}[answerLetter] ?? 0;
           const optsContainer = q.querySelector('.options');
           const labelNodes = Array.from(optsContainer.querySelectorAll('label'));
-          // Extract option objects: {html,labelText, inputValue, radioName}
           const opts = labelNodes.map(label => {
             const inp = label.querySelector('input[type=radio]');
             const text = label.textContent.replace(/^[A-D]\.\s*/,'').trim();
-            return { node: label, text: text, value: inp.value, name: inp.name };
+            return { text: text, value: inp.value, name: inp.name };
           });
-          // Capture correct text BEFORE shuffle using letterIndex
           const correctText = opts[letterIndex] ? opts[letterIndex].text : opts[0].text;
           q.dataset.correctText = correctText;
-
-          // Shuffle opts
           const shuffled = shuffle(opts.slice());
-          // Clear container and re-append with fresh inputs (so value attrs remain but ordering changed)
           optsContainer.innerHTML = '';
           shuffled.forEach((opt, idx)=>{
-            // create new radio/input and label to avoid id/name collisions
             const input = document.createElement('input');
             input.type = 'radio';
             input.name = opt.name;
-            input.value = String.fromCharCode(65+idx); // A,B,C,D after shuffle
-            // Build label text with A./B. etc (visible letter is not meaningful for correctness)
+            input.value = String.fromCharCode(65+idx); // A..D after shuffle
             const label = document.createElement('label');
             label.appendChild(input);
             label.appendChild(document.createTextNode(' ' + String.fromCharCode(65+idx) + '. ' + opt.text));
@@ -641,97 +677,95 @@
         });
       }
 
-      // Evaluate answers, highlight correct in green, wrong in red
-      function submitAnswers(){
-        // Prevent multiple submissions visual changes if already submitted
-        // Clear previous highlights
-        document.querySelectorAll('.options label').forEach(l=> {
-          l.classList.remove('correct','wrong','reveal-correct');
-        });
+      // Submit logic: highlight correct green, wrong selected red, show counts below submit, no popup
+      const form = document.getElementById('quizForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const attemptedSpan = document.getElementById('attempted');
+      const correctSpan = document.getElementById('correct');
+      const wrongSpan = document.getElementById('wrong');
+      const resBox = document.getElementById('resultsBox');
+      const resAttempted = document.getElementById('resAttempted');
+      const resCorrect = document.getElementById('resCorrect');
+      const resWrong = document.getElementById('resWrong');
+      const resultSummary = document.getElementById('resultSummary');
 
+      function evaluate(){
+        // remove previous highlights
+        document.querySelectorAll('.options label').forEach(l=> l.classList.remove('correct','wrong','reveal-correct'));
         const qDivs = Array.from(document.querySelectorAll('.question'));
         let attempted = 0, correct = 0, wrong = 0;
         qDivs.forEach(q=>{
           const correctText = q.dataset.correctText;
           const radios = Array.from(q.querySelectorAll('input[type=radio]'));
-          // find selected
-          const sel = radios.find(r=>r.checked);
-          if(sel) attempted++;
-          // For each option label, determine its text (strip letter prefix)
           const labels = Array.from(q.querySelectorAll('label'));
-          labels.forEach(label=>{
-            const labelText = label.textContent.replace(/^[A-D]\.\s*/,'').trim();
-            if(labelText === correctText){
-              // mark the correct option (but only green if selected or to reveal)
-              label.classList.add('reveal-correct');
-            }
-          });
+          const sel = radios.find(r=> r.checked);
+          if(sel) attempted++;
+          // reveal correct label (green)
+          const correctLabel = labels.find(l=> l.textContent.replace(/^[A-D]\.\s*/,'').trim() === correctText);
+          if(correctLabel) correctLabel.classList.add('correct','reveal-correct');
           if(sel){
-            // find the label text of selected
             const selLabel = sel.parentElement;
             const selText = selLabel.textContent.replace(/^[A-D]\.\s*/,'').trim();
             if(selText === correctText){
-              // correct
               correct++;
+              // already green; ensure it has correct class
               selLabel.classList.add('correct');
             } else {
-              // wrong: mark selected red and reveal correct in green
               wrong++;
               selLabel.classList.add('wrong');
-              // highlight correct (already have reveal-correct) — also add correct class to that label
-              const correctLabel = labels.find(l=> l.textContent.replace(/^[A-D]\.\s*/,'').trim() === correctText);
               if(correctLabel) correctLabel.classList.add('correct');
             }
-          } else {
-            // not attempted: just show correct highlight
-            const correctLabel = labels.find(l=> l.textContent.replace(/^[A-D]\.\s*/,'').trim() === correctText);
-            if(correctLabel) correctLabel.classList.add('correct');
           }
         });
-
         attemptedSpan.textContent = attempted;
         correctSpan.textContent = correct;
         wrongSpan.textContent = wrong;
-        marksScoredSpan.textContent = correct;
+        resAttempted.textContent = attempted;
+        resCorrect.textContent = correct;
+        resWrong.textContent = wrong;
+        resBox.style.display = 'block';
         resultSummary.textContent = `${correct} correct, ${wrong} wrong, ${attempted} attempted`;
-        // stop timer and show time taken
+        marksScoredSpan.textContent = correct;
+        // stop timer and update time taken shown above
         stopTimer();
         const took = startedAt ? ((Date.now() - startedAt)/60000) : 0;
         timeTakenSpan.textContent = took.toFixed(2);
-        alert(`Result: Correct ${correct}, Wrong ${wrong}, Attempted ${attempted}, Time ${took.toFixed(2)} min`);
       }
 
       submitBtn.addEventListener('click', function(e){
         e.preventDefault();
-        submitAnswers();
+        evaluate();
       });
 
       clearBtn.addEventListener('click', function(){
-        if(confirm('সব নির্বাচিত অপশন মুছে ফেলবেন?')){
-          const inputs = form.querySelectorAll('input[type=radio]');
-          inputs.forEach(i=> i.checked = false);
-          // remove highlights if any
-          document.querySelectorAll('.options label').forEach(l=> {
-            l.classList.remove('correct','wrong','reveal-correct');
-          });
-          attemptedSpan.textContent = 0;
-        }
+        if(!confirm('সব নির্বাচিত অপশন মুছতে চান?')) return;
+        const inputs = form.querySelectorAll('input[type=radio]');
+        inputs.forEach(i=> i.checked = false);
+        document.querySelectorAll('.options label').forEach(l=> l.classList.remove('correct','wrong','reveal-correct'));
+        attemptedSpan.textContent = 0;
+        correctSpan.textContent = 0;
+        wrongSpan.textContent = 0;
+        resBox.style.display = 'none';
+        resultSummary.textContent = 'Not submitted';
+        marksScoredSpan.textContent = 0;
       });
 
-      // update attempted live
+      // live attempted update
       form.addEventListener('change', ()=>{
         const inputs = Array.from(form.querySelectorAll('input[type=radio]'));
         const names = new Set(inputs.filter(i=>i.checked).map(i=>i.name));
         attemptedSpan.textContent = names.size;
       });
 
-      // On load: randomize options for all questions
+      // initialize randomized options and timer display
       randomizeOptions();
       updateTimerDisplay();
 
-      // Expose start/stop helpers for timer buttons
+      // expose timer controls to buttons already wired
       window.startTimer = startTimer;
       window.stopTimer = stopTimer;
+      window.resetTimer = resetTimer;
     })();
   </script>
 </body>
