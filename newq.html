@@ -1,4 +1,4 @@
-```html
+
 <!doctype html>
 <html lang="bn">
 <head>
@@ -10,10 +10,9 @@
     *{box-sizing:border-box}
     body{font-family:"Helvetica Neue",Arial,sans-serif;margin:0;background:var(--bg);color:#111}
     .topbar{position:sticky;top:0;z-index:9999;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,252,255,0.98));border-bottom:1px solid #e6eef8;padding:10px 16px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 6px rgba(18,38,63,0.03)}
-    .title{display:flex;align-items:flex-start;gap:12px;min-width:260px}
-    h1{margin:0;font-size:18px;line-height:1.1}
+    h1{margin:0;font-size:18px}
     .badges{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:8px}
-    .badge{background:var(--panel);border:1px solid #e1e6ee;padding:8px 10px;border-radius:8px;font-weight:600;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .badge{background:var(--panel);border:1px solid #e1e6ee;padding:8px 10px;border-radius:8px;font-weight:600;font-size:13px;color:var(--muted)}
     .top-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
     .btn{padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-weight:700}
     .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -31,16 +30,14 @@
     .resultsBox{min-width:220px;background:transparent;display:flex;gap:12px;align-items:center}
     .resultsBox div{font-weight:700;color:var(--muted)}
     .small{font-size:13px;color:var(--muted)}
-    @media (max-width:720px){.topbar{flex-wrap:wrap;gap:10px;padding:12px}.bottombar{left:16px;right:16px;justify-content:space-between}}
+    @media (max-width:720px){.topbar{flex-wrap:wrap;padding:12px}.bottombar{left:16px;right:16px;justify-content:space-between}}
   </style>
 </head>
 <body>
   <div class="topbar" role="banner" aria-label="Exam header">
-    <div class="title">
-      <div>
-        <h1>বহুনির্বাচনী পরীক্ষা — 45 প্রশ্ন</h1>
-        <div class="small" style="margin-top:4px;color:#55606b">Start Timer 60:00</div>
-      </div>
+    <div>
+      <h1>বহুনির্বাচনী পরীক্ষা — 45 প্রশ্ন</h1>
+      <div class="small" style="margin-top:6px;color:#55606b">Start Timer 60:00</div>
     </div>
 
     <div class="badges" aria-hidden="false">
@@ -64,7 +61,9 @@
       </div>
 
       <form id="quizForm" autocomplete="off">
-        <!-- All 45 questions -->
+        <!-- Each question keeps original option order; correct letter in data-answer is authoritative.
+             The script below uses data-answer (A-D) and the original option text to mark correct answers green and wrong selected red. -->
+
         <div class="question" data-answer="C">
           <div class="qnum">1. নিচের কোনটি মানুষের ক্ষেত্রে প্রযোজ্য নয়?</div>
           <div class="options">
@@ -139,7 +138,7 @@
           <div class="qnum">8. ভারতের সংবিধানের প্রধান স্থপতি হিসেবে কে গণ্য হন?</div>
           <div class="options">
             <label><input type="radio" name="q8" value="A"> A. ড. রাজেন্দ্র প্রসাদ</label>
-            <label><input type="radio" name="q8" value="B"> B. ড. বি. আর. আম্বেদকার</label>
+            <label><input type="radio" name="q8" value="B"> B. ড. বি. আর. আম্বেদকর</label>
             <label><input type="radio" name="q8" value="C"> C. বি. এন. রাও</label>
             <label><input type="radio" name="q8" value="D"> D. এন. গোপালসুয়ামী আয়্যাঙ্গার</label>
           </div>
@@ -165,6 +164,7 @@
           </div>
         </div>
 
+        <!-- Questions 11 - 45 (kept original order and correct letters) -->
         <div class="question" data-answer="A">
           <div class="qnum">11. ভূমিকম্পের তীব্রতা মাপার যন্ত্র কোনটি?</div>
           <div class="options">
@@ -599,67 +599,36 @@
       startBtn.addEventListener('click', ()=> startTimer());
       pauseBtn.addEventListener('click', ()=> running ? stopTimer() : startTimer());
 
-      function shuffle(arr){
-        for(let i = arr.length-1; i>0; i--){
-          const j = Math.floor(Math.random()*(i+1));
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-      }
-
-      function randomizeAllOptions(){
-        const qDivs = Array.from(document.querySelectorAll('.question'));
-        qDivs.forEach(q=>{
-          const answerLetter = (q.dataset.answer || 'A').trim().toUpperCase();
-          const idxMap = {A:0,B:1,C:2,D:3};
-          const letterIndex = idxMap[answerLetter] ?? 0;
-          const labels = Array.from(q.querySelectorAll('label'));
-          const opts = labels.map(label=>{
-            const inp = label.querySelector('input');
-            const text = label.textContent.replace(/^[A-D]\.\s*/,'').trim();
-            return { text, name: inp.name };
-          });
-          const correctText = opts[letterIndex] ? opts[letterIndex].text : opts[0].text;
-          q.dataset.correctText = correctText;
-          const shuffled = shuffle(opts.slice());
-          const container = q.querySelector('.options');
-          container.innerHTML = '';
-          shuffled.forEach((opt, i)=>{
-            const input = document.createElement('input');
-            input.type = 'radio';
-            input.name = opt.name;
-            input.value = String.fromCharCode(65+i);
-            const label = document.createElement('label');
-            label.appendChild(input);
-            label.appendChild(document.createTextNode(' ' + String.fromCharCode(65+i) + '. ' + opt.text));
-            container.appendChild(label);
-          });
-        });
-      }
-
+      // Evaluate using data-answer (A-D) matching original option order
       function evaluate(){
+        // clear previous highlights
         document.querySelectorAll('.options label').forEach(l=> l.classList.remove('correct','wrong','reveal-correct'));
         const qDivs = Array.from(document.querySelectorAll('.question'));
         let att=0, corr=0, wrg=0;
-        qDivs.forEach(q=>{
-          const correctText = q.dataset.correctText;
+        qDivs.forEach((q, qi)=>{
+          const correctLetter = (q.dataset.answer || 'A').trim().toUpperCase(); // A-D
+          const labels = Array.from(q.querySelectorAll('.options label'));
+          // determine correct label by original order mapping A->index0 etc.
+          const idxMap = {A:0,B:1,C:2,D:3};
+          const correctIndex = idxMap[correctLetter] ?? 0;
+          const correctLabel = labels[correctIndex];
+          // mark correct green
+          if(correctLabel) correctLabel.classList.add('correct','reveal-correct');
+          // check selected
           const radios = Array.from(q.querySelectorAll('input[type=radio]'));
-          const labels = Array.from(q.querySelectorAll('label'));
           const sel = radios.find(r=> r.checked);
           if(sel) att++;
-          // reveal correct: always mark correct answer green
-          const cLabel = labels.find(l=> l.textContent.replace(/^[A-D]\.\s*/,'').trim() === correctText);
-          if(cLabel) cLabel.classList.add('correct','reveal-correct');
           if(sel){
             const selLabel = sel.parentElement;
-            const selText = selLabel.textContent.replace(/^[A-D]\.\s*/,'').trim();
-            if(selText === correctText){
+            // find index of selected label
+            const selIndex = labels.indexOf(selLabel);
+            if(selIndex === correctIndex){
               corr++;
               selLabel.classList.add('correct');
             } else {
               wrg++;
               selLabel.classList.add('wrong');
-              if(cLabel) cLabel.classList.add('correct');
+              if(correctLabel) correctLabel.classList.add('correct');
             }
           }
         });
@@ -687,8 +656,7 @@
 
       clearBtn.addEventListener('click', ()=>{
         if(!confirm('সব নির্বাচিত অপশন মুছতে চান?')) return;
-        const inputs = document.querySelectorAll('input[type=radio]');
-        inputs.forEach(i=> i.checked = false);
+        document.querySelectorAll('input[type=radio]').forEach(i=> i.checked = false);
         document.querySelectorAll('.options label').forEach(l=> l.classList.remove('correct','wrong','reveal-correct'));
         attempted.textContent = 0;
         correct.textContent = 0;
@@ -711,10 +679,9 @@
         brAttempted.textContent = names.size;
       });
 
-      randomizeAllOptions();
+      // No shuffling here so original option order matches data-answer mapping.
       updateHeaderTimer();
     })();
   </script>
 </body>
 </html>
-```
