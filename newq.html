@@ -64,7 +64,7 @@
       </div>
 
       <form id="quizForm" autocomplete="off">
-        <!-- All 45 questions below -->
+        <!-- All 45 questions -->
         <div class="question" data-answer="C">
           <div class="qnum">1. নিচের কোনটি মানুষের ক্ষেত্রে প্রযোজ্য নয়?</div>
           <div class="options">
@@ -139,7 +139,7 @@
           <div class="qnum">8. ভারতের সংবিধানের প্রধান স্থপতি হিসেবে কে গণ্য হন?</div>
           <div class="options">
             <label><input type="radio" name="q8" value="A"> A. ড. রাজেন্দ্র প্রসাদ</label>
-            <label><input type="radio" name="q8" value="B"> B. ড. বি. আর. আম্বেদকর</label>
+            <label><input type="radio" name="q8" value="B"> B. ড. বি. আর. আম্বেদকার</label>
             <label><input type="radio" name="q8" value="C"> C. বি. এন. রাও</label>
             <label><input type="radio" name="q8" value="D"> D. এন. গোপালসুয়ামী আয়্যাঙ্গার</label>
           </div>
@@ -266,7 +266,7 @@
         </div>
 
         <div class="question" data-answer="B">
-          <div class="qnum">21. কুলীনবৃত্তির প্রতিষ্ঠার সঙ্গে কোন রাজা জড়িত?</div>
+          <div class="qnum">21. কুলীনবৃত্তির প্রতিষ্ঠার সঙ্গে কোন রাজা জড়িত?</div>
           <div class="options">
             <label><input type="radio" name="q21" value="A"> A. বিজয় সেন</label>
             <label><input type="radio" name="q21" value="B"> B. বললাল সেন</label>
@@ -276,7 +276,7 @@
         </div>
 
         <div class="question" data-answer="A">
-          <div class="qnum">22. ধ্যানচন্দ কোন খেলায় সম্পর্কিত ছিলেন?</div>
+          <div class="qnum">22. ধ্যানচন্দ কোন খেলায় সম্পর্কিত ছিলেন?</div>
           <div class="options">
             <label><input type="radio" name="q22" value="A"> A. Hockey</label>
             <label><input type="radio" name="q22" value="B"> B. Boxing</label>
@@ -647,6 +647,7 @@
           const labels = Array.from(q.querySelectorAll('label'));
           const sel = radios.find(r=> r.checked);
           if(sel) att++;
+          // reveal correct: always mark correct answer green
           const cLabel = labels.find(l=> l.textContent.replace(/^[A-D]\.\s*/,'').trim() === correctText);
           if(cLabel) cLabel.classList.add('correct','reveal-correct');
           if(sel){
